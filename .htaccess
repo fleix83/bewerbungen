@@ -27,7 +27,10 @@ RewriteEngine on
 # In some environments it's necessary to
 # set the RewriteBase to:
 #
-# RewriteBase /
+RewriteBase /bewerbungen/
+
+# FIRST: exclude terminmanager completely from all Kirby processing
+RewriteRule ^terminmanager/ - [L]
 
 # block files and folders beginning with a dot, such as .git
 # except for the .well-known folder, which is used for Let's Encrypt and security.txt
@@ -51,9 +54,6 @@ RewriteRule .* - [L]
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteCond %{REQUEST_FILENAME} \.(js|css|svg|png|jpg|jpeg|gif|ico|woff|woff2|ttf|eot)$
 RewriteRule .* - [L]
-
-# exclude terminmanager from Kirby routing
-RewriteRule ^terminmanager/ - [L]
 
 # make site links work (Kirby)
 RewriteCond %{REQUEST_FILENAME} !-f
