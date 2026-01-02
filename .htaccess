@@ -27,7 +27,7 @@ RewriteEngine on
 # In some environments it's necessary to
 # set the RewriteBase to:
 #
-RewriteBase /bewerbungen/
+# RewriteBase /
 
 # FIRST: exclude terminmanager completely from all Kirby processing
 RewriteRule ^terminmanager/ - [L]
