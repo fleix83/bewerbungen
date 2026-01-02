@@ -1,3 +1,7 @@
+# Allow all access to this directory
+Require all granted
+Allow from all
+
 # Serve static files with correct MIME types
 <IfModule mod_mime.c>
     AddType text/css .css
@@ -8,16 +12,13 @@
 # Disable directory listing
 Options -Indexes
 
-# Allow all files to be served
+# Disable Kirby/PHP processing
 <IfModule mod_rewrite.c>
-    RewriteEngine On
-
-    # If the requested file exists, serve it directly
-    RewriteCond %{REQUEST_FILENAME} -f
-    RewriteRule ^ - [L]
-
-    # For SPA routing: serve index.html for non-file requests
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^ index.html [L]
+    RewriteEngine Off
 </IfModule>
+
+# Allow specific file types
+<FilesMatch "\.(css|js|svg|png|jpg|jpeg|gif|ico|woff|woff2|html)$">
+    Require all granted
+    Allow from all
+</FilesMatch>

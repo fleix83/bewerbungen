@@ -1,0 +1,14 @@
+# Allow all access
+Require all granted
+Allow from all
+
+# Correct MIME types
+<IfModule mod_mime.c>
+    AddType text/css .css
+    AddType application/javascript .js
+</IfModule>
+
+# Disable any rewriting
+<IfModule mod_rewrite.c>
+    RewriteEngine Off
+</IfModule>
