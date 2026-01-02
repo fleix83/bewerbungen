@@ -1,6 +1,13 @@
 # Kirby .htaccess
 # revision 2023-07-22
 
+# Ensure correct MIME types for static assets
+<IfModule mod_mime.c>
+    AddType text/css .css
+    AddType application/javascript .js
+    AddType image/svg+xml .svg
+</IfModule>
+
 # rewrite rules
 <IfModule mod_rewrite.c>
 
@@ -38,6 +45,11 @@ RewriteRule ^kirby/(.*) kirby-bootstrap.php [L]
 # serve static HTML files directly
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteCond %{REQUEST_FILENAME} \.(html)$
+RewriteRule .* - [L]
+
+# serve static assets directly (js, css, svg, etc.)
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_FILENAME} \.(js|css|svg|png|jpg|jpeg|gif|ico|woff|woff2|ttf|eot)$
 RewriteRule .* - [L]
 
 # exclude terminmanager from Kirby routing
