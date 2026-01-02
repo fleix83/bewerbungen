@@ -1,12 +1,16 @@
-# Allow all access
-Require all granted
+# Force correct MIME types
+AddType text/css .css
+AddType application/javascript .js
+AddType image/svg+xml .svg
+AddType application/json .json
 
-<IfModule mod_mime.c>
-    AddType text/css .css
-    AddType application/javascript .js
-    AddType image/svg+xml .svg
-</IfModule>
-
+# SPA: only rewrite non-file requests to index.html
 <IfModule mod_rewrite.c>
-    RewriteEngine Off
+    RewriteEngine On
+
+    # Don't rewrite files with extensions (assets)
+    RewriteRule \.(js|css|svg|png|jpg|jpeg|gif|ico|woff|woff2|json|map|html)$ - [L]
+
+    # Everything else goes to index.html
+    RewriteRule ^ index.html [L]
 </IfModule>

@@ -24,13 +24,11 @@ RewriteEngine on
 #
 # RewriteBase /mysite
 
-# In some environments it's necessary to
-# set the RewriteBase to:
-#
-# RewriteBase /
-
-# FIRST: exclude terminmanager completely from all Kirby processing
+# Terminmanager: exclude completely from Kirby (has its own .htaccess)
 RewriteRule ^terminmanager/ - [L]
+RewriteRule terminmanager/ - [L]
+RewriteCond %{REQUEST_URI} terminmanager/
+RewriteRule ^ - [L]
 
 # block files and folders beginning with a dot, such as .git
 # except for the .well-known folder, which is used for Let's Encrypt and security.txt
