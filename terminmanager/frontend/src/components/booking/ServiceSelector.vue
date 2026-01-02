@@ -1,0 +1,162 @@
+<template>
+  <div class="service-selector">
+    <h2 class="section-title">Was brauchen Sie?</h2>
+    <div class="services-list">
+      <AppCheckbox
+        v-for="service in services"
+        :key="service.id"
+        :id="`service-${service.id}`"
+        :label="service.name"
+        :duration="formatDuration(service.duration_slots)"
+        :model-value="isServiceSelected(service.id)"
+        @update:model-value="toggleService(service.id)"
+      />
+    </div>
+
+    <div class="service-type-field">
+      <select
+        id="service-type"
+        v-model="selectedServiceType"
+        class="service-type-select"
+      >
+        <option value="Etwas anderes">Etwas anderes</option>
+        <option value="Brief">Brief</option>
+        <option value="Rekurs">Rekurs</option>
+        <option value="Hilfe mit Formularen">Hilfe mit Formularen</option>
+        <option value="Hilfe mit Bewerbungen">Hilfe mit Bewerbungen</option>
+      </select>
+    </div>
+
+    <div class="notes-field">
+      <textarea
+        id="notes-input"
+        :value="notesText"
+        @input="handleNotesInput"
+        placeholder="Ich brauche..."
+        rows="3"
+        class="notes-textarea"
+      />
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed, watch } from 'vue'
+import AppCheckbox from '../common/AppCheckbox.vue'
+
+const props = defineProps({
+  services: {
+    type: Array,
+    required: true
+  },
+  modelValue: {
+    type: Array,
+    default: () => []
+  },
+  notes: {
+    type: String,
+    default: ''
+  },
+  serviceType: {
+    type: String,
+    default: 'Etwas anderes'
+  }
+})
+
+const emit = defineEmits(['update:modelValue', 'update:notes', 'update:serviceType'])
+
+const selectedServiceType = ref(props.serviceType)
+const additionalNotes = ref(props.notes)
+
+const isServiceSelected = (serviceId) => {
+  return props.modelValue.includes(serviceId)
+}
+
+const toggleService = (serviceId) => {
+  const selectedServices = [...props.modelValue]
+  const index = selectedServices.indexOf(serviceId)
+
+  if (index > -1) {
+    selectedServices.splice(index, 1)
+  } else {
+    selectedServices.push(serviceId)
+  }
+
+  emit('update:modelValue', selectedServices)
+}
+
+const formatDuration = (slots) => {
+  return `${slots}h`
+}
+
+const notesText = computed(() => {
+  return additionalNotes.value
+})
+
+const handleNotesInput = (event) => {
+  additionalNotes.value = event.target.value
+  emit('update:notes', additionalNotes.value)
+}
+
+watch(selectedServiceType, (newValue) => {
+  emit('update:serviceType', newValue)
+}, { immediate: true })
+</script>
+
+<style scoped>
+.service-selector {
+  margin-bottom: var(--spacing-xl);
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.service-type-field {
+  margin-top: var(--spacing-sm);
+}
+
+.service-type-select {
+  width: 100%;
+  padding: 12px 16px;
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  color: #000;
+  cursor: pointer;
+}
+
+.service-type-select:focus {
+  outline: none;
+  border-color: #002198;
+}
+
+.notes-field {
+  margin-top: var(--spacing-sm);
+}
+
+.notes-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  color: #000;
+  resize: vertical;
+}
+
+.notes-textarea:focus {
+  outline: none;
+  border-color: #002198;
+}
+
+.notes-textarea::placeholder {
+  color: #999;
+}
+</style>

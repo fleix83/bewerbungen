@@ -1,0 +1,9 @@
+Options -Indexes
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /bewerbungen/terminmanager/api/
+</IfModule>
+
+<FilesMatch "\.(php)$">
+    Require all granted
+</FilesMatch>
