@@ -40,6 +40,9 @@ RewriteCond %{REQUEST_FILENAME} -f
 RewriteCond %{REQUEST_FILENAME} \.(html)$
 RewriteRule .* - [L]
 
+# exclude terminmanager from Kirby routing
+RewriteRule ^terminmanager/ - [L]
+
 # make site links work (Kirby)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
