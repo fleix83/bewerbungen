@@ -1,24 +1,12 @@
-# Allow all access to this directory
+# Allow all access
 Require all granted
-Allow from all
 
-# Serve static files with correct MIME types
 <IfModule mod_mime.c>
     AddType text/css .css
     AddType application/javascript .js
     AddType image/svg+xml .svg
 </IfModule>
 
-# Disable directory listing
-Options -Indexes
-
-# Disable Kirby/PHP processing
 <IfModule mod_rewrite.c>
     RewriteEngine Off
 </IfModule>
-
-# Allow specific file types
-<FilesMatch "\.(css|js|svg|png|jpg|jpeg|gif|ico|woff|woff2|html)$">
-    Require all granted
-    Allow from all
-</FilesMatch>
