@@ -72,7 +72,8 @@ const calendarDays = computed(() => {
 
   for (let day = 1; day <= daysInMonth; day++) {
     const currentDate = new Date(props.year, props.month - 1, day)
-    const dateString = currentDate.toISOString().split('T')[0]
+    // Format as YYYY-MM-DD without timezone conversion
+    const dateString = `${props.year}-${String(props.month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
 
     const availabilityData = props.availability.find(a => a.date === dateString)
     const hasSlots = availabilityData?.has_free_slots || false
@@ -91,8 +92,8 @@ const calendarDays = computed(() => {
 
 const handleDayClick = (day) => {
   if (day) {
-    const selectedDate = new Date(props.year, props.month - 1, day)
-    const dateString = selectedDate.toISOString().split('T')[0]
+    // Format as YYYY-MM-DD without timezone conversion
+    const dateString = `${props.year}-${String(props.month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
     emit('day-selected', dateString)
   }
 }
