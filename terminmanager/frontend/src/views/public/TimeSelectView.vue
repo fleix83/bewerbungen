@@ -2,6 +2,13 @@
   <div class="screen">
     <h1 class="screen-title">{{ formattedDate }}</h1>
 
+    <!-- Date Navigation -->
+    <div class="date-navigation">
+      <button class="nav-button" @click="goToPreviousDay">←</button>
+      <span class="nav-label">Datum wechseln</span>
+      <button class="nav-button" @click="goToNextDay">→</button>
+    </div>
+
     <div v-if="loading" class="loading">
       Laden...
     </div>
@@ -105,6 +112,31 @@ const handleSlotSelected = async (slot) => {
   }
 }
 
+const goToPreviousDay = () => {
+  const date = new Date(selectedDate.value)
+  date.setDate(date.getDate() - 1)
+  navigateToDate(date)
+}
+
+const goToNextDay = () => {
+  const date = new Date(selectedDate.value)
+  date.setDate(date.getDate() + 1)
+  navigateToDate(date)
+}
+
+const navigateToDate = (date) => {
+  // Format as YYYY-MM-DD without timezone conversion
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  const dateStr = `${year}-${month}-${day}`
+
+  selectedDate.value = dateStr
+  bookingStore.setSelectedDate(dateStr)
+  router.push(`/buchen/zeit/${dateStr}`)
+  loadAvailableSlots()
+}
+
 onMounted(() => {
   if (!bookingStore.selectedDate || bookingStore.selectedServices.length === 0) {
     router.push('/buchen')
@@ -115,6 +147,39 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.date-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: var(--color-text-title);
+  font-size: 24px;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.nav-button:hover {
+  background-color: var(--color-bg-card);
+}
+
+.nav-label {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
 .loading {
   text-align: center;
   padding: var(--spacing-xl);
