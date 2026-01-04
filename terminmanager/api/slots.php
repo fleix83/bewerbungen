@@ -144,6 +144,13 @@ try {
 
                 while ($currentDate <= $endDate) {
                     $dateStr = $currentDate->format('Y-m-d');
+                    $dayOfWeek = (int)$currentDate->format('w'); // 0=Sun, 6=Sat
+
+                    // Skip Sundays
+                    if ($dayOfWeek === 0) {
+                        $currentDate->modify('+1 day');
+                        continue;
+                    }
 
                     // Check if date is blocked (holiday)
                     $stmt = $conn->prepare("
@@ -159,30 +166,20 @@ try {
                         continue;
                     }
 
-                    // Check existing free slots for this date
-                    $stmt = $conn->prepare("
-                        SELECT slot_hour FROM free_slots
-                        WHERE user_id = 1 AND slot_date = :date
-                    ");
-                    $stmt->execute(['date' => $dateStr]);
-                    $existingSlots = $stmt->fetchAll(PDO::FETCH_COLUMN);
+                    // Generate slots for this day (INSERT IGNORE preserves existing slots)
+                    $newSlots = generateSlotsForDay($dayOfWeek);
 
-                    // Only generate if no slots exist for this date
-                    if (empty($existingSlots)) {
-                        $newSlots = generateRandomSlots();
-
-                        foreach ($newSlots as $hour) {
-                            $stmt = $conn->prepare("
-                                INSERT IGNORE INTO free_slots (user_id, slot_date, slot_hour, created_by)
-                                VALUES (1, :date, :hour, 'generator')
-                            ");
-                            $stmt->execute(['date' => $dateStr, 'hour' => $hour]);
+                    foreach ($newSlots as $hour) {
+                        $stmt = $conn->prepare("
+                            INSERT IGNORE INTO free_slots (user_id, slot_date, slot_hour, created_by)
+                            VALUES (1, :date, :hour, 'generator')
+                        ");
+                        $stmt->execute(['date' => $dateStr, 'hour' => $hour]);
+                        if ($stmt->rowCount() > 0) {
                             $slotsCreated++;
                         }
-                        $daysProcessed++;
-                    } else {
-                        $daysSkipped++;
                     }
+                    $daysProcessed++;
 
                     $currentDate->modify('+1 day');
                 }
@@ -217,38 +214,38 @@ try {
 }
 
 /**
- * Generate 5 random slots per day with constraints:
- * - At least 1 morning slot (8-11)
- * - At least 1 afternoon slot (12-16)
- * - Remaining 3 slots from any available hour
- * - Hours 8-16 only (slots end at 17:00)
+ * Generate double slots (2h each) for a given day of week
+ * - Weekdays (Mon-Fri): 3 double slots (morning, midday, afternoon)
+ * - Saturday: 1 double slot at 10:00
+ * - Sunday: Should be skipped before calling this function
+ *
+ * @param int $dayOfWeek 0=Sun, 1=Mon, ..., 6=Sat
+ * @return array Array of hour integers to free
  */
-function generateRandomSlots() {
-    $morning = [8, 9, 10, 11];      // 4 morning options
-    $afternoon = [12, 13, 14, 15, 16]; // 5 afternoon options
+function generateSlotsForDay($dayOfWeek) {
+    // Saturday: single double slot at 10:00
+    if ($dayOfWeek === 6) {
+        return [10, 11]; // 10:00-12:00
+    }
 
-    $selected = [];
+    // Weekdays (Mon-Fri): 3 double slots in non-overlapping windows
+    $slots = [];
 
-    // 1. Pick 1 random morning slot
-    $morningPick = $morning[array_rand($morning)];
-    $selected[] = $morningPick;
+    // Morning slot: 9:00-11:00 (fixed)
+    $slots[] = 9;
+    $slots[] = 10;
 
-    // 2. Pick 1 random afternoon slot
-    $afternoonPick = $afternoon[array_rand($afternoon)];
-    $selected[] = $afternoonPick;
+    // Midday slot: 12:00-14:00 or 13:00-15:00 (random)
+    $middayOptions = [12, 13];
+    $middayStart = $middayOptions[array_rand($middayOptions)];
+    $slots[] = $middayStart;
+    $slots[] = $middayStart + 1;
 
-    // 3. Build pool of remaining slots
-    $allSlots = array_merge($morning, $afternoon);
-    $remaining = array_diff($allSlots, $selected);
-    $remaining = array_values($remaining); // Re-index
+    // Afternoon slot: 15:00-17:00 (fixed)
+    $slots[] = 15;
+    $slots[] = 16;
 
-    // 4. Shuffle and pick 3 more
-    shuffle($remaining);
-    $selected = array_merge($selected, array_slice($remaining, 0, 3));
-
-    // 5. Sort by hour for clean display
-    sort($selected);
-
-    return $selected;
+    sort($slots);
+    return $slots;
 }
 ?>
