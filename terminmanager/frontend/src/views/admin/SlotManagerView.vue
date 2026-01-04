@@ -118,12 +118,14 @@ const navigateToDate = (date) => {
   const dateStr = date.toISOString().split('T')[0]
   selectedDate.value = dateStr
   router.push(`/admin/slots/${dateStr}`)
+  loadSlots()
 }
 
 const handleDateSelected = (dateStr) => {
   selectedDate.value = dateStr
   showDatePicker.value = false
   router.push(`/admin/slots/${dateStr}`)
+  loadSlots()
 }
 
 const prevPickerMonth = () => {
