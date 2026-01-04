@@ -323,7 +323,7 @@ body {
 .landing-header {
   display: flex;
   justify-content: flex-end;
-  padding: var(--spacing-sm) 0;
+  padding: 0;
 }
 
 .landing-main {
