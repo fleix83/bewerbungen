@@ -92,10 +92,10 @@ try {
                 AND e.event_date = :date
                 AND et.blocks_availability = TRUE
                 AND e.status != 'cancelled'
-                AND :slot_hour >= e.start_slot
-                AND :slot_hour < e.end_slot
+                AND :slot_hour1 >= e.start_slot
+                AND :slot_hour2 < e.end_slot
             ");
-            $stmt->execute(['date' => $date, 'slot_hour' => $slotHour]);
+            $stmt->execute(['date' => $date, 'slot_hour1' => $slotHour, 'slot_hour2' => $slotHour]);
 
             if ($stmt->fetch()) {
                 sendError('Cannot modify a booked slot', 400);
