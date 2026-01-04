@@ -41,6 +41,16 @@ const router = createRouter({
       path: '/admin/kunde/:id',
       name: 'admin-customer-detail',
       component: () => import('../views/admin/CustomerDetailView.vue')
+    },
+    {
+      path: '/admin/slots',
+      name: 'admin-slots',
+      component: () => import('../views/admin/SlotManagerView.vue')
+    },
+    {
+      path: '/admin/slots/:date',
+      name: 'admin-slots-date',
+      component: () => import('../views/admin/SlotManagerView.vue')
     }
   ]
 })

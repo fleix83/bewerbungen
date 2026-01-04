@@ -51,4 +51,23 @@ export const appointmentsAPI = {
   }
 }
 
+export const slotsAPI = {
+  getByDate(date) {
+    return api.get(`/slots.php?date=${date}`)
+  },
+  toggle(date, slotHour) {
+    return api.post('/slots.php', {
+      action: 'toggle',
+      date: date,
+      slot_hour: slotHour
+    })
+  },
+  generate(months = 3) {
+    return api.post('/slots.php', {
+      action: 'generate',
+      months: months
+    })
+  }
+}
+
 export default api
