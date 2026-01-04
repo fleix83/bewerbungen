@@ -451,7 +451,7 @@ body {
   flex-direction: column;
   justify-content: center;
   gap: var(--spacing-xl);
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 .menu-nav {
@@ -545,7 +545,6 @@ body {
 /* About Page */
 .about-photo {
   margin: 0 0 var(--spacing-lg) 0;
-  border-radius: var(--border-radius-sm);
   overflow: hidden;
 }
 
@@ -553,10 +552,11 @@ body {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 5px;
 }
 
 .about-content {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   line-height: 1.5;
   margin-bottom: var(--spacing-lg);
@@ -593,10 +593,7 @@ body {
 
 .cta-link .cta-link__text {
   text-decoration: underline;
-}
-
-.cta-link:hover .cta-link__text {
-  text-decoration: none;
+  text-underline-offset: 2px;
 }
 
 /* Additional Services */
