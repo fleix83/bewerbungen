@@ -47,7 +47,7 @@ const props = defineProps({
 
 const emit = defineEmits(['day-selected', 'prev-month', 'next-month'])
 
-const weekDays = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
+const weekDays = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa']
 
 const monthTitle = computed(() => {
   const date = new Date(props.year, props.month - 1)
@@ -60,10 +60,20 @@ const calendarDays = computed(() => {
   const lastDay = new Date(props.year, props.month, 0)
   const daysInMonth = lastDay.getDate()
 
+  // Find the first non-Sunday day to calculate padding
+  let firstShownDay = 1
   let firstDayOfWeek = firstDay.getDay()
-  firstDayOfWeek = firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1
 
-  for (let i = 0; i < firstDayOfWeek; i++) {
+  // If first day is Sunday, start from day 2
+  if (firstDayOfWeek === 0) {
+    firstShownDay = 2
+    firstDayOfWeek = 1 // Monday
+  }
+
+  // Convert to Mon=0, Tue=1, ..., Sat=5 (no Sunday)
+  const padding = firstDayOfWeek - 1
+
+  for (let i = 0; i < padding; i++) {
     days.push({ day: '', isEmpty: true, hasSlots: false, isDisabled: true })
   }
 
@@ -72,6 +82,12 @@ const calendarDays = computed(() => {
 
   for (let day = 1; day <= daysInMonth; day++) {
     const currentDate = new Date(props.year, props.month - 1, day)
+
+    // Skip Sundays
+    if (currentDate.getDay() === 0) {
+      continue
+    }
+
     // Format as YYYY-MM-DD without timezone conversion
     const dateString = `${props.year}-${String(props.month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
 
@@ -142,7 +158,7 @@ const handleDayClick = (day) => {
 
 .weekday-labels {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: var(--spacing-xs);
   margin-bottom: var(--spacing-sm);
 }
@@ -157,7 +173,7 @@ const handleDayClick = (day) => {
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: var(--spacing-xs);
 }
 </style>

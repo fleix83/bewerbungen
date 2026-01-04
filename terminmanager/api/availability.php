@@ -54,10 +54,15 @@ try {
             $availableHours[$slot['start_slot']] = true;
         }
 
-        // Generate slots based on duration needed
+        // Generate slots based on duration needed (8:00-18:00 range)
         $slots = [];
-        for ($hour = 8; $hour <= 21; $hour++) {
+        for ($hour = 8; $hour <= 17; $hour++) {
             $endHour = $hour + $slotsNeeded;
+
+            // Skip if slot would end after 18:00
+            if ($endHour > 18) {
+                continue;
+            }
 
             // Check if all required consecutive hours are available
             $isAvailable = true;
