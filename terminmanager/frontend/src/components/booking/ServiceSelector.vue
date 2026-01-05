@@ -19,20 +19,22 @@
         v-model="selectedServiceType"
         class="service-type-select"
       >
-        <option value="">Etwas anderes (max 1h)</option>
-        <option value="Brief">Brief</option>
-        <option value="Rekurs">Rekurs</option>
-        <option value="Hilfe mit Formularen">Hilfe mit Formularen</option>
-        <option value="Hilfe mit Bewerbungen">Hilfe mit Bewerbungen</option>
+        <option value="" disabled>Weitere Angebote</option>
+        <option value="Brief">Brief CHF 30.00</option>
+        <option value="Rekurs">Rekurs CHF 30.00</option>
+        <option value="Formular ausfüllen">Formular ausfüllen CHF 20.00</option>
+        <option value="Steuererklärung ausfüllen">Steuererklärung ausfüllen CHF 20.00</option>
+        <option value="Anderes Dokument">Anderes Dokument CHF 30.00</option>
+        <option value="Etwas anderes">Etwas anderes</option>
       </select>
     </div>
 
-    <div class="notes-field">
+    <div v-if="selectedServiceType === 'Etwas anderes'" class="notes-field">
       <textarea
         id="notes-input"
         :value="notesText"
         @input="handleNotesInput"
-        placeholder="Ich brauche..."
+        placeholder="Ich brauche... Preis innerhalb 1h CHF 30.00"
         rows="3"
         class="notes-textarea"
       />

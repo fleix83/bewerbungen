@@ -136,7 +136,7 @@ watch(formData, (newValue) => {
 
 .contact-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 0.8fr;
   gap: var(--spacing-md);
 }
 </style>
