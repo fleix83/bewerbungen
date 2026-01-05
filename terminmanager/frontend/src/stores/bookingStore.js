@@ -4,12 +4,13 @@ import { ref } from 'vue'
 export const useBookingStore = defineStore('booking', () => {
   const selectedServices = ref([])
   const customerData = ref({
+    salutation: '',
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
     notes: '',
-    serviceType: 'Etwas anderes'
+    serviceType: ''
   })
   const selectedDate = ref(null)
   const selectedSlot = ref(null)
@@ -38,12 +39,13 @@ export const useBookingStore = defineStore('booking', () => {
   function resetBooking() {
     selectedServices.value = []
     customerData.value = {
+      salutation: '',
       firstName: '',
       lastName: '',
       email: '',
       phone: '',
       notes: '',
-      serviceType: 'Etwas anderes'
+      serviceType: ''
     }
     selectedDate.value = null
     selectedSlot.value = null

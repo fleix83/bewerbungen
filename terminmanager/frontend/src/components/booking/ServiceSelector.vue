@@ -3,7 +3,7 @@
     <h2 class="section-title">Was brauchen Sie?</h2>
     <div class="services-list">
       <AppCheckbox
-        v-for="service in services"
+        v-for="service in filteredServices"
         :key="service.id"
         :id="`service-${service.id}`"
         :label="service.name"
@@ -19,7 +19,7 @@
         v-model="selectedServiceType"
         class="service-type-select"
       >
-        <option value="Etwas anderes">Etwas anderes</option>
+        <option value="">Etwas anderes (max 1h)</option>
         <option value="Brief">Brief</option>
         <option value="Rekurs">Rekurs</option>
         <option value="Hilfe mit Formularen">Hilfe mit Formularen</option>
@@ -59,7 +59,7 @@ const props = defineProps({
   },
   serviceType: {
     type: String,
-    default: 'Etwas anderes'
+    default: ''
   }
 })
 
@@ -67,6 +67,11 @@ const emit = defineEmits(['update:modelValue', 'update:notes', 'update:serviceTy
 
 const selectedServiceType = ref(props.serviceType)
 const additionalNotes = ref(props.notes)
+
+// Filter out "Etwas anderes" (id: 3) from checkbox list
+const filteredServices = computed(() =>
+  props.services.filter(s => s.id !== 3)
+)
 
 const isServiceSelected = (serviceId) => {
   return props.modelValue.includes(serviceId)
@@ -86,7 +91,7 @@ const toggleService = (serviceId) => {
 }
 
 const formatDuration = (slots) => {
-  return `${slots}h`
+  return `max ${slots}h`
 }
 
 const notesText = computed(() => {

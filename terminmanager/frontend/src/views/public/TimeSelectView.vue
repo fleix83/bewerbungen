@@ -70,14 +70,17 @@ const loadAvailableSlots = async () => {
 const handleSlotSelected = async (slot) => {
   bookingStore.setSelectedSlot(slot)
 
-  // Always include "Etwas anderes" service (ID: 3)
+  // Only include "Etwas anderes" service (ID: 3) if dropdown has a specific value
   const serviceIds = [...bookingStore.selectedServices]
-  if (!serviceIds.includes(3)) {
-    serviceIds.push(3)
+  if (bookingStore.customerData.serviceType && bookingStore.customerData.serviceType !== '') {
+    if (!serviceIds.includes(3)) {
+      serviceIds.push(3)
+    }
   }
 
   const bookingData = {
     customer: {
+      salutation: bookingStore.customerData.salutation,
       first_name: bookingStore.customerData.firstName,
       last_name: bookingStore.customerData.lastName,
       email: bookingStore.customerData.email,

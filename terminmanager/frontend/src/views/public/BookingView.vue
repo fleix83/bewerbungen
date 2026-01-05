@@ -51,17 +51,22 @@ const bookingStore = useBookingStore()
 const availableServices = ref([])
 const selectedServices = ref([...bookingStore.selectedServices] || [])
 const customerData = ref({
+  salutation: bookingStore.customerData.salutation || '',
   firstName: bookingStore.customerData.firstName || '',
   lastName: bookingStore.customerData.lastName || '',
   email: bookingStore.customerData.email || '',
   phone: bookingStore.customerData.phone || '',
   notes: bookingStore.customerData.notes || '',
-  serviceType: bookingStore.customerData.serviceType || 'Etwas anderes'
+  serviceType: bookingStore.customerData.serviceType || ''
 })
 
 const isFormValid = computed(() => {
+  // Valid if either checkboxes selected OR dropdown has a specific value
+  const hasService = selectedServices.value.length > 0 ||
+    (customerData.value.serviceType && customerData.value.serviceType !== '')
+
   return (
-    selectedServices.value.length > 0 &&
+    hasService &&
     customerData.value.firstName.trim() !== '' &&
     customerData.value.lastName.trim() !== '' &&
     customerData.value.email.trim() !== '' &&
