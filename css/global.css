@@ -566,6 +566,22 @@ body {
   margin-bottom: var(--spacing-md);
 }
 
+.languages-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.languages-section p {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
+}
+
+.language-highlight {
+  background-color: var(--color-white);
+  padding: 2px 4px;
+  display: inline;
+}
+
 /* Process Illustration */
 .process-illustration {
   display: flex;
