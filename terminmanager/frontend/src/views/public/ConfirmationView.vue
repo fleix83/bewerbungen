@@ -46,8 +46,16 @@ onMounted(async () => {
   }
 
   // Get serviceType and notes from customerData
-  const serviceTypeName = bookingStore.customerData.serviceType || 'Etwas anderes'
+  let serviceTypeName = bookingStore.customerData.serviceType || 'Etwas anderes'
   customerNotes.value = bookingStore.customerData.notes || ''
+
+  // If "Etwas anderes" selected, show truncated notes instead
+  if (serviceTypeName === 'Etwas anderes' && customerNotes.value) {
+    const truncatedNotes = customerNotes.value.length > 50
+      ? customerNotes.value.substring(0, 50) + '...'
+      : customerNotes.value
+    serviceTypeName = truncatedNotes
+  }
 
   try {
     const response = await servicesAPI.getAll()
@@ -63,11 +71,16 @@ onMounted(async () => {
     )
   } catch (error) {
     console.error('Failed to load services:', error)
-    bookedServices.value = [
+    const fallbackServices = [
       { id: 1, name: 'Lebenslauf', price: 30 },
-      { id: 2, name: 'Bewerbungsschreiben', price: 30 },
-      { id: 3, name: serviceTypeName, price: 30 }
-    ].filter(service => confirmation.value.services.includes(service.id))
+      { id: 2, name: 'Bewerbungsschreiben', price: 30 }
+    ]
+    if (confirmation.value.services.includes(3)) {
+      fallbackServices.push({ id: 3, name: serviceTypeName, price: 30 })
+    }
+    bookedServices.value = fallbackServices.filter(service =>
+      confirmation.value.services.includes(service.id)
+    )
   }
 })
 </script>

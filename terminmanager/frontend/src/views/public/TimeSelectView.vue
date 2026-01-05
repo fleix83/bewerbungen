@@ -47,8 +47,12 @@ const formattedDate = computed(() => {
 })
 
 const slotsNeeded = computed(() => {
-  // Add 1 for "Etwas anderes" service which is always included
-  return bookingStore.selectedServices.length + 1
+  // Count checkbox services + 1 if dropdown has a value
+  let count = bookingStore.selectedServices.length
+  if (bookingStore.customerData.serviceType && bookingStore.customerData.serviceType !== '') {
+    count += 1
+  }
+  return Math.max(count, 1) // At least 1 slot needed
 })
 
 const loadAvailableSlots = async () => {
@@ -141,7 +145,11 @@ const navigateToDate = (date) => {
 }
 
 onMounted(() => {
-  if (!bookingStore.selectedDate || bookingStore.selectedServices.length === 0) {
+  // Allow if checkboxes selected OR dropdown has a value
+  const hasService = bookingStore.selectedServices.length > 0 ||
+    (bookingStore.customerData.serviceType && bookingStore.customerData.serviceType !== '')
+
+  if (!bookingStore.selectedDate || !hasService) {
     router.push('/buchen')
     return
   }
