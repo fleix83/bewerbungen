@@ -7,8 +7,8 @@
       :services="availableServices"
       :notes="customerData.notes"
       :serviceType="customerData.serviceType"
-      @update:notes="val => customerData.notes = val"
-      @update:serviceType="val => customerData.serviceType = val"
+      @update:notes="updateNotes"
+      @update:serviceType="updateServiceType"
     />
 
     <ContactForm v-model="customerData" />
@@ -77,6 +77,14 @@ const isFormValid = computed(() => {
 const validateEmail = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   return emailRegex.test(email)
+}
+
+const updateNotes = (val) => {
+  customerData.value.notes = val
+}
+
+const updateServiceType = (val) => {
+  customerData.value.serviceType = val
 }
 
 const handleNext = () => {
