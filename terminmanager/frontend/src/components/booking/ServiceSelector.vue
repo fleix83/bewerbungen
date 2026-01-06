@@ -44,7 +44,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
 import AppCheckbox from '../common/AppCheckbox.vue'
 
 const props = defineProps({
@@ -68,7 +68,12 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue', 'update:notes', 'update:serviceType'])
 
-const selectedServiceType = ref(props.serviceType)
+const selectedServiceType = computed({
+  get: () => props.serviceType,
+  set: (newValue) => {
+    emit('update:serviceType', newValue)
+  }
+})
 const additionalNotes = ref(props.notes)
 
 // Filter out "Etwas anderes" (id: 3) from checkbox list
@@ -107,9 +112,7 @@ const handleNotesInput = (event) => {
 }
 
 const handleServiceTypeChange = (event) => {
-  const newValue = event.target.value
-  selectedServiceType.value = newValue
-  emit('update:serviceType', newValue)
+  selectedServiceType.value = event.target.value
 }
 </script>
 
