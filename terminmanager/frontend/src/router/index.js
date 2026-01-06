@@ -34,6 +34,12 @@ const router = createRouter({
       component: () => import('../views/admin/LoginView.vue')
     },
     {
+      path: '/admin/dashboard',
+      name: 'admin-dashboard',
+      component: () => import('../views/admin/AdminDateSelectView.vue'),
+      meta: { requiresAuth: true }
+    },
+    {
       path: '/admin/termin/:id',
       name: 'admin-appointment',
       component: () => import('../views/admin/AppointmentView.vue'),
