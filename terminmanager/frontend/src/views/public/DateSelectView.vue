@@ -150,8 +150,8 @@ onMounted(() => {
 .back-link {
   color: #002198;
   font-family: var(--font-primary);
-  font-size: 14px;
-  text-decoration: none;
+  font-size: 18px;
+  text-decoration: underline;
 }
 
 .back-link:hover {
