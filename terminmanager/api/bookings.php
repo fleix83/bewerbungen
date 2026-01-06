@@ -116,14 +116,18 @@ try {
             // Prepare email data
             $emailData = prepareBookingEmail($conn, $eventId, $customer, $eventDate, $startSlot, $endSlot, $serviceIds, $notes, $serviceType);
 
-            // Send confirmation email
+            // Send confirmation email to customer
             $emailSent = sendBookingConfirmation($emailData);
+
+            // Send notification email to admin
+            $adminEmailSent = sendAdminNotification($emailData);
 
             sendJSON([
                 'success' => true,
                 'event_id' => $eventId,
                 'message' => 'Booking created successfully',
-                'email_sent' => $emailSent
+                'email_sent' => $emailSent,
+                'admin_email_sent' => $adminEmailSent
             ]);
         } catch (Exception $e) {
             $conn->rollBack();
@@ -203,6 +207,7 @@ function prepareBookingEmail($conn, $eventId, $customer, $eventDate, $startSlot,
 
     return [
         'customer_email' => $customer['email'],
+        'customer_phone' => $customer['phone'] ?? '',
         'customer_name' => $customer['first_name'] . ' ' . $customer['last_name'],
         'date' => $formattedDate,
         'time' => $timeString,

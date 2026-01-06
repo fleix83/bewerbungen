@@ -72,6 +72,62 @@ function sendBookingConfirmation($bookingData) {
     }
 }
 
+function sendAdminNotification($bookingData) {
+    $to = 'f.weissheimer@gmx.ch';
+    $customerName = $bookingData['customer_name'];
+    $customerEmail = $bookingData['customer_email'];
+    $customerPhone = $bookingData['customer_phone'] ?? '';
+    $date = $bookingData['date'];
+    $time = $bookingData['time'];
+    $services = $bookingData['services'];
+    $total = $bookingData['total'];
+    $notes = $bookingData['notes'] ?? '';
+
+    $subject = 'Neue Buchung / ' . $customerName;
+
+    // Build services list
+    $servicesList = '';
+    foreach ($services as $service) {
+        $servicesList .= $service['name'] . ' - CHF ' . number_format($service['price'], 2) . "\n";
+    }
+
+    // Email body
+    $message = "Neue Buchung eingegangen:\n\n";
+    $message .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+    $message .= "TERMIN\n";
+    $message .= $date . "\n";
+    $message .= $time . " Uhr\n\n";
+    $message .= "BUCHUNG\n";
+    if (!empty($servicesList)) {
+        $message .= $servicesList;
+        $message .= "\nTotal: CHF " . number_format($total, 2) . "\n\n";
+    } else {
+        $message .= "Keine Dienstleistung ausgewählt\n\n";
+    }
+
+    if (!empty($notes)) {
+        $message .= "ANMERKUNG\n";
+        $message .= $notes . "\n\n";
+    }
+
+    $message .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+    $message .= "KUNDENDATEN\n";
+    $message .= "Name: " . $customerName . "\n";
+    $message .= "E-Mail: " . $customerEmail . "\n";
+    if (!empty($customerPhone)) {
+        $message .= "Telefon: " . $customerPhone . "\n";
+    }
+
+    // Use PHPMailer if available, otherwise use mail()
+    if (class_exists('PHPMailer\PHPMailer\PHPMailer')) {
+        error_log("Admin Email: Using PHPMailer to send to: " . $to);
+        return sendWithPHPMailer($to, $subject, $message);
+    } else {
+        error_log("Admin Email: PHPMailer not found, using mail() to send to: " . $to);
+        return sendWithMailFunction($to, $subject, $message);
+    }
+}
+
 function sendWithPHPMailer($to, $subject, $message) {
     $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
