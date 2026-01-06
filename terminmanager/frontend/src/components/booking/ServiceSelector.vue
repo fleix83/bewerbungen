@@ -16,7 +16,8 @@
     <div class="service-type-field">
       <select
         id="service-type"
-        v-model="selectedServiceType"
+        :value="selectedServiceType"
+        @change="handleServiceTypeChange"
         class="service-type-select"
       >
         <option value="" disabled>Weitere Angebote</option>
@@ -105,9 +106,11 @@ const handleNotesInput = (event) => {
   emit('update:notes', additionalNotes.value)
 }
 
-watch(selectedServiceType, (newValue) => {
+const handleServiceTypeChange = (event) => {
+  const newValue = event.target.value
+  selectedServiceType.value = newValue
   emit('update:serviceType', newValue)
-}, { immediate: true })
+}
 </script>
 
 <style scoped>

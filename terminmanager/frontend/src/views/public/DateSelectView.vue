@@ -117,7 +117,10 @@ onMounted(() => {
   isAdmin.value = route.query.admin === 'true'
 
   // Skip service check in admin mode
-  if (!isAdmin.value && bookingStore.selectedServices.length === 0) {
+  // Allow either checkbox services OR dropdown service type
+  const hasService = bookingStore.selectedServices.length > 0 ||
+    (bookingStore.customerData.serviceType && bookingStore.customerData.serviceType !== '')
+  if (!isAdmin.value && !hasService) {
     router.push('/buchen')
     return
   }
@@ -131,6 +134,8 @@ onMounted(() => {
   justify-content: center;
   gap: var(--spacing-lg);
   margin-top: var(--spacing-lg);
+  background: white;
+  padding: 20px 10px;
 }
 
 .legend-item {
@@ -148,7 +153,7 @@ onMounted(() => {
 }
 
 .legend-color--free {
-  background-color: #fff34f;
+  background-color: #fff8e7;
 }
 
 .legend-color--blocked {
