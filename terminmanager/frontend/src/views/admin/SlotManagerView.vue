@@ -1,6 +1,9 @@
 <template>
   <div class="screen">
-    <h1 class="screen-title">Slot Manager</h1>
+    <div class="screen-header">
+      <h1 class="screen-title">Slot Manager</h1>
+      <a href="#" class="back-link" @click.prevent="goBack">zurück</a>
+    </div>
 
     <!-- Date Navigation -->
     <div class="date-navigation">
@@ -146,6 +149,10 @@ const nextPickerMonth = () => {
   }
 }
 
+const goBack = () => {
+  router.push('/admin/dashboard')
+}
+
 // Watch for route param changes
 watch(() => route.params.date, (newDate) => {
   if (newDate && newDate !== selectedDate.value) {
@@ -169,6 +176,29 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.screen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-lg);
+}
+
+.screen-header .screen-title {
+  margin-bottom: 0;
+  margin-top: 50px;
+}
+
+.back-link {
+  color: #002198;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
 .date-navigation {
   display: flex;
   justify-content: space-between;
