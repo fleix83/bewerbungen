@@ -19,6 +19,7 @@ try {
         $endSlot = intval($input['end_slot'] ?? 0);
         $serviceIds = $input['service_ids'] ?? [];
         $notes = $input['notes'] ?? '';
+        $serviceType = $input['service_type'] ?? '';
 
         if (empty($customer['first_name']) || empty($customer['last_name']) || empty($customer['email'])) {
             sendError('Missing required customer fields');
@@ -111,7 +112,7 @@ try {
             $conn->commit();
 
             // Prepare email data
-            $emailData = prepareBookingEmail($conn, $eventId, $customer, $eventDate, $startSlot, $endSlot, $serviceIds, $notes);
+            $emailData = prepareBookingEmail($conn, $eventId, $customer, $eventDate, $startSlot, $endSlot, $serviceIds, $notes, $serviceType);
 
             // Send confirmation email
             $emailSent = sendBookingConfirmation($emailData);
@@ -154,16 +155,15 @@ try {
     sendError('Database error: ' . $e->getMessage(), 500);
 }
 
-function prepareBookingEmail($conn, $eventId, $customer, $eventDate, $startSlot, $endSlot, $serviceIds, $notes) {
+function prepareBookingEmail($conn, $eventId, $customer, $eventDate, $startSlot, $endSlot, $serviceIds, $notes, $serviceType) {
     // Get service details
     $services = [];
     $total = 0;
 
-    // Extract service type from notes (first line is the dropdown selection)
-    $serviceTypeName = 'Etwas anderes';
-    if (!empty($notes)) {
-        $notesLines = explode("\n", $notes);
-        $serviceTypeName = $notesLines[0];
+    // Use serviceType directly - if "Etwas anderes" or empty, show notes content
+    $serviceTypeName = $serviceType ?: 'Etwas anderes';
+    if ($serviceTypeName === 'Etwas anderes' && !empty($notes)) {
+        $serviceTypeName = strlen($notes) > 50 ? substr($notes, 0, 50) . '...' : $notes;
     }
 
     foreach ($serviceIds as $serviceId) {
@@ -199,14 +199,6 @@ function prepareBookingEmail($conn, $eventId, $customer, $eventDate, $startSlot,
     // Format time
     $timeString = sprintf('%02d:00 - %02d:00', $startSlot, $endSlot);
 
-    // Extract only the additional notes (everything after first line)
-    $additionalNotes = '';
-    if (!empty($notes)) {
-        $notesLines = explode("\n", $notes);
-        array_shift($notesLines); // Remove first line (service type)
-        $additionalNotes = trim(implode("\n", $notesLines));
-    }
-
     return [
         'customer_email' => $customer['email'],
         'customer_name' => $customer['first_name'] . ' ' . $customer['last_name'],
@@ -214,7 +206,7 @@ function prepareBookingEmail($conn, $eventId, $customer, $eventDate, $startSlot,
         'time' => $timeString,
         'services' => $services,
         'total' => $total,
-        'notes' => $additionalNotes
+        'notes' => $notes
     ];
 }
 ?>

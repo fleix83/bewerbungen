@@ -94,7 +94,8 @@ const handleSlotSelected = async (slot) => {
     start_slot: slot.start_slot,
     end_slot: slot.end_slot,
     service_ids: serviceIds,
-    notes: bookingStore.customerData.notes
+    notes: bookingStore.customerData.notes,
+    service_type: bookingStore.customerData.serviceType
   }
 
   try {

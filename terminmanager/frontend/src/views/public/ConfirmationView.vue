@@ -59,7 +59,8 @@ onMounted(async () => {
 
   try {
     const response = await servicesAPI.getAll()
-    let allServices = response.data
+    // Filter out service ID 3 from API - we'll add it with the correct name
+    let allServices = response.data.filter(s => s.id !== 3)
 
     // Add the dropdown selection as a service with the actual selected type name
     if (confirmation.value.services.includes(3)) {

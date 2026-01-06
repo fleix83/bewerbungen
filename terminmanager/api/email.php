@@ -56,7 +56,7 @@ function sendBookingConfirmation($bookingData) {
     $message .= "Bei Fragen kontaktieren Sie mich. Ich freue mich auf Sie.\n\n";
     $message .= "KONTAKT\n";
     $message .= "WhatsApp: https://wa.me/41767576052\n";
-    $message .= "Telefon: 076 757 60 52\n\n";
+    $message .= "Telefon: +41 76 757 60 52\n\n";
     $message .= "Mit freundlichen Grüssen\n";
     $message .= "Bewerbungen & Mehr\n";
 
