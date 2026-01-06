@@ -1,6 +1,12 @@
 <template>
   <div class="screen">
-    <h1 class="screen-title">{{ formattedDate }}</h1>
+    <div class="screen-header">
+      <h1 class="screen-title">
+        <span class="title-line">{{ weekday }}</span>
+        <span class="title-line">{{ dateWithoutWeekday }}</span>
+      </h1>
+      <a href="#" class="back-link" @click.prevent="goBack">zurück</a>
+    </div>
 
     <!-- Date Navigation -->
     <div class="date-navigation">
@@ -36,10 +42,16 @@ const loading = ref(true)
 const availableSlots = ref([])
 const selectedDate = ref(route.params.datum)
 
-const formattedDate = computed(() => {
+const weekday = computed(() => {
   const date = new Date(selectedDate.value)
   return date.toLocaleDateString('de-DE', {
-    weekday: 'long',
+    weekday: 'long'
+  }).toUpperCase()
+})
+
+const dateWithoutWeekday = computed(() => {
+  const date = new Date(selectedDate.value)
+  return date.toLocaleDateString('de-DE', {
     day: '2-digit',
     month: 'long',
     year: 'numeric'
@@ -122,6 +134,10 @@ const handleSlotSelected = async (slot) => {
   }
 }
 
+const goBack = () => {
+  router.push('/buchen/datum')
+}
+
 const goToPreviousDay = () => {
   const date = new Date(selectedDate.value)
   date.setDate(date.getDate() - 1)
@@ -161,6 +177,37 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.screen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-lg);
+}
+
+.screen-header .screen-title {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title-line {
+  background-color: #fff;
+  padding: 2px 8px;
+  display: inline-block;
+}
+
+.back-link {
+  color: var(--color-primary);
+  font-family: var(--font-primary);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
 .date-navigation {
   display: flex;
   justify-content: center;
@@ -190,7 +237,7 @@ onMounted(() => {
 }
 
 .nav-label {
-  color: var(--color-text-muted);
+  color: var(--color-primary);
   font-size: 14px;
 }
 

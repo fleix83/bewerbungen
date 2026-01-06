@@ -47,6 +47,13 @@
     </div>
 
     <div class="confirmation-section">
+      <h2 class="section-title">Zahlungsmöglichkeiten</h2>
+      <div class="termin-box hints">
+        <p>Sie können vor Ort in bar oder mit TWINT bezahlen.</p>
+      </div>
+    </div>
+
+    <div class="confirmation-section">
       <h2 class="section-title">Kontakt</h2>
       <div class="contact-links">
         <a href="https://wa.me/41767576052" class="contact-link" target="_blank">
