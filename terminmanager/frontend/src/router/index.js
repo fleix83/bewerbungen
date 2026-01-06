@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { useAuthStore } from '../stores/authStore'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -28,31 +29,59 @@ const router = createRouter({
       component: () => import('../views/public/ConfirmationView.vue')
     },
     {
+      path: '/admin/login',
+      name: 'admin-login',
+      component: () => import('../views/admin/LoginView.vue')
+    },
+    {
       path: '/admin/termin/:id',
       name: 'admin-appointment',
-      component: () => import('../views/admin/AppointmentView.vue')
+      component: () => import('../views/admin/AppointmentView.vue'),
+      meta: { requiresAuth: true }
     },
     {
       path: '/admin/kunden',
       name: 'admin-customers',
-      component: () => import('../views/admin/CustomersView.vue')
+      component: () => import('../views/admin/CustomersView.vue'),
+      meta: { requiresAuth: true }
     },
     {
       path: '/admin/kunde/:id',
       name: 'admin-customer-detail',
-      component: () => import('../views/admin/CustomerDetailView.vue')
+      component: () => import('../views/admin/CustomerDetailView.vue'),
+      meta: { requiresAuth: true }
     },
     {
       path: '/admin/slots',
       name: 'admin-slots',
-      component: () => import('../views/admin/SlotManagerView.vue')
+      component: () => import('../views/admin/SlotManagerView.vue'),
+      meta: { requiresAuth: true }
     },
     {
       path: '/admin/slots/:date',
       name: 'admin-slots-date',
-      component: () => import('../views/admin/SlotManagerView.vue')
+      component: () => import('../views/admin/SlotManagerView.vue'),
+      meta: { requiresAuth: true }
     }
   ]
+})
+
+// Navigation guard for protected routes
+router.beforeEach(async (to, from, next) => {
+  if (to.meta.requiresAuth) {
+    const authStore = useAuthStore()
+
+    // Check auth status if not yet known
+    if (!authStore.isAuthenticated) {
+      await authStore.checkAuth()
+    }
+
+    if (!authStore.isAuthenticated) {
+      next({ name: 'admin-login' })
+      return
+    }
+  }
+  next()
 })
 
 export default router

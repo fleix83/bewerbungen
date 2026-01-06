@@ -42,23 +42,24 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useBookingStore } from '../../stores/bookingStore'
+import { useAuthStore } from '../../stores/authStore'
 import { availabilityAPI, slotsAPI } from '../../services/api'
 import CalendarMonth from '../../components/booking/CalendarMonth.vue'
 
 const router = useRouter()
-const route = useRoute()
 const bookingStore = useBookingStore()
+const authStore = useAuthStore()
 
 const currentDate = new Date()
 const currentYear = ref(currentDate.getFullYear())
 const currentMonth = ref(currentDate.getMonth() + 1)
 const monthAvailability = ref([])
 
-// Admin mode
-const isAdmin = ref(false)
+// Admin mode - computed from auth store
+const isAdmin = computed(() => authStore.isAuthenticated)
 const generating = ref(false)
 const generateResult = ref('')
 
@@ -119,15 +120,15 @@ const generateFreeSlots = async () => {
   }
 }
 
-onMounted(() => {
-  // Check for admin mode
-  isAdmin.value = route.query.admin === 'true'
+onMounted(async () => {
+  // Check auth status for admin features
+  await authStore.checkAuth()
 
-  // Skip service check in admin mode
+  // Skip service check if admin is logged in
   // Allow either checkbox services OR dropdown service type
   const hasService = bookingStore.selectedServices.length > 0 ||
     (bookingStore.customerData.serviceType && bookingStore.customerData.serviceType !== '')
-  if (!isAdmin.value && !hasService) {
+  if (!authStore.isAuthenticated && !hasService) {
     router.push('/buchen')
     return
   }

@@ -7,7 +7,8 @@ const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json'
-  }
+  },
+  withCredentials: true
 })
 
 export const servicesAPI = {
@@ -68,6 +69,18 @@ export const slotsAPI = {
       action: 'generate',
       months: months
     })
+  }
+}
+
+export const authAPI = {
+  login(username, password) {
+    return api.post('/auth.php', { username, password })
+  },
+  check() {
+    return api.get('/auth.php')
+  },
+  logout() {
+    return api.delete('/auth.php')
   }
 }
 
