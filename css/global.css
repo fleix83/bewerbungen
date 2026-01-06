@@ -714,6 +714,10 @@ body {
     --page-padding: 32px;
   }
 
+  .page-container {
+    padding-top: 90px;
+  }
+
   .hero-text {
     font-size: 34px;
   }
