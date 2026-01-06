@@ -1,6 +1,6 @@
 <template>
   <div class="contact-form">
-    <h2 class="section-title">Kontakt</h2>
+    <h2 class="section-title">Ihre Angaben</h2>
 
     <div class="salutation-row">
       <label for="salutation" class="field-label">Anrede</label>
