@@ -25,7 +25,9 @@ try {
             sendError('Missing required customer fields');
         }
 
-        if (empty($eventDate) || empty($serviceIds)) {
+        // Allow empty serviceIds only for "Etwas anderes" (notes-only booking)
+        $isEtwasAnderes = $serviceType === 'Etwas anderes';
+        if (empty($eventDate) || (empty($serviceIds) && !$isEtwasAnderes)) {
             sendError('Missing required booking fields');
         }
 
