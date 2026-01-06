@@ -20,12 +20,11 @@
         @change="handleServiceTypeChange"
         class="service-type-select"
       >
-        <option value="" disabled>Weitere Angebote</option>
+        <option value="">Weitere Angebote</option>
         <option value="Brief">Brief CHF 30.00</option>
         <option value="Rekurs">Rekurs CHF 30.00</option>
         <option value="Formular ausfüllen">Formular ausfüllen CHF 20.00</option>
         <option value="Steuererklärung ausfüllen">Steuererklärung ausfüllen CHF 20.00</option>
-        <option value="Anderes Dokument">Anderes Dokument CHF 30.00</option>
         <option value="Etwas anderes">Etwas anderes</option>
       </select>
     </div>

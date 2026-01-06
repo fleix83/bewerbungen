@@ -57,9 +57,11 @@ const dateWithoutWeekday = computed(() => {
 })
 
 const slotsNeeded = computed(() => {
-  // Count checkbox services + 1 if dropdown has a value
+  // Count checkbox services + 1 if dropdown has a priced option (not "Etwas anderes")
   let count = bookingStore.selectedServices.length
-  if (bookingStore.customerData.serviceType && bookingStore.customerData.serviceType !== '') {
+  if (bookingStore.customerData.serviceType &&
+      bookingStore.customerData.serviceType !== '' &&
+      bookingStore.customerData.serviceType !== 'Etwas anderes') {
     count += 1
   }
   return Math.max(count, 1) // At least 1 slot needed
