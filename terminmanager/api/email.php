@@ -55,8 +55,8 @@ function sendBookingConfirmation($bookingData) {
     $message .= "Bitte bringen Sie alle vorhandenen Unterlagen mit: Zeugnisse, Lebenslauf (falls vorhanden), bereits vorhandene Dokumente...\n\n";
     $message .= "Bei Fragen kontaktieren Sie mich. Ich freue mich auf Sie.\n\n";
     $message .= "KONTAKT\n";
-    $message .= "WhatsApp: https://wa.me/41765756052\n";
-    $message .= "Telefon: 076 575 60 52\n\n";
+    $message .= "WhatsApp: https://wa.me/41767576052\n";
+    $message .= "Telefon: 076 757 60 52\n\n";
     $message .= "Mit freundlichen Grüssen\n";
     $message .= "Bewerbungen & Mehr\n";
 

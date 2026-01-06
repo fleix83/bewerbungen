@@ -582,6 +582,22 @@ body {
   display: inline;
 }
 
+/* KI Section */
+.ki-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.ki-section p {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-md);
+}
+
+.ki-section p:last-child {
+  margin-bottom: 0;
+}
+
 /* Payment Options */
 .payment-options {
   margin-top: var(--spacing-xl);
