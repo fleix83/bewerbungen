@@ -145,12 +145,13 @@ onMounted(() => {
 
 .screen-header .screen-title {
   margin-bottom: 0;
+  margin-top: 50px;
 }
 
 .back-link {
   color: #002198;
   font-family: var(--font-primary);
-  font-size: 18px;
+  font-size: 16px;
   text-decoration: underline;
 }
 
