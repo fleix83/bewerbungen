@@ -120,7 +120,6 @@ const handleDayClick = (day) => {
   background-color: var(--color-bg-white);
   border-radius: 8px;
   padding: var(--spacing-lg);
-  margin-top: 80px;
 }
 
 .calendar-header {

@@ -35,7 +35,7 @@
         id="notes-input"
         :value="notesText"
         @input="handleNotesInput"
-        placeholder="Bitte schreiben Sie mir, was Sie brauchen. Preis nach Absprache. "
+        placeholder="Ich brauche... Preis innerhalb 1h CHF 30.00"
         rows="3"
         class="notes-textarea"
       />

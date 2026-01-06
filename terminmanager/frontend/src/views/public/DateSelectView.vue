@@ -1,9 +1,6 @@
 <template>
   <div class="screen">
-    <div class="screen-header">
-      <h1 class="screen-title">Datum auswählen</h1>
-      <a href="#" class="back-link" @click.prevent="goBack">zurück</a>
-    </div>
+    <h1 class="screen-title">Datum auswählen</h1>
 
     <CalendarMonth
       :year="currentYear"
@@ -100,10 +97,6 @@ const goToNextMonth = () => {
   loadMonthAvailability()
 }
 
-const goBack = () => {
-  router.push('/buchen')
-}
-
 const generateFreeSlots = async () => {
   generating.value = true
   generateResult.value = ''
@@ -136,28 +129,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.screen-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: var(--spacing-lg);
-}
-
-.screen-header .screen-title {
-  margin-bottom: 0;
-}
-
-.back-link {
-  color: var(--color-primary);
-  font-family: var(--font-primary);
-  font-size: 14px;
-  text-decoration: none;
-}
-
-.back-link:hover {
-  text-decoration: underline;
-}
-
 .legend {
   display: flex;
   justify-content: center;
