@@ -62,8 +62,8 @@ terminmanager/api/vendor/
 terminmanager/frontend/.env
 terminmanager/api/.env
 
-# Build output
-terminmanager/frontend/dist/
+# Build output (committed for deployment)
+# terminmanager/frontend/dist/
 
 # Composer lock (optional - uncomment if needed)
 # terminmanager/api/composer.lock
