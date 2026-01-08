@@ -3,7 +3,9 @@
 <IfModule mod_rewrite.c>
 
 RewriteEngine on
-RewriteBase /bewerbungen
+
+# RewriteBase: use / for production (root domain), /bewerbungen for local XAMPP
+RewriteBase /
 
 # Terminmanager: exclude from Kirby
 RewriteRule ^terminmanager/ - [L]
