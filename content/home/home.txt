@@ -14,23 +14,35 @@ Hero-line-1: HILFE
 
 ----
 
-Hero-line-2: BEIM ERSTELLEN VON
+Hero-line-2: BEI BEWERBUNGEN
 
 ----
 
-Hero-line-3: BEWERBUNGSSCHREIBEN
+Hero-line-3: BEIM ERSTELLEN VON
 
 ----
 
-Hero-line-4-highlight: LEBENSLAUF
+Hero-line-4: BEWERBUNGSSCHREIBEN
 
 ----
 
-Hero-line-4-suffix: UND MEHR.
+Hero-line-5-highlight: LEBENSLAUF
 
 ----
 
-Hero-line-5: IN BASEL.
+Hero-line-5-suffix:  UND MEHR.
+
+----
+
+Hero-line-6-prefix: IN
+
+----
+
+Hero-line-6-highlight: BASEL
+
+----
+
+Hero-line-6-suffix: .
 
 ----
 
