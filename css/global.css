@@ -705,4 +705,8 @@ body {
   .landing-illustration img {
     max-width: 288px;
   }
+
+  .hero-section {
+    margin-bottom: 40px;
+  }
 }
