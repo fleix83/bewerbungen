@@ -350,15 +350,16 @@ body {
 
 .hero-section {
   margin-top: 0;
+  margin-bottom: 20px;
   width: 100%;
 }
 
 .hero-text {
   display: block;
-  font-size: 30px;
+  font-size: 29px;
   font-weight: var(--font-weight-semibold);
   color: var(--color-primary);
-  line-height: 45px;
+  line-height: 40px;
   margin: 0;
 }
 
@@ -367,7 +368,7 @@ body {
 }
 
 .hero-text__line--spaced {
-  margin-bottom: 0;
+  margin-bottom: 11px;
 }
 
 .highlight {
@@ -376,9 +377,7 @@ body {
   font-weight: var(--font-weight-semibold);
   padding: 4px 12px;
   border-radius: 20px;
-  display: inline-block;
-  line-height: 30px;
-  height: 38px;
+  display: inline;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
