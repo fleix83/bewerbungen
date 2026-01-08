@@ -24,37 +24,32 @@ tabs:
             max: 1
             template: photo
 
-  languages:
-    label: Sprachen
+  sections:
+    label: Abschnitte
     fields:
-      languages_title:
-        label: Titel
-        type: text
-        default: "Sprachen"
-      languages_text:
-        label: Text
-        type: textarea
-        buttons: false
-      languages_highlights:
-        label: Hervorhebungen
-        type: tags
-        help: Woerter die hervorgehoben werden (z.B. Deutsch, Franzoesisch)
-
-  ki:
-    label: KI
-    fields:
-      ki_title:
-        label: Titel
-        type: text
-        default: "KI"
-      ki_paragraph_1:
-        label: KI Absatz 1
-        type: textarea
-        buttons: false
-      ki_paragraph_2:
-        label: KI Absatz 2
-        type: textarea
-        buttons: false
+      sections:
+        label: Abschnitte
+        type: structure
+        sortable: true
+        fields:
+          section_title:
+            label: Titel
+            type: text
+            required: true
+            width: 1/2
+          section_highlights:
+            label: Hervorhebungen (optional)
+            type: tags
+            width: 1/2
+            help: Woerter die hervorgehoben werden
+          section_paragraphs:
+            label: Absaetze
+            type: structure
+            fields:
+              paragraph:
+                label: Absatz
+                type: textarea
+                buttons: false
 
   cta:
     label: Kontakt-CTA

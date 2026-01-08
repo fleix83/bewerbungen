@@ -10,27 +10,22 @@ Bio-paragraph-2: Ihre Geschichte, Ihre Situation, Ihre Bedürfnisse interessiere
 
 ----
 
-Languages-title: Sprachen
+Sections:
 
-----
-
-Languages-text: Ich spreche Deutsch, Französisch und Englisch. Bei Bedarf kann eine Spanisch-Übersetzerin hinzugezogen werden.
-
-----
-
-Languages-highlights: Deutsch, Französisch, Englisch, Spanisch-Übersetzerin
-
-----
-
-Ki-title: KI
-
-----
-
-Ki-paragraph-1: Ich schreibe ohne KI (ChatGPT, Claude, Gemini). In manchen Situationen ist KI jedoch nützlich und sinnvoll und ich setze sie mit Ihrer Erlaubnis ein.
-
-----
-
-Ki-paragraph-2: Fremdsprachigen Personen kann KI helfen, Dokumente auf Deutsch selber zu schreiben. Ich zeige Ihnen gerne wie das geht. Fragen Sie mich danach.
+-
+  section_title: Sprachen
+  section_highlights: Deutsch, Französisch, Englisch, Spanisch-Übersetzerin
+  section_paragraphs:
+    -
+      paragraph: Ich spreche Deutsch, Französisch und Englisch. Bei Bedarf kann eine Spanisch-Übersetzerin hinzugezogen werden.
+-
+  section_title: KI
+  section_highlights: ""
+  section_paragraphs:
+    -
+      paragraph: Ich schreibe ohne KI (ChatGPT, Claude, Gemini). In manchen Situationen ist KI jedoch nützlich und sinnvoll und ich setze sie mit Ihrer Erlaubnis ein.
+    -
+      paragraph: Fremdsprachigen Personen kann KI helfen, Dokumente auf Deutsch selber zu schreiben. Ich zeige Ihnen gerne wie das geht. Fragen Sie mich danach.
 
 ----
 

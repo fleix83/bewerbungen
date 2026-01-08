@@ -26,27 +26,21 @@
         <?php endif ?>
       </article>
 
-      <section class="languages-section">
-        <h2 class="section-title"><?= $page->languages_title() ?></h2>
-        <p><?php
-          $text = $page->languages_text()->value();
-          $highlights = $page->languages_highlights()->split();
-          foreach ($highlights as $highlight) {
-            $text = str_replace($highlight, '<span class="language-highlight">' . $highlight . '</span>', $text);
-          }
-          echo $text;
-        ?></p>
+      <?php foreach ($page->sections()->toStructure() as $section): ?>
+      <section class="content-section">
+        <h2 class="section-title"><?= $section->section_title() ?></h2>
+        <?php
+          $highlights = $section->section_highlights()->split();
+          foreach ($section->section_paragraphs()->toStructure() as $p):
+            $text = $p->paragraph()->value();
+            foreach ($highlights as $highlight) {
+              $text = str_replace($highlight, '<span class="language-highlight">' . $highlight . '</span>', $text);
+            }
+        ?>
+        <p><?= $text ?></p>
+        <?php endforeach ?>
       </section>
-
-      <section class="ki-section">
-        <h2 class="section-title"><?= $page->ki_title() ?></h2>
-        <?php if ($page->ki_paragraph_1()->isNotEmpty()): ?>
-        <p><?= $page->ki_paragraph_1() ?></p>
-        <?php endif ?>
-        <?php if ($page->ki_paragraph_2()->isNotEmpty()): ?>
-        <p><?= $page->ki_paragraph_2() ?></p>
-        <?php endif ?>
-      </section>
+      <?php endforeach ?>
 
       <?php snippet('components/contact-cta') ?>
       <?php snippet('footer/page-actions') ?>
