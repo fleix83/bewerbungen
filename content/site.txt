@@ -1,1 +1,49 @@
-Title: Site Title
+Title: Bewerbungen & Mehr
+
+----
+
+Telefon: +41767576052
+
+----
+
+Telefon-display: 076 757 60 52
+
+----
+
+Whatsapp-url: https://wa.me/41767576052
+
+----
+
+Owner-name: Felix Weissheimer
+
+----
+
+Street: Luftgässlein 3, Basel
+
+----
+
+Landmark: (Beim Bankverein)
+
+----
+
+Google-maps-url: https://maps.google.com/?q=Luftgässlein+3+4051+Basel
+
+----
+
+Termin-button-label: TERMIN MACHEN
+
+----
+
+Termin-button-url: https://bewerbungenundmehr.ch/terminmanager/frontend/dist/
+
+----
+
+Contact-cta-text: Kontaktieren Sie mich unkompliziert per Whatsapp oder Mobile bei Fragen und speziellen Anfragen.
+
+----
+
+Default-description: Hilfe bei Lebenslauf, Bewerbungsschreiben in Basel. Felix Weissheimer hilft Ihnen persönlich – auch kurzfristig. CHF 30 pro Dokument.
+
+----
+
+Canonical-base: https://bewerbungenundmehr.ch

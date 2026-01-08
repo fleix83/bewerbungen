@@ -1,5 +1,84 @@
-title: Site
+title: Global
 
-sections:
-  pages:
-    type: pages
+columns:
+  main:
+    width: 2/3
+    sections:
+      fields:
+        type: fields
+        fields:
+          contact_heading:
+            type: headline
+            label: Kontakt
+          telefon:
+            label: Telefonnummer (international)
+            type: tel
+            placeholder: "+41767576052"
+            width: 1/2
+          telefon_display:
+            label: Telefonnummer (Anzeige)
+            type: text
+            placeholder: "076 757 60 52"
+            width: 1/2
+          whatsapp_url:
+            label: WhatsApp URL
+            type: url
+          address_heading:
+            type: headline
+            label: Adresse
+          owner_name:
+            label: Name
+            type: text
+            width: 1/2
+          street:
+            label: Strasse und Ort
+            type: text
+            width: 1/2
+          landmark:
+            label: Orientierungspunkt
+            type: text
+            width: 1/2
+          google_maps_url:
+            label: Google Maps Link
+            type: url
+            width: 1/2
+          cta_heading:
+            type: headline
+            label: Call-to-Action
+          termin_button_label:
+            label: Termin-Button Text
+            type: text
+            width: 1/2
+          termin_button_url:
+            label: Termin-Button URL
+            type: url
+            width: 1/2
+          contact_cta_text:
+            label: Kontakt-CTA Text
+            type: textarea
+            buttons: false
+          seo_heading:
+            type: headline
+            label: SEO
+          default_description:
+            label: Standard Meta-Beschreibung
+            type: textarea
+            buttons: false
+            maxlength: 160
+          canonical_base:
+            label: Canonical Base URL
+            type: url
+
+  sidebar:
+    width: 1/3
+    sections:
+      pages:
+        type: pages
+        label: Seiten
+        layout: list
+        templates:
+          - home
+          - menu
+          - preise
+          - ueber-mich
+          - ablauf

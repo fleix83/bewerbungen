@@ -1,0 +1,27 @@
+Title: Wie läuft das?
+
+----
+
+Process-steps:
+
+-
+  text: Im persönlichen Gespräch klären wir Ihr Anliegen und erarbeiten alle wichtigen Punkte. Sie sagen mir, was sie brauchen.
+  dot_color: yellow
+-
+  text: Danach formuliere ich mit Ihnen zusammen Ihr Dokument. Sie können jederzeit korrigierend eingreifen.
+  dot_color: green
+-
+  text: Ich gebe Ihrem Schreiben den letzten Schliff. Sie gehen mit einem fertigen Dokument oder mit einer fertigen Bewerbung nachhause.
+  dot_color: blue
+
+----
+
+Seo-title: Bewerbungshilfe Basel – So funktioniert es
+
+----
+
+Seo-description: So einfach funktioniert die Bewerbungshilfe bei Felix Weissheimer in Basel. Termin buchen, Dokumente mitbringen, fertig.
+
+----
+
+Uuid: mqb9nchbagemv2eo

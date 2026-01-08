@@ -1,0 +1,64 @@
+title: Startseite
+icon: home
+
+tabs:
+  content:
+    label: Inhalt
+    fields:
+      mehr_link_text:
+        label: "Mehr" Link Text
+        type: text
+        default: "Mehr"
+        width: 1/2
+      cta_subtitle:
+        label: CTA Untertitel
+        type: text
+        default: "auch kurzfristig"
+        width: 1/2
+      hero_section:
+        label: Hero Text
+        type: headline
+      hero_line_1:
+        label: Zeile 1
+        type: text
+        default: "HILFE"
+      hero_line_2:
+        label: Zeile 2
+        type: text
+        default: "BEIM ERSTELLEN VON"
+      hero_line_3:
+        label: Zeile 3 (hervorgehoben)
+        type: text
+        default: "BEWERBUNGSSCHREIBEN"
+        help: Wird mit Highlight-Hintergrund angezeigt
+      hero_line_4_highlight:
+        label: Zeile 4 - Hervorgehobenes Wort
+        type: text
+        default: "LEBENSLAUF"
+        width: 1/2
+      hero_line_4_suffix:
+        label: Zeile 4 - Rest
+        type: text
+        default: "UND MEHR."
+        width: 1/2
+      hero_line_5:
+        label: Zeile 5
+        type: text
+        default: "IN BASEL."
+      highlight_bg_color:
+        label: Highlight Hintergrundfarbe
+        type: color
+        default: "#FFFFFF"
+
+  seo:
+    label: SEO
+    fields:
+      seo_title:
+        label: Seitentitel
+        type: text
+        help: Fuer Browser-Tab und Suchmaschinen
+      seo_description:
+        label: Meta-Beschreibung
+        type: textarea
+        buttons: false
+        maxlength: 160

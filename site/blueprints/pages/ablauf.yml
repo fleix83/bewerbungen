@@ -1,0 +1,48 @@
+title: Wie laeuft das?
+icon: list-bullet
+
+tabs:
+  content:
+    label: Inhalt
+    fields:
+      process_steps:
+        label: Prozessschritte
+        type: structure
+        sortable: true
+        max: 10
+        fields:
+          text:
+            label: Beschreibung
+            type: textarea
+            buttons: false
+            required: true
+          dot_color:
+            label: Punkt-Farbe
+            type: select
+            options:
+              yellow: Gelb
+              green: Gruen
+              blue: Blau
+            default: yellow
+            width: 1/3
+
+  cta:
+    label: Kontakt-CTA
+    fields:
+      contact_cta_text:
+        label: CTA Text (ueberschreibt global)
+        type: textarea
+        buttons: false
+        help: Leer lassen fuer globalen Text
+
+  seo:
+    label: SEO
+    fields:
+      seo_title:
+        label: Seitentitel
+        type: text
+      seo_description:
+        label: Meta-Beschreibung
+        type: textarea
+        buttons: false
+        maxlength: 160

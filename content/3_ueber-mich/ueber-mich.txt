@@ -1,0 +1,49 @@
+Title: Über Felix Weissheimer
+
+----
+
+Bio-paragraph-1: Vier Jahre lang habe ich für den GGG Schreibdienst Lebensläufe (CV), Bewerbungsschreiben und andere Dokumente für viele verschiedene Kunden und Kundinnen mit und ohne Migrationshintergrund erstellt.
+
+----
+
+Bio-paragraph-2: Ihre Geschichte, Ihre Situation, Ihre Bedürfnisse interessieren mich. Zusammen mit Ihnen erarbeite ich genau das, was Sie brauchen.
+
+----
+
+Languages-title: Sprachen
+
+----
+
+Languages-text: Ich spreche Deutsch, Französisch und Englisch. Bei Bedarf kann eine Spanisch-Übersetzerin hinzugezogen werden.
+
+----
+
+Languages-highlights: Deutsch, Französisch, Englisch, Spanisch-Übersetzerin
+
+----
+
+Ki-title: KI
+
+----
+
+Ki-paragraph-1: Ich schreibe ohne KI (ChatGPT, Claude, Gemini). In manchen Situationen ist KI jedoch nützlich und sinnvoll und ich setze sie mit Ihrer Erlaubnis ein.
+
+----
+
+Ki-paragraph-2: Fremdsprachigen Personen kann KI helfen, Dokumente auf Deutsch selber zu schreiben. Ich zeige Ihnen gerne wie das geht. Fragen Sie mich danach.
+
+----
+
+Contact-cta-text: Kontaktieren Sie mich unkompliziert per Whatsapp oder Mobile bei Fragen und individuellen Anliegen.
+
+----
+
+Seo-title: Felix Weissheimer – Bewerbungsexperte Basel
+
+----
+
+Seo-description: Felix Weissheimer – 4 Jahre Erfahrung beim GGG Wegweiser Basel. Professionelle Bewerbungshilfe für Menschen mit und ohne Migrationshintergrund.
+
+----
+
+Uuid: huui66rgql2dhpsh

@@ -1,0 +1,10 @@
+title: Foto
+accept:
+  mime: image/jpeg, image/png, image/webp
+
+fields:
+  alt:
+    label: Alt-Text
+    type: text
+    required: true
+    help: Beschreibung des Bildes fuer Screenreader und SEO

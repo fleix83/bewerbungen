@@ -1,0 +1,17 @@
+title: Menu
+icon: menu
+
+fields:
+  menu_items:
+    label: Menueeintraege
+    type: structure
+    sortable: true
+    fields:
+      label:
+        label: Linktext
+        type: text
+        required: true
+      link:
+        label: Zielseite
+        type: pages
+        multiple: false

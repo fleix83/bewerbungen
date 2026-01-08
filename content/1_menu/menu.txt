@@ -1,0 +1,30 @@
+Title: Menü
+
+----
+
+Menu-items:
+
+- 
+  label: 'Preise & Angebote'
+  link:
+    - page://whkxa4315bjxw4m4
+- 
+  label: Über Felix Weissheimer
+  link:
+    - page://huui66rgql2dhpsh
+- 
+  label: Wie läuft das?
+  link:
+    - page://mqb9nchbagemv2eo
+- 
+  label: Testseite
+  link:
+    - page://uyls8e9ttvqdgwlu
+
+----
+
+Seo-title: Menü – Bewerbungen & Mehr
+
+----
+
+Uuid: kyyepgglozwjskko
