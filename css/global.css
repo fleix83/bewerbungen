@@ -356,7 +356,7 @@ body {
 
 .hero-text {
   display: block;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: var(--font-weight-semibold);
   color: var(--color-primary);
   line-height: 40px;
