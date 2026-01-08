@@ -378,6 +378,7 @@ body {
   padding: 4px 12px;
   border-radius: 20px;
   display: inline;
+  margin-left: -12px;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
