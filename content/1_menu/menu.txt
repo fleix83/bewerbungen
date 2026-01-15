@@ -16,10 +16,6 @@ Menu-items:
   label: Wie läuft das?
   link:
     - page://mqb9nchbagemv2eo
-- 
-  label: Testseite
-  link:
-    - page://uyls8e9ttvqdgwlu
 
 ----
 

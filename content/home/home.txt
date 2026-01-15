@@ -10,43 +10,67 @@ Cta-subtitle: auch kurzfristig
 
 ----
 
-Hero-line-1: HILFE
+Hero-line-1: Hilfe
 
 ----
 
-Hero-line-2: BEI BEWERBUNGEN
+Hero-line-2: beim Erstellen von
 
 ----
 
-Hero-line-3: BEIM ERSTELLEN VON
+Hero-line-3: Motivationsschreiben
 
 ----
 
-Hero-line-4: BEWERBUNGSSCHREIBEN
+Hero-line-4-highlight: Lebenslauf
 
 ----
 
-Hero-line-5-highlight: LEBENSLAUF
+Hero-line-4-suffix: und mehr.
 
 ----
 
-Hero-line-5-suffix:  UND MEHR.
+Hero-line-5-prefix: In
 
 ----
 
-Hero-line-6-prefix: IN
+Hero-line-5-highlight: Basel
 
 ----
 
-Hero-line-6-highlight: BASEL
+Hero-line-5-suffix: .
 
 ----
 
-Hero-line-6-suffix: .
+Section2-card1-text: Sie möchten sich auf eine Stelle bewerben - aber Deutsch ist nicht Ihre Mutter&shy;sprache?
 
 ----
 
-Highlight-bg-color: #ffffff
+Section2-card2-text: Ihre Be&shy;wer&shy;bungs&shy;un&shy;ter&shy;la&shy;gen sind schon etwas älter und brauchen eine Auf&shy;fri&shy;schung?
+
+----
+
+Section2-card3-text: Sie brauchen Un&shy;ter&shy;stüt&shy;zung beim Ausfüllen von Formularen wie Er&shy;gän&shy;zungs&shy;leis&shy;tun&shy;gen oder Ihrer Steuer&shy;er&shy;klä&shy;rung?
+
+----
+
+Section2-intro: Dann sind Sie hier richtig. Ich erstelle seit vier Jahren beim GGG Wegweiser erfolgreich Be&shy;wer&shy;bungs&shy;schrei&shy;ben, Lebenslauf und andere Dokumente für Menschen mit und ohne Mi&shy;gra&shy;tions&shy;hin&shy;ter&shy;grund.
+
+----
+
+Section2-cta-text: Neu bin ich am <span class="highlight">Luft&shy;gäss&shy;lein 3 in Basel</span> für Sie da. Rufen Sie mich an oder machen Sie direkt hier online einen Termin, auch kurz&shy;fris&shy;tig.
+
+----
+
+Section2-link1-text: Termin machen
+
+----
+
+Section2-link2-text: Whatsapp
+
+----
+
+Section2-link3-text: Anrufen
 
 ----
 

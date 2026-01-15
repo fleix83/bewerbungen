@@ -2,6 +2,10 @@ Title: Bewerbungen & Mehr
 
 ----
 
+Hero-image: - file://2sc3fzriqhxowqon
+
+----
+
 Telefon: +41767576052
 
 ----
@@ -14,11 +18,11 @@ Whatsapp-url: https://wa.me/41767576052
 
 ----
 
-Owner-name: Felix Weissheimer
+Owner-name: 
 
 ----
 
-Street: Luftgässlein 3, Basel
+Street: 
 
 ----
 
@@ -30,7 +34,11 @@ Google-maps-url: https://maps.google.com/?q=Luftgässlein+3+4051+Basel
 
 ----
 
-Termin-button-label: TERMIN MACHEN
+Termin-button-label: Termin machen
+
+----
+
+Termin-button-price: 
 
 ----
 

@@ -21,34 +21,86 @@ tabs:
       hero_line_1:
         label: Zeile 1
         type: text
-        default: "HILFE"
+        default: "Hilfe"
+        help: Normal (nicht kursiv)
       hero_line_2:
         label: Zeile 2
         type: text
-        default: "BEIM ERSTELLEN VON"
+        default: "beim Erstellen von"
+        help: Normal (nicht kursiv)
       hero_line_3:
-        label: Zeile 3 (hervorgehoben)
+        label: Zeile 3
         type: text
-        default: "BEWERBUNGSSCHREIBEN"
-        help: Wird mit Highlight-Hintergrund angezeigt
+        default: "Motivationsschreiben,"
+        help: Kursiv
       hero_line_4_highlight:
-        label: Zeile 4 - Hervorgehobenes Wort
+        label: Zeile 4 - Kursiv
         type: text
-        default: "LEBENSLAUF"
+        default: "Lebenslauf"
         width: 1/2
       hero_line_4_suffix:
-        label: Zeile 4 - Rest
+        label: Zeile 4 - Normal
         type: text
-        default: "UND MEHR."
+        default: "und mehr."
         width: 1/2
-      hero_line_5:
-        label: Zeile 5
+      hero_line_5_prefix:
+        label: Zeile 5 - Prefix
         type: text
-        default: "IN BASEL."
-      highlight_bg_color:
-        label: Highlight Hintergrundfarbe
-        type: color
-        default: "#FFFFFF"
+        default: "In"
+        width: 1/3
+      hero_line_5_highlight:
+        label: Zeile 5 - Kursiv
+        type: text
+        default: "Basel"
+        width: 1/3
+      hero_line_5_suffix:
+        label: Zeile 5 - Suffix
+        type: text
+        default: "."
+        width: 1/3
+      section2_headline:
+        label: Sektion 2
+        type: headline
+      section2_card1_text:
+        label: Karte 1 - Sprache
+        type: textarea
+        buttons: false
+        help: Text für die Karte mit dem Übersetzungs-Icon
+      section2_card2_text:
+        label: Karte 2 - Auffrischung
+        type: textarea
+        buttons: false
+        help: Text für die Karte mit dem Stern-Icon
+      section2_card3_text:
+        label: Karte 3 - Formulare
+        type: textarea
+        buttons: false
+        help: Text für die Karte mit dem Raster-Icon
+      section2_intro:
+        label: Einleitungstext
+        type: textarea
+        buttons: false
+        help: Der Text, der erklärt wer Sie sind und was Sie machen
+      section2_cta_text:
+        label: CTA Text
+        type: textarea
+        buttons: false
+        help: Text mit Adresse und Handlungsaufforderung
+      section2_link1_text:
+        label: Link 1 Text
+        type: text
+        default: "Termin machen"
+        width: 1/3
+      section2_link2_text:
+        label: Link 2 Text
+        type: text
+        default: "Whatsapp"
+        width: 1/3
+      section2_link3_text:
+        label: Link 3 Text
+        type: text
+        default: "Anrufen"
+        width: 1/3
 
   seo:
     label: SEO
