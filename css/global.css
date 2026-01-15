@@ -1020,7 +1020,9 @@ body {
 .landing-footer__nav {
   display: flex;
   flex-direction: column;
-  margin-top: 1.875rem;
+  margin-top: 2.875rem;
+  text-decoration-line: underline;
+  text-decoration-color: #ffffff;
 }
 
 .landing-footer__nav-link {
