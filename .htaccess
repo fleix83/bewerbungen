@@ -10,6 +10,10 @@ RewriteBase /
 # Terminmanager: exclude from Kirby
 RewriteRule ^terminmanager/ - [L]
 
+# Buchen routes -> Terminmanager SPA
+RewriteRule ^buchen$ terminmanager/frontend/dist/index.html [L]
+RewriteRule ^buchen/(.*)$ terminmanager/frontend/dist/index.html [L]
+
 # block dot files
 RewriteRule (^|/)\.(?!well-known\/) index.php [L]
 
