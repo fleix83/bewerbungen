@@ -32,14 +32,10 @@
   --container-padding: 24px;
 }
 
-html {
-  background-color: var(--color-bg-page);
-}
-
 body {
   font-family: var(--font-primary);
   color: var(--color-text-body);
-  background-color: var(--color-bg-page);
+  background: #e7e6ff;
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
   margin: 0;
@@ -50,12 +46,12 @@ body {
   max-width: var(--container-max-width);
   margin: 0 auto;
   min-height: 100vh;
-  background-color: var(--color-bg-page);
 }
 
 .screen {
   min-height: 100vh;
   padding: var(--spacing-xl) var(--container-padding);
+  background: #e7e6ff;
 }
 
 .screen-title {
@@ -64,6 +60,7 @@ body {
   font-weight: 600;
   line-height: 35px;
   margin-bottom: var(--spacing-xl);
+  margin-top: 80px;
 }
 
 .section-title {

@@ -1,6 +1,9 @@
 <template>
   <div class="screen">
-    <h1 class="screen-title">Termin machen</h1>
+    <div class="screen-header">
+      <h1 class="screen-title">Termin machen</h1>
+      <a href="/bewerbungen/" class="back-link">zurück</a>
+    </div>
 
     <ServiceSelector
       v-model="selectedServices"
@@ -114,6 +117,29 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.screen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-lg);
+}
+
+.screen-header .screen-title {
+  margin-bottom: 0;
+  margin-top: 50px;
+}
+
+.back-link {
+  color: #002198;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
 .actions {
   display: flex;
   flex-direction: column;

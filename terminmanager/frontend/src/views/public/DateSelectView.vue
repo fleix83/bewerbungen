@@ -184,7 +184,7 @@ onMounted(async () => {
 }
 
 .legend-color--free {
-  background-color: #fff8e7;
+  background-color: #e7e6ff;
 }
 
 .legend-color--blocked {

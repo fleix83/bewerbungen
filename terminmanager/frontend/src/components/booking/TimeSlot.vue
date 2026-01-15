@@ -67,7 +67,8 @@ const timeDisplay = computed(() => {
 }
 
 .time-slot--free {
-  background-color: var(--color-slot-free);
+  background-color: #e7e6ff;
+  color: var(--color-text-body);
 }
 
 .time-slot--occupied {
