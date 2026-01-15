@@ -2,6 +2,7 @@
    BEWERBUNGEN & MEHR - Global Styles
    ======================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 /* ----- 1. CSS Custom Properties ----- */
@@ -17,31 +18,42 @@
   --color-white: #FFFFFF;
   --color-address-bg: #CAD6FF;
 
+  /* Violet Theme Colors */
+  --color-violet-start: #3931B4;
+  --color-violet-end: rgba(0, 33, 152, 0.513);
+  --color-text-yellow: #FFE9A1;
+  --color-accent-red: #F83F3F;
+
   /* Typography */
   --font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-reddit: 'Reddit Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
   /* Font Sizes */
-  --font-size-sm: 18px;
-  --font-size-base: 20px;
-  --font-size-md: 23px;
-  --font-size-lg: 28px;
-  --font-size-xl: 30px;
+  --font-size-xs: 0.75rem;      /* 12px */
+  --font-size-2xs: 0.875rem;    /* 14px */
+  --font-size-sm: 1.125rem;     /* 18px */
+  --font-size-base: 1.25rem;    /* 20px */
+  --font-size-md: 1.4375rem;    /* 23px */
+  --font-size-lg: 1.75rem;      /* 28px */
+  --font-size-xl: 1.875rem;     /* 30px */
 
   /* Spacing */
-  --spacing-xs: 8px;
-  --spacing-sm: 16px;
-  --spacing-md: 24px;
-  --spacing-lg: 32px;
-  --spacing-xl: 48px;
+  --spacing-xs: 0.5rem;         /* 8px */
+  --spacing-sm: 1rem;           /* 16px */
+  --spacing-md: 1.5rem;         /* 24px */
+  --spacing-lg: 2rem;           /* 32px */
+  --spacing-xl: 3rem;           /* 48px */
 
   /* Layout */
-  --border-radius: 30px;
-  --border-radius-sm: 15px;
-  --max-width: 420px;
-  --page-padding: 24px;
+  --border-radius: 1.875rem;    /* 30px */
+  --border-radius-sm: 0.9375rem; /* 15px */
+  --border-radius-xs: 0.3125rem; /* 5px */
+  --border-radius-2xs: 0.1875rem; /* 3px */
+  --max-width: 26.25rem;        /* 420px */
+  --page-padding: 1.5rem;       /* 24px */
 }
 
 /* ----- 2. Reset & Base ----- */
@@ -63,6 +75,7 @@ body {
   background-color: var(--color-background);
   line-height: 1.5;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Screen reader only */
@@ -105,9 +118,10 @@ body {
   flex-direction: column;
 }
 
-/* Landing Page Yellow Background */
+/* Landing Page Violet Gradient Background */
 .page-landing {
-  background-color: var(--color-secondary);
+  background: linear-gradient(180deg, #e7e6ff 0%, rgb(30 42 86 / 23%) 100%);
+  min-height: 100vh;
 }
 
 /* Other Pages Cream Background */
@@ -115,7 +129,7 @@ body {
 .page-preise,
 .page-about,
 .page-ablauf {
-  background-color: var(--color-background);
+  background-color: #e7e6ff;
 }
 
 /* ----- 5. Buttons ----- */
@@ -136,15 +150,15 @@ body {
 }
 
 .btn--primary {
-  padding: 16px 32px;
-  background-color: var(--color-primary);
+  padding: 1rem 2rem;
+  background-color: #4766b9;
   color: var(--color-white);
   font-size: var(--font-size-sm);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   border-radius: var(--border-radius);
   width: 100%;
-  max-width: 280px;
+  max-width: 17.5rem;
 }
 
 .btn--primary:hover {
@@ -155,8 +169,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 2.75rem;
+  height: 2.75rem;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -164,8 +178,8 @@ body {
 }
 
 .btn-close svg {
-  width: 65px;
-  height: 65px;
+  width: 4.0625rem;
+  height: 4.0625rem;
   stroke: var(--color-primary);
   stroke-width: 1px;
 }
@@ -189,14 +203,14 @@ body {
 
 .arrow {
   display: inline-block;
-  margin-right: 4px;
+  margin-right: 0.25rem;
 }
 
 .arrow-icon {
   display: inline-block;
   vertical-align: middle;
-  margin-right: 0px;
-  width: 35px;
+  margin-right: 0;
+  width: 2.1875rem;
   height: auto;
 }
 
@@ -205,11 +219,11 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 52px;
-  padding: 0 15px;
-  background-color: var(--color-secondary);
-  color: var(--color-primary);
-  font-size: 20px;
+  height: 3.25rem;
+  padding: 0 0.9375rem;
+  background-color: #ff7371;
+  color: #ffffff;
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
   border-radius: var(--border-radius);
   text-decoration: none;
@@ -224,15 +238,15 @@ body {
 /* ----- 7. Cards & Lists ----- */
 .dot {
   display: inline-block;
-  width: 12px;
-  height: 12px;
+  width: 0.75rem;
+  height: 0.75rem;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
 .dot--large {
-  width: 23px;
-  height: 23px;
+  width: 1.4375rem;
+  height: 1.4375rem;
 }
 
 .dot--yellow {
@@ -250,16 +264,16 @@ body {
 .price-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 11px;
+  gap: 0.625rem;
+  margin-bottom: 0.6875rem;
   position: relative;
   width: 100%;
 }
 
 .price-item .dot {
   position: absolute;
-  left: 7px;
-  top: 0px;
+  left: 0.4375rem;
+  top: 0;
   transform: translateY(-50%);
 }
 
@@ -267,9 +281,9 @@ body {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 4px 12px 4px 19px;
+  padding: 0.25rem 0.75rem 0.25rem 1.1875rem;
   background-color: var(--color-white);
-  border-radius: 3px;
+  border-radius: var(--border-radius-2xs);
 }
 
 .price-item__name {
@@ -288,7 +302,7 @@ body {
 .price-note,
 .service-note {
   display: flex;
-  gap: 10px;
+  gap: 0.625rem;
   margin-top: var(--spacing-md);
   margin-bottom: var(--spacing-md);
   font-size: var(--font-size-sm);
@@ -299,7 +313,7 @@ body {
 
 .price-note .dot,
 .service-note .dot {
-  margin-top: 8px;
+  margin-top: 0.5rem;
   flex-shrink: 0;
 }
 
@@ -319,11 +333,68 @@ body {
 
 /* ----- 8. Page-Specific Styles ----- */
 
-/* Landing Page */
+/* Landing Page - Violet Theme */
 .landing-header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: flex-start;
   padding: 0;
+  font-family: var(--font-family-reddit);
+}
+
+.landing-header__address {
+  display: flex;
+  flex-direction: column;
+  color: #4766b9;
+}
+
+.landing-header__title {
+  font-size: var(--font-size-2xs);
+  font-weight: 800;
+  line-height: 1.0625rem;
+  margin-bottom: 0.25rem;
+}
+
+.landing-header__phone {
+  font-size: 1.3125rem;
+  font-weight: 800;
+  line-height: 1.0625rem;
+  margin-bottom: 0.375rem;
+  text-decoration: none;
+  color: #4766b9;
+}
+
+.landing-header__phone:hover {
+  opacity: 0.8;
+}
+
+.landing-header__details {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  line-height: 1.0625rem;
+}
+
+.landing-header__mehr {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #ff7371;
+  font-size: 1.6875rem;
+  font-weight: 800;
+  line-height: 2.4375rem;
+  text-decoration: none;
+  font-family: var(--font-family-reddit);
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+}
+
+.landing-header__mehr:hover {
+  opacity: 0.8;
+}
+
+.landing-header__mehr .arrow-icon {
+  width: 1.5rem;
+  height: auto;
 }
 
 .landing-main {
@@ -331,35 +402,39 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   text-align: left;
   gap: 0;
   padding: 0;
-  margin-top: -20px;
+  margin-top: 0;
 }
 
 .landing-illustration {
-  margin-top: 60px;
+  margin-bottom: 0.5rem;
   align-self: flex-end;
+  margin-right: 0.875rem;
 }
 
 .landing-illustration img {
-  max-width: 252px;
-  height: auto;
+  width: 16.6875rem;
+  height: 17.5rem;
   display: block;
 }
 
 .hero-section {
-  margin-top: -15px;
+  margin-top: 0;
   width: 100%;
 }
 
 .hero-text {
   display: block;
-  font-size: 26px;
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-primary);
-  line-height: 42px;
+  font-family: var(--font-family-reddit);
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  font-style: italic;
+  color: #4766b9;
+  /* color: #fff8e7; */
+  line-height: 2.3125rem;
   margin: 0;
 }
 
@@ -367,20 +442,20 @@ body {
   display: block;
 }
 
-.hero-text__line:nth-child(3),
-.hero-text__line:nth-child(5) {
-  margin-top: -6px;
+.hero-text__line--normal {
+  font-style: normal;
 }
 
-.hero-text__line--spaced {
-  margin-bottom: 14px;
+.hero-text__keyword {
+  font-style: italic;
 }
 
+/* Legacy highlight styles - keeping for other pages */
 .highlight {
   color: var(--color-primary);
   font-weight: var(--font-weight-semibold);
-  padding: 0 12px;
-  margin-left: -12px;
+  padding: 0 0.75rem;
+  margin-left: -0.75rem;
   position: relative;
   background: transparent;
 }
@@ -390,60 +465,93 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 7px;
-  height: calc(100% + 5px);
+  bottom: 0.4375rem;
+  height: calc(100% + 0.3125rem);
   background-color: var(--color-white);
-  border-radius: 20px;
+  border-radius: 1.25rem;
   z-index: -1;
 }
 
-.landing-address {
-  font-style: normal;
-  font-size: 11px;
-  font-weight: var(--font-weight-semibold);
-  line-height: 24px;
-  text-align: center;
-  text-transform: capitalize;
-  margin-top: 24px;
-  margin-bottom: 0;
-  width: 100%;
+/* Landing page doesn't use highlight background anymore */
+.page-landing .highlight {
+  padding: 0;
+  margin-left: 0;
 }
 
-.landing-address a {
-  color: var(--color-primary);
-  text-decoration: none;
-}
-
-.landing-address a:hover {
-  opacity: 0.8;
+.page-landing .highlight::before {
+  display: none;
 }
 
 .landing-cta {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 0;
   width: 100%;
-  margin-top: 0;
+  margin-top: 1.25rem;
 }
 
+.btn--cta-violet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  width: 12.5rem;
+  height: 3.1875rem;
+  padding: 0.6875rem;
+  background-color: #ff7371;
+  border-radius: var(--border-radius-xs);
+  text-decoration: none;
+  font-family: var(--font-family-reddit);
+  color: white;
+  gap: 0;
+  box-sizing: border-box;
+}
+
+.btn--cta-violet:hover {
+  opacity: 0.9;
+}
+
+.btn--cta-violet__label {
+  font-size: 1.625rem;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1;
+}
+
+.btn--cta-violet__price {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  line-height: 1;
+  margin-top: 0.125rem;
+}
+
+.cta-subtitle {
+    font-family: var(--font-family-reddit);
+    font-size: var(--font-size-2xs);
+    font-weight: 700;
+    font-style: italic;
+    color: #4866b9;
+    line-height: 1.375rem;
+    text-align: end;
+    width: 12.5rem;
+    padding-right: 0.8125rem;
+}
+
+.cta-subtitle .arrow-icon {
+  display: none;
+}
+
+/* Legacy btn--large for other pages */
 .btn--primary.btn--large {
-  font-size: 30px;
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
-  height: 52px;
-  padding: 0 32px;
+  height: 3.25rem;
+  padding: 0 2rem;
   max-width: none;
   width: 100%;
   color: var(--color-secondary);
   border-radius: var(--border-radius);
-}
-
-.cta-subtitle {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-primary);
-  text-align: right;
-  margin-right: 13px;
 }
 
 /* Menu Page */
@@ -459,7 +567,7 @@ body {
   flex-direction: column;
   justify-content: center;
   gap: var(--spacing-xl);
-  margin-top: 10px;
+  margin-top: 0.625rem;
 }
 
 .menu-nav {
@@ -478,17 +586,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 12px;
+  gap: 0.75rem;
   width: 100%;
-  margin-top: 60px;
+  margin-top: 3.75rem;
 }
 
 .menu-bottom .btn--primary {
   width: auto;
   max-width: none;
-  font-size: 20px;
-  height: 52px;
-  padding: 0 32px;
+  font-size: var(--font-size-base);
+  height: 3.25rem;
+  padding: 0 2rem;
   color: var(--color-background);
 }
 
@@ -496,16 +604,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: -4px;
-    margin-right: 12px;
+    gap: -0.25rem;
+    margin-right: 0.75rem;
 }
 
 .contact-link {
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
-  color: var(--color-primary);
-  font-size: 14px;
+  color: #4766b9;
+  font-size: var(--font-size-2xs);
   text-decoration: none;
   padding: var(--spacing-xs) 0;
 }
@@ -515,8 +623,8 @@ body {
 }
 
 .contact-link svg {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   flex-shrink: 0;
 }
 
@@ -533,20 +641,20 @@ body {
 }
 
 .page-actions {
-  margin-top: 60px;
+  margin-top: 3.75rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 12px;
+  gap: 0.75rem;
   padding-bottom: var(--spacing-xl);
 }
 
 .page-actions .btn--primary {
   width: auto;
   max-width: none;
-  font-size: 20px;
-  height: 52px;
-  padding: 0 32px;
+  font-size: var(--font-size-base);
+  height: 3.25rem;
+  padding: 0 2rem;
   color: var(--color-background);
 }
 
@@ -560,7 +668,7 @@ body {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 5px;
+  border-radius: var(--border-radius-xs);
 }
 
 .about-content {
@@ -576,7 +684,7 @@ body {
 
 .language-highlight {
   background-color: var(--color-white);
-  padding: 2px 4px;
+  padding: 0.125rem 0.25rem;
   display: inline;
 }
 
@@ -616,7 +724,7 @@ body {
 }
 
 .process-illustration img {
-  max-width: 200px;
+  max-width: 12.5rem;
   height: auto;
 }
 
@@ -651,9 +759,9 @@ body {
 .service-item {
   display: flex;
   align-items: center;
-  margin-bottom: 3px;
+  margin-bottom: 0.1875rem;
   position: relative;
-  padding-left: 20px;
+  padding-left: 1.25rem;
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
 }
@@ -669,9 +777,9 @@ body {
   display: flex;
   align-items: center;
   flex: 1;
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   background-color: var(--color-white);
-  border-radius: 3px;
+  border-radius: var(--border-radius-2xs);
 }
 
 .extra-time {
@@ -685,8 +793,8 @@ body {
 
 .extra-time__price {
   background-color: var(--color-white);
-  padding: 8px 16px;
-  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-2xs);
 }
 
 /* ----- 9. Utilities ----- */
@@ -707,20 +815,225 @@ body {
 }
 
 /* ----- 10. Desktop ----- */
+/* ----- 11. About Section (Section 2) ----- */
+.about-section {
+  background-color: var(--color-background);
+  padding: 5.625rem 0.9375rem 1.25rem 0.9375rem;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.about-section__content {
+  width: 100%;
+  max-width: var(--max-width);
+  padding: 0 var(--page-padding);
+  box-sizing: border-box;
+  padding-bottom: 2.5rem;
+}
+
+.about-section__intro {
+  font-family: var(--font-family-reddit);
+  font-size: 1.375rem;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.3;
+  color: var(-color-primary);
+  margin-top: 3.375rem;
+  margin-bottom: 0;
+}
+
+.about-section__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 3.375rem;
+}
+
+.about-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.about-card__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+}
+
+.about-card__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.about-card__icon img {
+  filter: drop-shadow(0 0 0.5px #F83F3F) drop-shadow(0 0 0.5px #F83F3F);
+}
+
+.about-card__text {
+  font-family: var(--font-family-reddit);
+  font-size: 1.3125rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-primary);
+}
+
+.about-section__cta-text {
+  font-family: var(--font-family-reddit);
+  font-size: 1.3125rem;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--color-primary);
+  margin-top: 3.375rem;
+  margin-bottom: 0;
+}
+
+.about-section__cta-text .highlight {
+  background-color: var(--color-accent-red);
+  color: var(--color-background);
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--border-radius-2xs);
+  font-style: italic;
+}
+
+.about-section__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 3.375rem;
+}
+
+.about-section__link {
+  font-family: var(--font-family-reddit);
+  font-size: 1.3125rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.1875rem;
+}
+
+.about-section__link:hover {
+  opacity: 0.8;
+}
+
+/* ----- 12. Landing Footer ----- */
+.landing-footer {
+  width: 100%;
+  padding: 3.75rem 0.9375rem 4.375rem 2.5rem;
+  box-sizing: border-box;
+  background: #5370be;
+}
+
+.landing-footer__content {
+  width: 100%;
+  max-width: 21.875rem;
+}
+
+.landing-footer__address {
+  margin-bottom: 1.875rem;
+}
+
+.landing-footer__address p {
+  font-family: var(--font-family-reddit);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--color-white);
+  margin: 0;
+}
+
+.landing-footer__company {
+  font-weight: 600 !important;
+}
+
+.landing-footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin-bottom: 2.1875rem;
+}
+
+.landing-footer__link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-white);
+  font-family: var(--font-family-reddit);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.landing-footer__link:hover {
+  opacity: 0.8;
+}
+
+.landing-footer__link svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+}
+
+.landing-footer__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.btn--cta-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+  background-color: var(--color-accent-red);
+  border-radius: var(--border-radius-xs);
+  text-decoration: none;
+}
+
+.btn--cta-footer__label {
+  font-family: var(--font-family-reddit);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--color-white);
+}
+
+.landing-footer__subtitle {
+  font-family: var(--font-family-reddit);
+  font-size: 1rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--color-white);
+  text-align: right;
+  width: 100%;
+  max-width: 13.75rem;
+  padding-right: 0.625rem;
+  box-sizing: border-box;
+}
+
 @media (min-width: 768px) {
   :root {
-    --page-padding: 32px;
+    --page-padding: 2rem;
   }
 
   .page-container {
-    padding-top: 90px;
+    padding-top: 5.625rem;
   }
 
   .landing-illustration img {
-    max-width: 288px;
+    max-width: 18rem;
   }
 
   .hero-section {
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
+  }
+
+  .about-section {
+    padding: 3.75rem var(--page-padding);
+    margin-top: 3.75rem;
   }
 }
