@@ -2,7 +2,7 @@
   <div class="screen">
     <div class="screen-header">
       <h1 class="screen-title">Termin machen</h1>
-      <a href="/bewerbungen/" class="back-link">zurück</a>
+      <a href="/" class="back-link">zurück</a>
     </div>
 
     <ServiceSelector
