@@ -65,7 +65,7 @@ const handleClick = () => {
 }
 
 .calendar-day--free {
-  background-color: #e7e6ff;
+  background-color: #d7d5f5;
   color: var(--color-text-title);
 }
 
