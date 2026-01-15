@@ -1017,6 +1017,25 @@ body {
   padding-left: 3.7rem
 }
 
+.landing-footer__nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.875rem;
+}
+
+.landing-footer__nav-link {
+  color: var(--color-white);
+  font-family: var(--font-family-reddit);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.landing-footer__nav-link:hover {
+  opacity: 0.8;
+}
+
 @media (min-width: 768px) {
   :root {
     --page-padding: 2rem;

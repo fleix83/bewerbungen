@@ -28,5 +28,11 @@
       </a>
       <span class="landing-footer__subtitle">auch kurzfristig</span>
     </div>
+
+    <nav class="landing-footer__nav">
+      <a href="<?= page('preise')->url() ?>" class="landing-footer__nav-link">Preise & Angebote</a>
+      <a href="<?= page('ueber-mich')->url() ?>" class="landing-footer__nav-link">Über mich</a>
+      <a href="<?= page('ablauf')->url() ?>" class="landing-footer__nav-link">Wie läuft das?</a>
+    </nav>
   </div>
 </footer>

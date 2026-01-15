@@ -5,15 +5,15 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://bewerbungenundmehr.ch/preise.html</loc>
+    <loc>https://bewerbungenundmehr.ch/preise</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bewerbungenundmehr.ch/ueber-mich.html</loc>
+    <loc>https://bewerbungenundmehr.ch/ueber-mich</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bewerbungenundmehr.ch/ablauf.html</loc>
+    <loc>https://bewerbungenundmehr.ch/ablauf</loc>
     <priority>0.7</priority>
   </url>
 </urlset>
