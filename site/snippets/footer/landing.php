@@ -1,14 +1,14 @@
 <footer class="landing-footer">
   <div class="landing-footer__content">
     <div class="landing-footer__address">
-      <p class="landing-footer__company">Bewerbungen & Mehr</p>
-      <p class="landing-footer__name">Felix Weissheimer</p>
-      <p class="landing-footer__street">Luftgässlein 3</p>
-      <p class="landing-footer__city">4051 Basel</p>
+      <p class="landing-footer__company"><?= $site->footer_company() ?></p>
+      <p class="landing-footer__name"><?= $site->footer_name() ?></p>
+      <p class="landing-footer__street"><?= $site->footer_street() ?></p>
+      <p class="landing-footer__city"><?= $site->footer_city() ?></p>
     </div>
 
     <div class="landing-footer__contact">
-      <a href="mailto:felix@bewerbungenundmehr.ch" class="landing-footer__link">
+      <a href="mailto:<?= $site->footer_email() ?>" class="landing-footer__link">
         <?php snippet('icons/email') ?>
         <span>Email</span>
       </a>
@@ -18,7 +18,7 @@
       </a>
       <a href="tel:<?= $site->telefon() ?>" class="landing-footer__link">
         <?php snippet('icons/phone') ?>
-        <span>076 575 60 52</span>
+        <span><?= $site->telefon_display() ?></span>
       </a>
     </div>
 

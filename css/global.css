@@ -1059,4 +1059,8 @@ body {
     padding: 3.75rem var(--page-padding);
     margin-top: 3.75rem;
   }
+
+  .landing-footer__content {
+    margin: 0 auto;
+  }
 }

@@ -71,6 +71,28 @@ columns:
             label: Kontakt-CTA Text
             type: textarea
             buttons: false
+          footer_heading:
+            type: headline
+            label: Footer
+          footer_company:
+            label: Firmenname
+            type: text
+            width: 1/2
+          footer_name:
+            label: Name
+            type: text
+            width: 1/2
+          footer_street:
+            label: Strasse
+            type: text
+            width: 1/2
+          footer_city:
+            label: PLZ & Ort
+            type: text
+            width: 1/2
+          footer_email:
+            label: E-Mail
+            type: email
           seo_heading:
             type: headline
             label: SEO

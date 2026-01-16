@@ -10,7 +10,7 @@ Telefon: +41767576052
 
 ----
 
-Telefon-display: 076 757 60 52
+Telefon-display: 076 757 60 12
 
 ----
 
@@ -55,3 +55,23 @@ Default-description: Hilfe bei Lebenslauf, Bewerbungsschreiben in Basel. Felix W
 ----
 
 Canonical-base: https://bewerbungenundmehr.ch
+
+----
+
+Footer-company: Bewerbungen & Mehr
+
+----
+
+Footer-name: Felix Weissheimer
+
+----
+
+Footer-street: Luftgässlein 3
+
+----
+
+Footer-city: 4051 Basel
+
+----
+
+Footer-email: felix@bewerbungenundmehr.ch
