@@ -6,21 +6,28 @@
     <main class="landing-main">
       <h1 class="sr-only">Bewerbungshilfe Basel – Lebenslauf & Bewerbungsschreiben</h1>
 
-      <?php snippet('components/hero-image') ?>
+      <?php snippet('components/hero-image-februar') ?>
 
-      <?php snippet('components/hero') ?>
+      <section class="hero-section">
+        <div class="hero-section__top">
+          <div class="hero-section__content">
+            <p class="hero-lead"><span class="hero-lead-line"><?= $page->hero_lead() ?></span></p>
+          </div>
+          <div class="hero-section__cta">
+            <div class="landing-cta">
+              <a href="<?= $site->termin_button_url() ?>" class="btn--cta-februar">
+                <span class="btn--cta-februar__label"><?= $site->termin_button_label() ?></span>
+                <span class="btn--cta-februar__subtitle"><?= $page->cta_subtitle() ?></span>
+              </a>
+            </div>
+          </div>
+        </div>
 
-      <div class="landing-cta">
-        <a href="<?= $site->termin_button_url() ?>" class="btn--cta-violet">
-          <span class="btn--cta-violet__label"><?= $site->termin_button_label() ?></span>
-          <span class="btn--cta-violet__price"><?= $site->termin_button_price() ?></span>
-        </a>
-        <span class="cta-subtitle"><?= $page->cta_subtitle() ?></span>
-      </div>
+        <p class="hero-body"><?= $page->hero_body() ?></p>
+      </section>
+
+      <?php snippet('components/services-section') ?>
     </main>
   </div>
-
-  <?php snippet('components/about-section') ?>
-  <?php snippet('footer/landing') ?>
 </body>
 </html>

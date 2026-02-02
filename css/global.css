@@ -1,19 +1,20 @@
 /* ========================================
    BEWERBUNGEN & MEHR - Global Styles
+   Februar Variant
    ======================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 /* ----- 1. CSS Custom Properties ----- */
 :root {
   /* Colors */
-  --color-primary: #002198;
+  --color-primary: #3931B4;
   --color-secondary: #F3D676;
-  --color-background: #FAF5ED;
+  --color-background: #FFFFFF;
+  --color-background-cream: #FFF8E7;
   --color-dot-green: #95FCA8;
   --color-dot-yellow: #F3D676;
-  --color-dot-blue: #002198;
+  --color-dot-blue: #3931B4;
   --color-text: #2A2A2A;
   --color-white: #FFFFFF;
   --color-address-bg: #CAD6FF;
@@ -25,8 +26,8 @@
   --color-accent-red: #F83F3F;
 
   /* Typography */
-  --font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-family-reddit: 'Reddit Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family: 'Inria Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-reddit: 'Inria Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
@@ -39,6 +40,12 @@
   --font-size-md: 1.4375rem;    /* 23px */
   --font-size-lg: 1.75rem;      /* 28px */
   --font-size-xl: 1.875rem;     /* 30px */
+
+  /* Februar Design - Lead & Body */
+  --font-size-lead: 3.5625rem;  /* 57px */
+  --line-height-lead: 4.625rem; /* 74px */
+  --font-size-body: 2.5625rem;  /* 41px */
+  --line-height-body: 3.125rem; /* 50px */
 
   /* Spacing */
   --spacing-xs: 0.5rem;         /* 8px */
@@ -118,10 +125,15 @@ body {
   flex-direction: column;
 }
 
-/* Landing Page Violet Gradient Background */
+/* Landing Page - Februar Design */
 .page-landing {
-  background: linear-gradient(180deg, #e7e6ff 0%, rgb(30 42 86 / 23%) 100%);
+  background: var(--color-background-cream);
   min-height: 100vh;
+}
+
+.page-landing .page-container {
+  max-width: 100%;
+  padding: 1rem 3rem;
 }
 
 /* Other Pages Cream Background */
@@ -338,15 +350,80 @@ body {
 
 /* ----- 8. Page-Specific Styles ----- */
 
-/* Landing Page - Violet Theme */
+/* Landing Page - Februar Header */
 .landing-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   padding: 0;
-  font-family: var(--font-family-reddit);
+  font-family: var(--font-family);
+  position: relative;
 }
 
+.landing-header__logo {
+  width: 4.5rem;
+  height: auto;
+}
+
+.landing-header__logo img {
+  width: 100%;
+  height: auto;
+}
+
+.landing-header__contact {
+  display: flex;
+  gap: 2rem;
+  font-size: var(--font-size-xs);
+  color: var(--color-primary);
+}
+
+.landing-header__contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.landing-header__contact-link:hover {
+  opacity: 0.8;
+}
+
+.landing-header__contact-link svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.landing-header__nav {
+  display: flex;
+  gap: 2.5rem;
+  position: absolute;
+  top: 3.2rem;
+  right: 12rem;
+  z-index: 20;
+}
+
+.landing-header__nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background-color: rgb(254 252 255);
+  /* border: 1px solid #e0e0e0; */
+  border-radius: 0.25rem;
+  color: var(--color-primary);
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-regular);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.landing-header__nav-link:hover {
+  background-color: var(--color-white);
+  opacity: 0.9;
+}
+
+/* Legacy header styles (keep for compatibility) */
 .landing-header__address {
   display: flex;
   flex-direction: column;
@@ -407,13 +484,40 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   text-align: left;
   gap: 0;
   padding: 0;
   margin-top: 0;
 }
 
+/* Februar Hero Image - Full width rectangular */
+.landing-hero-image {
+  width: 100vw;
+  margin-top: 1rem;
+  margin-left: calc(-3rem);
+  overflow: hidden;
+}
+
+.landing-hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Februar Hero Content Wrapper - overlapping layout */
+.hero-content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: -6rem;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Legacy illustration (keep for compatibility) */
 .landing-illustration {
   margin-bottom: 0.2rem;
   align-self: flex-end;
@@ -426,11 +530,66 @@ body {
   display: block;
 }
 
+/* Februar Hero Section */
 .hero-section {
   margin-top: 0;
-  width: 100%;
+  margin-left: 50px;
+  width: calc(100% - 50px);
 }
 
+.hero-section__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: -8rem;
+  position: relative;
+  z-index: 10;
+  padding-right: 2rem;
+}
+
+.hero-section__content {
+  flex: 1;
+  max-width: 55%;
+}
+
+.hero-section__cta {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 2rem;
+}
+
+/* Februar Lead Text - with white background highlight */
+.hero-lead {
+  font-family: var(--font-family);
+  font-size: var(--font-size-lead);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.4;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.hero-lead-line {
+  display: inline;
+  background-color: var(--color-white);
+  padding: 0.1em 0.3em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Februar Body Text */
+.hero-body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  color: var(--color-primary);
+  margin: 2.5rem 0 0 0;
+  max-width: 70%;
+}
+
+/* Legacy hero text styles */
 .hero-text {
   display: block;
   font-family: var(--font-family-reddit);
@@ -438,7 +597,6 @@ body {
   font-weight: 800;
   font-style: italic;
   color: #4766b9;
-  /* color: #fff8e7; */
   line-height: 2.0rem;
   margin: 0;
 }
@@ -487,15 +645,51 @@ body {
   display: none;
 }
 
+/* Februar CTA Button */
 .landing-cta {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0;
-  width: 100%;
+  align-items: flex-end;
+  gap: 0.25rem;
   margin-top: 1.25rem;
 }
 
+.btn--cta-februar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-primary);
+  border-radius: 0.25rem;
+  text-decoration: none;
+  font-family: var(--font-family);
+  color: white;
+  gap: 0;
+  box-sizing: border-box;
+  transition: opacity 0.2s ease;
+}
+
+.btn--cta-februar:hover {
+  opacity: 0.9;
+}
+
+.btn--cta-februar__label {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-bold);
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.btn--cta-februar__subtitle {
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-regular);
+  font-style: italic;
+  line-height: 1.2;
+  opacity: 0.9;
+}
+
+/* Legacy CTA styles (keep for compatibility) */
 .btn--cta-violet {
   display: flex;
   flex-direction: column;
@@ -545,6 +739,40 @@ body {
 
 .cta-subtitle .arrow-icon {
   display: none;
+}
+
+/* Februar Services Section */
+.services-section {
+  width: 100%;
+  margin-top: 2.5rem;
+}
+
+.services-section__title {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-body);
+  color: var(--color-primary);
+  margin: 0 0 1rem 0;
+}
+
+.services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.services-list__item {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  color: var(--color-primary);
+  padding-left: 1.5rem;
+  position: relative;
 }
 
 /* Legacy btn--large for other pages */
@@ -1036,6 +1264,65 @@ body {
 
 .landing-footer__nav-link:hover {
   opacity: 0.8;
+}
+
+/* Mobile-first responsive styles for Februar */
+@media (max-width: 767px) {
+  .page-landing .page-container {
+    padding: 1rem;
+  }
+
+  .landing-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .landing-header__right {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .landing-header__contact {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hero-section__top {
+    flex-direction: column;
+    margin-top: -3rem;
+    padding-right: 0;
+  }
+
+  .hero-section__content {
+    max-width: 100%;
+  }
+
+  .hero-lead {
+    font-size: 1.75rem;
+    line-height: 1.4;
+  }
+
+  .hero-body {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    max-width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  .hero-section__cta {
+    align-items: flex-start;
+    margin-top: 1.5rem;
+  }
+
+  .services-section__title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .services-list__item {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
 }
 
 @media (min-width: 768px) {

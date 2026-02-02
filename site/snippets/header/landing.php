@@ -1,12 +1,19 @@
 <header class="landing-header">
-  <div class="landing-header__address">
-    <span class="landing-header__title"><?= $site->title() ?></span>
-    <a href="tel:<?= $site->telefon() ?>" class="landing-header__phone"><?= $site->telefon_display() ?></a>
-    <div class="landing-header__details">
-      <?= $site->owner_name() ?><br>
-    </div>
+  <div class="landing-header__logo">
+    <img src="<?= url('assets/images/logo.png') ?>" alt="<?= $site->title() ?>">
   </div>
-  <nav>
-    <a href="<?= page('menu')->url() ?>" class="landing-header__mehr"> <?= $page->mehr_link_text() ?></a>
+  <div class="landing-header__contact">
+    <a href="tel:<?= $site->telefon() ?>" class="landing-header__contact-link">
+      <?php snippet('icons/phone') ?>
+      <span>Anrufen <?= $site->telefon_display() ?></span>
+    </a>
+    <a href="<?= $site->whatsapp_url() ?>" class="landing-header__contact-link">
+      <?php snippet('icons/whatsapp') ?>
+      <span>Per Whatsapp kontaktieren</span>
+    </a>
+  </div>
+  <nav class="landing-header__nav">
+    <a href="<?= page('preise')->url() ?>" class="landing-header__nav-link">Angebote & Preise</a>
+    <a href="<?= page('ueber-mich')->url() ?>" class="landing-header__nav-link">Über Mich</a>
   </nav>
 </header>
