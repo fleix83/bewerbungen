@@ -399,7 +399,7 @@ body {
   gap: 2.5rem;
   position: absolute;
   top: 3.2rem;
-  right: 12rem;
+  right: 0rem;
   z-index: 20;
 }
 
@@ -408,12 +408,13 @@ body {
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.5rem;
+  height: 3.25rem;
   background-color: rgb(254 252 255);
   /* border: 1px solid #e0e0e0; */
   border-radius: 0.25rem;
   color: var(--color-primary);
   font-size: 1.25rem;
-  font-weight: var(--font-weight-regular);
+  font-weight: 600;
   text-decoration: none;
   transition: all 0.2s ease;
 }
@@ -421,6 +422,34 @@ body {
 .landing-header__nav-link:hover {
   background-color: var(--color-white);
   opacity: 0.9;
+}
+
+/* CTA button in nav */
+.landing-header__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.landing-header__nav-link--cta {
+  background-color: #fd6767;
+  color: var(--color-white);
+  font-weight: var(--font-weight-bold);
+  font-style: italic;
+}
+
+.landing-header__nav-link--cta:hover {
+  background-color: #fd6767;
+  opacity: 0.9;
+}
+
+.landing-header__cta-subtitle {
+  font-size: 0.875rem;
+  font-style: italic;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-top: 0.25rem;
+  padding-right: 0.5rem;
 }
 
 /* Legacy header styles (keep for compatibility) */
@@ -541,7 +570,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-top: -8rem;
+  margin-top: -14rem;
   position: relative;
   z-index: 10;
   padding-right: 2rem;
@@ -549,7 +578,7 @@ body {
 
 .hero-section__content {
   flex: 1;
-  max-width: 55%;
+  max-width: 64%;
 }
 
 .hero-section__cta {
@@ -564,27 +593,28 @@ body {
 .hero-lead {
   font-family: var(--font-family);
   font-size: var(--font-size-lead);
-  font-weight: var(--font-weight-bold);
+  font-weight: 800;
   line-height: 1.4;
-  color: var(--color-primary);
+  color: var(--color-white);
   margin: 0;
 }
 
 .hero-lead-line {
   display: inline;
-  background-color: var(--color-white);
+  background-color: #fd6767;
   padding: 0.1em 0.3em;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
+  line-height: 89px;
 }
 
 /* Februar Body Text */
 .hero-body {
   font-family: var(--font-family);
   font-size: var(--font-size-body);
-  font-weight: var(--font-weight-regular);
+  font-weight: 600;
   line-height: var(--line-height-body);
-  color: var(--color-primary);
+  color: #fd6867;
   margin: 2.5rem 0 0 0;
   max-width: 70%;
 }
@@ -744,18 +774,133 @@ body {
 /* Februar Services Section */
 .services-section {
   width: 100%;
-  margin-top: 2.5rem;
+  margin-top: 10.5rem;
+  margin-left: 50px;
 }
 
 .services-section__title {
   font-family: var(--font-family);
-  font-size: var(--font-size-body);
+  font-size: 3rem;
   font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-body);
-  color: var(--color-primary);
-  margin: 0 0 1rem 0;
+  line-height: 1.3;
+  color: #fd6867;
+  margin: 0 0 2rem 0;
 }
 
+.services-section__intro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6rem;
+  margin-bottom: 2.5rem;
+}
+
+.services-section__intro-block {
+  flex: 1;
+  min-width: 380px;
+  max-width: 700px;
+}
+
+.services-section__subtitle {
+  font-family: var(--font-family);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #fd6867;
+  margin: 0 0 0.75rem 0;
+}
+
+.services-section__text {
+  font-family: var(--font-family);
+  font-size: 1.525rem;
+  font-weight: 500;
+  color: #fd6867;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.services-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3.25rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: 1.5rem 2rem;
+  border: 2px solid #fd6867;
+  border-radius: 20px;
+  background: transparent;
+  max-width: 460px;
+  text-align: left;
+}
+
+.service-card__icon {
+  margin-bottom: 0.75rem;
+  color: #fd6867;
+}
+
+.service-card__icon .pi {
+  font-size: 1.5rem;
+  color: #fd6867;
+}
+
+.service-card__name {
+  font-family: var(--font-family);
+  font-size: 1.725rem;
+  font-weight: 700;
+  color: #fd6867;
+  line-height: 1.3;
+}
+
+.service-card__body {
+  font-family: var(--font-family);
+  font-size: 1.275rem;
+  font-weight: 500;
+  color: #fd6867;
+  line-height: 1.4;
+  margin: 0.75rem 0;
+  text-align: left;
+}
+
+.service-card__btn {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  background-color: #fd6867;
+  color: var(--color-white);
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  margin-top: 0.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.service-card__btn:hover {
+  opacity: 0.9;
+}
+
+.service-card__buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.service-card__buttons .service-card__btn {
+  margin-top: 0;
+}
+
+.service-card__btn--light {
+  background-color: #feb3b3;
+  color: #fd6867;
+}
+
+/* Legacy list styles */
 .services-list {
   list-style: none;
   padding: 0;
@@ -1266,6 +1411,302 @@ body {
   opacity: 0.8;
 }
 
+/* ----- 13. Contact Menu ----- */
+.contact-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.contact-menu[hidden] {
+  display: none;
+}
+
+.contact-menu__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.contact-menu__content {
+  position: relative;
+  background: var(--color-white);
+  border: 2px solid #fd6867;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-menu__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  color: #fd6867;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.contact-menu__close:hover {
+  opacity: 0.7;
+}
+
+.contact-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border: none;
+  background: transparent;
+  color: #fd6867;
+  font-family: var(--font-family);
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.contact-menu__item:hover {
+  background-color: #feb3b3;
+}
+
+.contact-menu__item .pi {
+  font-size: 1.25rem;
+  width: 1.5rem;
+  text-align: center;
+}
+
+.contact-menu__item--cta {
+  background-color: #fd6867;
+  color: var(--color-white);
+  margin-top: 0.5rem;
+}
+
+.contact-menu__item--cta:hover {
+  background-color: #e85d5c;
+}
+
+/* Contact Menu Form */
+.contact-menu__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #feb3b3;
+}
+
+.contact-menu__form[hidden] {
+  display: none;
+}
+
+.contact-menu__form input,
+.contact-menu__form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #feb3b3;
+  border-radius: 8px;
+  font-family: var(--font-family);
+  font-size: 1rem;
+  color: var(--color-text);
+  background: var(--color-white);
+  transition: border-color 0.2s ease;
+}
+
+.contact-menu__form input:focus,
+.contact-menu__form textarea:focus {
+  outline: none;
+  border-color: #fd6867;
+}
+
+.contact-menu__form input::placeholder,
+.contact-menu__form textarea::placeholder {
+  color: #999;
+}
+
+.contact-menu__form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.contact-menu__submit {
+  padding: 0.875rem 1.5rem;
+  background-color: #fd6867;
+  color: var(--color-white);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.contact-menu__submit:hover {
+  background-color: #e85d5c;
+}
+
+/* Service card button styles for button element */
+button.service-card__btn {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ----- 14. Footer Februar ----- */
+.footer-februar {
+  background-color: #cfc8b6;
+  padding: 4rem 3rem 3rem;
+  margin-top: 6rem;
+  width: 100vw;
+  margin-left: calc(-3rem);
+}
+
+.footer-februar__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.footer-februar__brand {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.footer-februar__logo {
+  width: 5rem;
+  height: auto;
+}
+
+.footer-februar__title {
+  font-family: var(--font-family);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fd6867;
+  line-height: 1.2;
+}
+
+.footer-februar__info {
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+}
+
+.footer-februar__address {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.footer-februar__address p {
+  font-family: var(--font-family);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #fd6867;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.footer-februar__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-februar__link {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: #fd6867;
+  font-family: var(--font-family);
+  font-size: 1.125rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer-februar__link:hover {
+  opacity: 0.7;
+}
+
+.footer-februar__link svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.footer-februar__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background-color: #fd6867;
+  color: var(--color-white);
+  font-family: var(--font-family);
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-style: italic;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.footer-februar__cta:hover {
+  background-color: #e85d5c;
+}
+
+.footer-februar__cta:active {
+  transform: scale(0.98);
+}
+
 /* Mobile-first responsive styles for Februar */
 @media (max-width: 767px) {
   .page-landing .page-container {
@@ -1322,6 +1763,41 @@ body {
   .services-list__item {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  /* Footer responsive */
+  .footer-februar {
+    padding: 2.5rem 1rem 2rem;
+    margin-left: calc(-1rem);
+    margin-top: 4rem;
+  }
+
+  .footer-februar__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .footer-februar__brand {
+    gap: 1rem;
+  }
+
+  .footer-februar__logo {
+    width: 3.5rem;
+  }
+
+  .footer-februar__title {
+    font-size: 1.375rem;
+  }
+
+  .footer-februar__info {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .footer-februar__cta {
+    width: 100%;
+    justify-content: center;
   }
 }
 
