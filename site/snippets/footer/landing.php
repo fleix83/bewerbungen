@@ -1,7 +1,7 @@
 <footer class="footer-februar">
   <div class="footer-februar__inner">
     <div class="footer-februar__brand">
-      <img src="<?= url('assets/images/logo.png') ?>" alt="<?= $site->title() ?>" class="footer-februar__logo">
+      <img src="<?= url('assets/images/b2.png') ?>" alt="<?= $site->title() ?>" class="footer-februar__logo">
       <span class="footer-februar__title">Bewerbungen & Mehr</span>
     </div>
 
