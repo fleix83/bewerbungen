@@ -611,13 +611,13 @@ body {
   font-size: var(--font-size-lead);
   font-weight: 800;
   line-height: 1.4;
-  color: var(--color-white);
+  color: var(--color-primary);
   margin: 0;
 }
 
 .hero-lead-line {
   display: inline;
-  background-color: #f1d7a0;
+  background-color: #fdefd3b8;
   padding: 0.1em 0.3em;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
