@@ -1,5 +1,5 @@
 <section class="services-section">
-  <h2 class="services-section__title">Angebote</h2>
+  <h2 class="services-section__title">Vorbeikommen oder online?</h2>
 
   <div class="services-section__intro">
     <div class="services-section__intro-block">
@@ -11,6 +11,8 @@
       <p class="services-section__text">Senden Sie uns Ihre zu bearbeitenden Dokumente online per Mail oder laden Sie sie direkt hoch. Schreiben Sie dazu kurz, was Sie brauchen und wir melden uns bei Ihnen. Achtung: dies ist nicht für alle Dokumente möglich.</p>
     </div>
   </div>
+
+  <h2 class="services-section__title">Angebote</h2>
 
   <ul class="services-cards">
     <li class="service-card">
