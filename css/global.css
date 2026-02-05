@@ -840,8 +840,8 @@ body {
 .services-section__intro {
   display: flex;
   flex-wrap: wrap;
-  gap: 6rem;
-  margin-bottom: 2.5rem;
+  gap: 8rem;
+  margin-bottom: 9.5rem;
 }
 
 .services-section__intro-block {
