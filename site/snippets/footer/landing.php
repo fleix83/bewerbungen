@@ -1,8 +1,7 @@
 <footer class="footer-februar">
   <div class="footer-februar__inner">
     <div class="footer-februar__brand">
-      <img src="<?= url('assets/images/b2.png') ?>" alt="<?= $site->title() ?>" class="footer-februar__logo">
-      <span class="footer-februar__title">Bewerbungen & Mehr</span>
+      <img src="<?= url('assets/images/bewerbungenundmehr.png') ?>" alt="<?= $site->title() ?>" class="footer-februar__logo">
     </div>
 
     <div class="footer-februar__info">
@@ -23,8 +22,8 @@
       </div>
     </div>
 
-    <a href="<?= $site->termin_button_url() ?>" class="footer-februar__cta">
+    <button type="button" class="footer-februar__cta" data-contact-menu>
       Termin machen
-    </a>
+    </button>
   </div>
 </footer>

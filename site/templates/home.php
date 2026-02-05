@@ -16,6 +16,11 @@
         </div>
 
         <p class="hero-body"><?= $page->hero_body() ?></p>
+
+        <div class="hero-cta">
+          <p class="hero-cta__text"><?= $page->hero_cta_text() ?></p>
+          <button type="button" class="hero-cta__btn" data-contact-menu>Anfragen</button>
+        </div>
       </section>
 
       <?php snippet('components/services-section') ?>

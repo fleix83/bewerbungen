@@ -10,11 +10,15 @@ Cta-subtitle: auch kurzfristig
 
 ----
 
-Hero-lead: Sie möchten sich auf eine Stelle bewerben? Aber Deutsch ist nicht Ihre Muttersprache? Oder Ihre letzte Bewerbung ist schon lange her?
+Hero-lead: Deine Unterstützung bei Bewerbungen, Motivationsschreiben, Lebenslauf und mehr. In Basel.
 
 ----
 
-Hero-body: Aus der Arbeit mit unzähligen Kunden und Kundinnen in den letzten Jahren weiss ich: das ist eine echte Herausforderung. Ich selber spreche Deutsch und habe viel Erfahrung mit dem Verfassen von Bewerbungsschreiben (Motivationsschreiben) und Lebenslauf (CV) nach Schweizer Standard. Ich helfe Ihnen gerne dabei.
+Hero-body: Sie möchten sich auf eine Stelle bewerben, aber Deutsch ist nicht Ihre Muttersprache? Oder Ihre letzte Bewerbung ist schon eine Weile her? Wir haben damit Erfahrung und unterstützen Sie günstig und kurzfristig.
+
+----
+
+Hero-cta-text: Kontaktieren Sie uns unkompliziert und wir schauen was Sie brauchen. Oder machen Sie direkt online einen Termin.
 
 ----
 
