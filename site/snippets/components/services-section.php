@@ -4,11 +4,11 @@
   <div class="services-section__intro">
     <div class="services-section__intro-block">
       <h3 class="services-section__subtitle">Unterstützung vor Ort in Basel</h3>
-      <p class="services-section__text">Zusammen erarbeiten wir Ihr Dokument in unserem ruhigen Raum Nähe Bankverein. Wir haben Zeit, auf Ihre individuelle Situation einzugehen und Sie gehen direkt mit einem fertigen Dokument nachhause.</p>
+      <p class="services-section__text">Wenn es um Persönliches geht wie um einen Brief, ein erstes Bewerbungsschreiben oder einen Lebenslauf sind wir vor Ort für Sie da. Zusammen erarbeiten wir Ihr Dokument in unserem ruhigen Büro in der Nähe des Bankvereins. Wir haben Zeit, auf Ihre individuelle Situation einzugehen und Sie gehen direkt mit einem fertigen Dokument nachhause.</p>
     </div>
     <div class="services-section__intro-block">
       <h3 class="services-section__subtitle">Unterstützung Online</h3>
-      <p class="services-section__text">Senden Sie uns Ihre zu bearbeitenden Dokumente online per Mail oder laden Sie sie direkt hoch. Schreiben Sie dazu kurz, was Sie brauchen und wir melden uns bei Ihnen. Achtung: dies ist nicht für alle Dokumente möglich.</p>
+      <p class="services-section__text">Bei einfachen Dokumenten oder wenn wir uns schon kennen, senden Sie uns Ihre zu bearbeitenden Dokumente einfach online per Mail oder laden Sie sie direkt hoch. Schreiben Sie dazu kurz, was Sie brauchen und wir melden uns bei Ihnen. Achtung: Für Bewerbungen und Lebenslauf ist ein erster Termin vor Ort nötig, um ein gutes Dokument zu verfassen. Folgedokumente wie weitere Bewerbungsschreiben können dann online erledigt werden.</p>
     </div>
   </div>
 
@@ -36,7 +36,7 @@
         <i class="pi pi-user-edit"></i>
       </div>
       <span class="service-card__name">Lebenslauf<br>(CV)</span>
-      <p class="service-card__body">Der Lebenslauf ist Ihr wichtigstes Dokument Ihrer Bewerbung. Es lohnt sich dabei etwas Zeit zu investieren und sorgfältig zu sein. Bringen Sie ein gutes und aktuelles Foto mit, um Ihre Chancen zu erhöhen.</p>
+      <p class="service-card__body">Der Lebenslauf ist das wichtigste Dokument Ihrer Bewerbung. Es lohnt sich dabei etwas Zeit zu investieren und sorgfältig zu sein. Bringen Sie ein gutes und aktuelles Foto mit, um Ihre Chancen zu erhöhen.</p>
       <div class="service-card__meta">
         <span class="service-card__meta-item"><strong>Zeit:</strong> max 1h</span>
         <span class="service-card__meta-item"><strong>Kosten:</strong> 30.00</span>
