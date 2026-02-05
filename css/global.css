@@ -8,13 +8,13 @@
 /* ----- 1. CSS Custom Properties ----- */
 :root {
   /* Colors */
-  --color-primary: #3931B4;
+  --color-primary: #5781d6;
   --color-secondary: #F3D676;
   --color-background: #FFFFFF;
   --color-background-cream: #FFF8E7;
   --color-dot-green: #95FCA8;
   --color-dot-yellow: #F3D676;
-  --color-dot-blue: #3931B4;
+  --color-dot-blue: #5781d6;
   --color-text: #2A2A2A;
   --color-white: #FFFFFF;
   --color-address-bg: #CAD6FF;
@@ -394,6 +394,7 @@ body {
   align-items: center;
   gap: 0.5rem;
   color: var(--color-primary);
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -446,8 +447,9 @@ body {
 .landing-header__nav-link--cta {
   background-color: #fd6767;
   color: var(--color-white);
+  font-family: var(--font-family);
   font-weight: var(--font-weight-bold);
-  font-style: italic;
+  font-style: normal;
   border: none;
   cursor: pointer;
 }
@@ -458,9 +460,9 @@ body {
 }
 
 .landing-header__cta-subtitle {
-  font-size: 0.875rem;
+  font-size: 1.175rem;
   font-style: italic;
-  font-weight: var(--font-weight-bold);
+  font-weight: 600;
   color: var(--color-primary);
   margin-top: 0.25rem;
   padding-right: 0.5rem;
