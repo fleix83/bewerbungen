@@ -136,12 +136,39 @@ body {
   padding: 1rem 3rem;
 }
 
-/* Other Pages Cream Background */
-.page-menu,
+/* Other Pages Background */
 .page-preise,
 .page-about,
 .page-ablauf {
-  background-color: #e7e6ff;
+  background-color: #fff8e7;
+}
+
+/* Inner pages - wider layout like landing page */
+.page-preise .page-container,
+.page-about .page-container {
+  max-width: 100%;
+  padding: 2rem 3rem;
+}
+
+.page-preise .page-main,
+.page-about .page-main {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 1.35rem;
+  line-height: 1.6;
+}
+
+.page-preise .page-title,
+.page-about .page-title {
+  color: var(--color-primary);
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.page-preise .section-title,
+.page-about .section-title {
+  font-size: 2rem;
+  margin-top: 2.5rem;
 }
 
 /* ----- 5. Buttons ----- */
@@ -351,6 +378,13 @@ body {
 /* ----- 8. Page-Specific Styles ----- */
 
 /* Landing Page - Februar Header */
+/* Full-width header wrapper for inner pages */
+.header-wrapper {
+  width: 100%;
+  padding: 1rem 3rem;
+  background-color: #fff8e7;
+}
+
 .landing-header {
   display: flex;
   justify-content: space-between;
@@ -358,6 +392,7 @@ body {
   padding: 0;
   font-family: var(--font-family);
   position: relative;
+  z-index: 100;
 }
 
 .landing-header__arrow {

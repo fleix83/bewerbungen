@@ -1,8 +1,10 @@
 <?php snippet('head') ?>
 <body class="page-preise">
-  <div class="page-container">
-    <?php snippet('header/page') ?>
+  <div class="header-wrapper">
+    <?php snippet('header/landing') ?>
+  </div>
 
+  <div class="page-container">
     <main class="page-main">
       <h1 class="page-title"><?= $page->title() ?></h1>
 
@@ -60,6 +62,10 @@
       <?php snippet('components/contact-cta') ?>
       <?php snippet('footer/page-actions') ?>
     </main>
+
+    <?php snippet('components/contact-menu') ?>
   </div>
+
+  <script src="<?= url('js/contact-menu.js') ?>"></script>
 </body>
 </html>

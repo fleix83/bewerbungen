@@ -5,7 +5,7 @@
 RewriteEngine on
 
 # RewriteBase: / for production, /bewerbungen/ for local XAMPP
-RewriteBase /
+RewriteBase /bewerbungen/
 
 # Terminmanager: exclude from Kirby
 RewriteRule ^terminmanager/ - [L]

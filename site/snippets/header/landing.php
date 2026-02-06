@@ -1,5 +1,7 @@
 <header class="landing-header">
+  <?php if ($page->isHomePage()): ?>
   <img src="<?= url('assets/images/arrow-termin.svg') ?>" alt="" class="landing-header__arrow" aria-hidden="true">
+  <?php endif ?>
   <div class="landing-header__logo">
     <img src="<?= url('assets/images/bewerbungenundmehr.png') ?>" alt="<?= $site->title() ?>">
   </div>
