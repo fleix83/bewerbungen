@@ -2025,7 +2025,7 @@ button.service-card__btn {
 
 /* ----- 14. Footer Februar ----- */
 .footer-februar {
-  background-color: #beb59b47;
+  background-color: #000000c2;
   padding: 4rem 3rem 3rem;
   margin-top: 0;
   width: 100vw;
@@ -2057,14 +2057,14 @@ button.service-card__btn {
   font-size: 1.7rem;
   font-weight: 600;
   color: #fd6867;
-  margin-top: -24px;
+  margin-top: -15px;
   margin-left: 146.6px;
 }
 
 .footer-februar__logo {
   display: block;
   width: auto;
-  height: 4rem;
+  height: 3.2rem;
   object-fit: contain;
   visibility: visible;
   opacity: 1;
@@ -2094,7 +2094,7 @@ button.service-card__btn {
   font-family: var(--font-family-quicksand);
   font-size: 1.125rem;
   font-weight: 600;
-  color: #5781D6;
+  color: #fbf6f2;
   margin: 0;
   line-height: 1.4;
 }
@@ -2109,7 +2109,7 @@ button.service-card__btn {
   display: flex;
   align-items: center;
   gap: 0.625rem;
-  color: #5781D6;
+  color: #fbf6f2;
   font-family: var(--font-family-quicksand);
   font-size: 1.125rem;
   font-weight: 600;
