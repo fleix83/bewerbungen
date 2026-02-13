@@ -34,6 +34,7 @@
     <?php snippet('footer/landing') ?>
   </div>
 
+  <script src="<?= url('js/mobile-nav.js') ?>"></script>
   <script src="<?= url('js/contact-menu.js') ?>"></script>
 </body>
 </html>

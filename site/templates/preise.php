@@ -4,9 +4,13 @@
     <?php snippet('header/landing') ?>
   </div>
 
+  <figure class="page-hero-image">
+    <img src="<?= url('assets/images/preise.jpg') ?>" alt="Bewerbungshilfe Basel – Preise & Angebote">
+  </figure>
+
   <div class="page-container">
     <main class="page-main">
-      <h1 class="page-title"><?= $page->title() ?></h1>
+      <h1 class="page-title"><span class="page-title__highlight"><?= $page->title() ?></span></h1>
 
       <section class="price-list" aria-label="Preisliste">
         <ul style="list-style: none;">
@@ -66,6 +70,7 @@
     <?php snippet('components/contact-menu') ?>
   </div>
 
+  <script src="<?= url('js/mobile-nav.js') ?>"></script>
   <script src="<?= url('js/contact-menu.js') ?>"></script>
 </body>
 </html>
