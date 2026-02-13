@@ -64,16 +64,20 @@
     </li>
   </ul>
 
-  <h2 class="services-section__title">Vorbeikommen oder online?</h2>
+  <div class="location-section">
+    <div class="location-section__content">
+      <h2 class="services-section__title">Vorbeikommen oder online?</h2>
 
-  <div class="services-section__intro">
-    <div class="services-section__intro-block">
-      <h3 class="services-section__subtitle">Unterstützung vor Ort in Basel</h3>
-      <p class="services-section__text">Für persönliche Dokumente wie Bewerbungsschreiben und Lebenslauf empfehle ich einen Termin vor Ort. In ruhiger Atmosphäre können wir uns kennenlernen und zusammen ein individuelles Dokument anfertigen.</p>
-    </div>
-    <div class="services-section__intro-block">
-      <h3 class="services-section__subtitle">Unterstützung Online</h3>
-      <p class="services-section__text">Folgedokumente wie weitere Bewerbungsschreiben oder Anpassungen erledige ich einfache Schreiben oder Kontaktieren Sie mich per Mail und laden Sie Ihre Dokumente direkt hoch.</p>
+      <div class="services-section__intro">
+        <div class="services-section__intro-block">
+          <h3 class="services-section__subtitle">Unterstützung vor Ort in Basel</h3>
+          <p class="services-section__text">Für persönliche Dokumente wie Bewerbungsschreiben und Lebenslauf empfehle ich einen Termin vor Ort. In ruhiger Atmosphäre können wir uns kennenlernen und zusammen ein individuelles Dokument anfertigen.</p>
+        </div>
+        <div class="services-section__intro-block">
+          <h3 class="services-section__subtitle">Unterstützung Online</h3>
+          <p class="services-section__text">Folgedokumente wie weitere Bewerbungsschreiben oder Anpassungen erledige ich einfache Schreiben oder Kontaktieren Sie mich per Mail und laden Sie Ihre Dokumente direkt hoch.</p>
+        </div>
+      </div>
     </div>
   </div>
 
