@@ -2216,7 +2216,11 @@ button.service-card__btn {
   }
 
   .services-section {
-    margin-left: 0;
+    width: calc(100% + 2rem);
+    margin-left: -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    overflow-x: hidden;
   }
 
   .services-section__title {
@@ -2272,7 +2276,8 @@ button.service-card__btn {
   }
 
   .service-card {
-    min-width: 80vw;
+    min-width: 70vw;
+    max-width: 70vw;
     scroll-snap-align: start;
     flex-shrink: 0;
   }
@@ -2286,7 +2291,8 @@ button.service-card__btn {
   }
 
   .location-section {
-    margin-left: calc(-1rem);
+    width: calc(100% + 2rem);
+    margin-left: -1rem;
   }
 
   .location-section__content {
