@@ -8,28 +8,23 @@
 
       <?php snippet('components/hero-image-februar') ?>
 
-      <section class="hero-section">
-        <div class="hero-section__top">
-        </div>
-
-        <div class="hero-body-icons">
-          <span class="hero-body-icon hero-body-icon--blue"></span>
-          <span class="hero-body-icon hero-body-icon--coral"></span>
-        </div>
-        <div class="hero-body-columns">
-          <div class="hero-body-columns__col">
-            <p class="hero-body-columns__text"><?= $page->section2_card1_text() ?></p>
+      <section class="pitch-section">
+        <div class="pitch-columns">
+          <div class="pitch-col">
+            <img src="<?= url('assets/images/icon_language.png') ?>" alt="" class="pitch-col__icon">
+            <p class="pitch-col__text"><?= $page->section2_card1_text() ?></p>
           </div>
-          <div class="hero-body-columns__col">
-            <p class="hero-body-columns__text"><?= $page->section2_card2_text() ?></p>
+          <div class="pitch-col">
+            <img src="<?= url('assets/images/icon_update.png') ?>" alt="" class="pitch-col__icon pitch-col__icon--round">
+            <p class="pitch-col__text"><?= $page->section2_card2_text() ?></p>
           </div>
         </div>
 
-        <p class="hero-body"><?= $page->hero_cta_text() ?></p>
+        <p class="pitch-body"><?= $page->hero_cta_text() ?></p>
 
-        <div class="hero-cta">
-          <button type="button" class="hero-cta__btn" data-contact-menu>Anfragen oder Termin machen</button>
-          <p class="hero-cta__subtitle"><?= $page->cta_subtitle() ?></p>
+        <div class="pitch-cta">
+          <button type="button" class="pitch-cta__btn" data-contact-menu>Anfragen oder Termin machen</button>
+          <p class="pitch-cta__subtitle"><?= $page->cta_subtitle() ?></p>
         </div>
       </section>
 
