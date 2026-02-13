@@ -917,7 +917,7 @@ body {
   font-weight: 700;
   line-height: 1.3;
   color: var(--color-primary);
-  margin: 0 0 2rem 0;
+  margin: 0 0 6rem 0;
 }
 
 .services-section__intro {
@@ -965,29 +965,41 @@ body {
   align-items: start;
   justify-content: flex-start;
   padding: 1.5rem 2rem;
-  border: 2px solid var(--color-purple);
+  border: 2px solid #855CD0;
   border-radius: 20px;
   background: transparent;
   max-width: 460px;
   text-align: left;
 }
 
+.service-card:nth-child(even) {
+  border-color: #5781D6;
+}
+
 .service-card__name {
   font-family: var(--font-family-quicksand);
   font-size: 1.725rem;
   font-weight: 700;
-  color: var(--color-purple);
+  color: #855CD0;
   line-height: 1.3;
+}
+
+.service-card:nth-child(even) .service-card__name {
+  color: #5781D6;
 }
 
 .service-card__body {
   font-family: var(--font-family-quicksand);
   font-size: 1.275rem;
   font-weight: 400;
-  color: var(--color-purple);
+  color: #855CD0;
   line-height: 1.4;
   margin: 0.75rem 0;
   text-align: left;
+}
+
+.service-card:nth-child(even) .service-card__body {
+  color: #5781D6;
 }
 
 .service-card__meta {
@@ -999,14 +1011,19 @@ body {
 }
 
 .service-card__meta-item {
+  display: inline-block;
   font-family: var(--font-family-quicksand);
   font-size: 1rem;
   font-weight: 400;
-  color: var(--color-purple);
+  color: #855CD0;
   line-height: 1.4;
   background-color: var(--color-white);
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
+}
+
+.service-card:nth-child(even) .service-card__meta-item {
+  color: #5781D6;
 }
 
 .service-card__meta-item strong {
@@ -1021,7 +1038,7 @@ body {
 .service-card__btn {
   display: inline-block;
   padding: 0.5rem 1.25rem;
-  background-color: #fd6867;
+  background-color: #855CD0;
   color: var(--color-white);
   font-family: var(--font-family);
   font-size: 0.875rem;
@@ -1036,9 +1053,8 @@ body {
   opacity: 0.9;
 }
 
-.service-card__btn--purple {
-  background-color: var(--color-purple);
-  color: var(--color-white);
+.service-card:nth-child(even) .service-card__btn {
+  background-color: #5781D6;
 }
 
 .service-card__buttons {
