@@ -1066,7 +1066,8 @@ body {
   padding: 1.5rem 2rem;
   border: 2px solid #855CD0;
   border-radius: 20px;
-  background: transparent;
+  background: #fefefe52;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   max-width: 460px;
   text-align: left;
 }
