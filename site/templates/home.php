@@ -10,16 +10,26 @@
 
       <section class="hero-section">
         <div class="hero-section__top">
-          <div class="hero-section__content">
-            <p class="hero-lead"><span class="hero-lead-line"><?= $page->hero_lead() ?></span></p>
+        </div>
+
+        <div class="hero-body-icons">
+          <span class="hero-body-icon hero-body-icon--blue"></span>
+          <span class="hero-body-icon hero-body-icon--coral"></span>
+        </div>
+        <div class="hero-body-columns">
+          <div class="hero-body-columns__col">
+            <p class="hero-body-columns__text"><?= $page->section2_card1_text() ?></p>
+          </div>
+          <div class="hero-body-columns__col">
+            <p class="hero-body-columns__text"><?= $page->section2_card2_text() ?></p>
           </div>
         </div>
 
-        <p class="hero-body"><?= $page->hero_body() ?></p>
+        <p class="hero-body"><?= $page->hero_cta_text() ?></p>
 
         <div class="hero-cta">
-          <p class="hero-cta__text"><?= $page->hero_cta_text() ?></p>
-          <button type="button" class="hero-cta__btn" data-contact-menu>Anfragen</button>
+          <button type="button" class="hero-cta__btn" data-contact-menu>Anfragen oder Termin machen</button>
+          <p class="hero-cta__subtitle"><?= $page->cta_subtitle() ?></p>
         </div>
       </section>
 

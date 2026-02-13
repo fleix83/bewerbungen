@@ -572,26 +572,13 @@ body {
   opacity: 0.56;
 }
 
-.hero-image-overlay__bar {
+.hero-lead-wrapper {
   position: absolute;
-  left: 0;
-  height: 28%;
-  background-color: rgba(255, 255, 255, 0.72);
-}
-
-.hero-image-overlay__bar--1 {
   bottom: 0;
-  width: 100%;
-}
-
-.hero-image-overlay__bar--2 {
-  bottom: 28%;
-  width: 75%;
-}
-
-.hero-image-overlay__bar--3 {
-  bottom: 56%;
-  width: 50%;
+  left: 0;
+  right: 0;
+  padding: 0 6rem 8rem 3rem;
+  z-index: 5;
 }
 
 /* Februar Hero Content Wrapper - overlapping layout */
@@ -629,7 +616,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-top: -14rem;
   position: relative;
   z-index: 10;
   padding-right: 2rem;
@@ -637,7 +623,7 @@ body {
 
 .hero-section__content {
   flex: 1;
-  max-width: 64%;
+  max-width: 70%;
 }
 
 .hero-section__cta {
@@ -648,19 +634,31 @@ body {
   margin-top: 2rem;
 }
 
-/* Februar Lead Text - with white background highlight */
+/* Februar Lead Text */
 .hero-lead {
-  font-family: var(--font-family-quicksand);
-  font-size: var(--font-size-lead);
+  font-family: 'Quicksand', sans-serif;
+  font-size: 69px;
   font-weight: 700;
-  line-height: 1.4;
-  color: var(--color-primary);
+  line-height: 96px;
+  color: #5781D6;
   margin: 0;
+  font-style: normal;
 }
 
-.hero-lead-line {
-  display: inline;
-  line-height: 89px;
+.hero-lead em {
+  font-style: normal;
+  font-size: 3rem;
+}
+
+.hero-lead__bg {
+  background-color: rgb(255 255 255 / 40%);
+  padding: 0px 0.3em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.hero-lead--red {
+  color: #FD6867;
 }
 
 /* Februar Body Text - Two Column Layout */
