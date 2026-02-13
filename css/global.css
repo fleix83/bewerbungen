@@ -446,7 +446,7 @@ body {
 }
 
 .landing-header__logo-img {
-  height: 2.8rem;
+  height: 1.8rem;
   width: auto;
   max-width: 100%;
   display: block;
@@ -705,9 +705,9 @@ body {
 /* Februar Lead Text - mobile-first */
 .hero-lead {
   font-family: 'Quicksand', sans-serif;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 700;
-  line-height: 38px;
+  line-height: 27px;
   color: #5781D6;
   margin: 0;
   font-style: normal;
@@ -715,7 +715,7 @@ body {
 
 .hero-lead em {
   font-style: normal;
-  font-size: 16px;
+  font-size: 11px;
 }
 
 .hero-lead__bg {
@@ -751,13 +751,13 @@ body {
 }
 
 .pitch-col__icon {
-  height: 4.5rem;
+  height: 3.6rem;
   width: auto;
   margin-bottom: 2rem;
 }
 
 .pitch-col__icon--round {
-  height: 4rem;
+  height: 3.2rem;
 }
 
 .pitch-col__text {
@@ -2259,7 +2259,22 @@ button.service-card__btn {
   }
 
   .services-cards {
-    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .services-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-card {
+    min-width: 80vw;
+    scroll-snap-align: start;
+    flex-shrink: 0;
   }
 
   .services-section__intro {
