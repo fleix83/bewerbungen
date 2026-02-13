@@ -1,7 +1,8 @@
 <footer class="footer-februar">
   <div class="footer-februar__inner">
     <div class="footer-februar__brand">
-      <img src="<?= url('assets/images/bewerbungenundmehr.png') ?>" alt="<?= $site->title() ?>" class="footer-februar__logo">
+      <img src="<?= url('assets/images/logo_color.png') ?>" alt="<?= $site->title() ?>" class="footer-februar__logo">
+      <span class="footer-februar__name">Felix Weissheimer</span>
     </div>
 
     <div class="footer-februar__info">

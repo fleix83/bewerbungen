@@ -1794,11 +1794,14 @@ button.service-card__btn {
 
 /* ----- 14. Footer Februar ----- */
 .footer-februar {
-  background-color: #f0eadd;
+  background-color: #beb59b47;
   padding: 4rem 3rem 3rem;
-  margin-top: 6rem;
+  margin-top: 0;
   width: 100vw;
   margin-left: calc(-3rem);
+  height: 30vh;
+  display: flex;
+  align-items: center;
 }
 
 .footer-februar__inner {
@@ -1807,14 +1810,24 @@ button.service-card__btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 3rem;
+  gap: 10rem;
   flex-wrap: wrap;
 }
 
 .footer-februar__brand {
   display: flex;
-  align-items: center;
-  gap: 1.25rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.footer-februar__name {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #fd6867;
+  margin-top: -24px;
+  margin-left: 146.6px;
 }
 
 .footer-februar__logo {
@@ -1837,7 +1850,7 @@ button.service-card__btn {
 .footer-februar__info {
   display: flex;
   align-items: flex-start;
-  gap: 9rem;
+  gap: 11rem;
 }
 
 .footer-februar__address {
@@ -1849,8 +1862,8 @@ button.service-card__btn {
 .footer-februar__address p {
   font-family: var(--font-family-quicksand);
   font-size: 1.125rem;
-  font-weight: 400;
-  color: var(--color-purple);
+  font-weight: 600;
+  color: #5781D6;
   margin: 0;
   line-height: 1.4;
 }
@@ -1865,10 +1878,10 @@ button.service-card__btn {
   display: flex;
   align-items: center;
   gap: 0.625rem;
-  color: var(--color-purple);
+  color: #5781D6;
   font-family: var(--font-family-quicksand);
   font-size: 1.125rem;
-  font-weight: 400;
+  font-weight: 600;
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
