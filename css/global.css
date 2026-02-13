@@ -974,9 +974,11 @@ body {
 
 /* Februar Services Section */
 .services-section {
-  width: 100%;
+  width: 100vw;
   margin-top: 5rem;
-  margin-left: 50px;
+  margin-left: -3rem;
+  padding-left: calc(3rem + 50px);
+  background-color: #fd68670a;
 }
 
 .services-section__title {
