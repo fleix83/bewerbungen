@@ -4,52 +4,46 @@
     <?php snippet('header/landing') ?>
   </div>
 
+  <figure class="about-hero-image">
+    <img src="<?= url('assets/images/felix_weissheimer_1500.png') ?>"
+         alt="<?= $site->owner_name() ?> – Bewerbungsexperte Basel"
+         loading="eager">
+  </figure>
+
   <div class="page-container">
-    <main class="page-main">
-      <h1 class="page-title"><?= $page->title() ?></h1>
+    <main class="page-main about-main">
+      <h1 class="about-heading"><?= $page->title() ?></h1>
 
-      <?php if ($image = $page->images()->first()): ?>
-      <figure class="about-photo">
-        <img src="<?= $image->url() ?>"
-             alt="<?= $image->alt()->or($site->owner_name() . ' - Bewerbungsexperte Basel') ?>"
-             width="340"
-             height="220"
-             loading="lazy">
-      </figure>
-      <?php endif ?>
-
-      <article class="about-content">
+      <article class="about-block">
         <?php if ($page->bio_paragraph_1()->isNotEmpty()): ?>
-        <p><?= $page->bio_paragraph_1() ?></p>
-        <?php endif ?>
-
-        <?php if ($page->bio_paragraph_2()->isNotEmpty()): ?>
-        <p><?= $page->bio_paragraph_2() ?></p>
+        <p class="about-text"><?= $page->bio_paragraph_1() ?> <?= $page->bio_paragraph_2() ?></p>
         <?php endif ?>
       </article>
 
       <?php foreach ($page->sections()->toStructure() as $section): ?>
-      <section class="content-section">
-        <h2 class="section-title"><?= $section->section_title() ?></h2>
+      <section class="about-block">
+        <h2 class="about-heading"><?= $section->section_title() ?></h2>
         <?php
           $highlights = $section->section_highlights()->split();
+          $paragraphs = [];
           foreach ($section->section_paragraphs()->toStructure() as $p):
             $text = $p->paragraph()->value();
             foreach ($highlights as $highlight) {
               $text = str_replace($highlight, '<span class="language-highlight">' . $highlight . '</span>', $text);
             }
+            $paragraphs[] = $text;
+          endforeach;
         ?>
-        <p><?= $text ?></p>
-        <?php endforeach ?>
+        <p class="about-text"><?= implode(' ', $paragraphs) ?></p>
       </section>
       <?php endforeach ?>
 
-      <?php snippet('components/contact-cta') ?>
-      <?php snippet('footer/page-actions') ?>
     </main>
 
     <?php snippet('components/contact-menu') ?>
   </div>
+
+  <?php snippet('footer/landing') ?>
 
   <script src="<?= url('js/mobile-nav.js') ?>"></script>
   <script src="<?= url('js/contact-menu.js') ?>"></script>

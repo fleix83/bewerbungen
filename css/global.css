@@ -147,20 +147,28 @@ body {
 }
 
 /* Inner pages - wider layout like landing page */
-.page-preise .page-container,
-.page-about .page-container {
+.page-preise .page-container {
   max-width: 100%;
   padding: 2rem 3rem;
   margin-top: -32rem;
   position: relative;
 }
 
-.page-preise .page-main,
-.page-about .page-main {
+.page-about .page-container {
+  max-width: 100%;
+  padding: 4rem 3rem;
+}
+
+.page-preise .page-main {
   max-width: 1100px;
   margin: 0 auto 0 calc(50% - 500px - 6rem);
   font-size: 1.35rem;
   line-height: 1.6;
+}
+
+.page-about .page-main {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .page-preise .page-title,
@@ -1292,7 +1300,7 @@ body {
   color: var(--color-background);
 }
 
-/* About Page */
+/* About Page - Legacy */
 .about-photo {
   margin: 0 0 var(--spacing-lg) 0;
   overflow: hidden;
@@ -1314,6 +1322,63 @@ body {
 
 .about-content p {
   margin-bottom: var(--spacing-md);
+}
+
+/* About Page - Redesign */
+.about-hero-image {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #fbf6f1;
+}
+
+.about-hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 75vh;
+  object-position: top;
+}
+
+.about-main {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-heading {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: normal;
+  color: #002198;
+  margin: 0 0 40px 0;
+}
+
+.about-text {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 41px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: normal;
+  color: #474747;
+  margin: 0;
+}
+
+.about-block {
+  margin-bottom: 140px;
+}
+
+.about-block:last-of-type {
+  margin-bottom: 80px;
+}
+
+.page-about .footer-februar {
+  width: 100%;
+  margin-left: 0;
 }
 
 .language-highlight {
@@ -2141,14 +2206,29 @@ button.service-card__btn {
     padding: 0.75rem 1rem;
   }
 
-  .page-preise .page-container,
+  .page-preise .page-container {
+    padding: 2rem 1rem;
+  }
+
   .page-about .page-container {
     padding: 2rem 1rem;
   }
 
-  .page-preise .page-main,
-  .page-about .page-main {
+  .page-preise .page-main {
     margin: 0 auto;
+  }
+
+  .about-heading {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .about-text {
+    font-size: 22px;
+  }
+
+  .about-block {
+    margin-bottom: 60px;
   }
 
   .page-preise .page-title,
