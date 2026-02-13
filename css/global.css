@@ -2267,7 +2267,7 @@ button.service-card__btn {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    gap: 1rem;
+    gap: 2rem;
     padding-bottom: 1rem;
   }
 
@@ -2276,11 +2276,12 @@ button.service-card__btn {
   }
 
   .service-card {
-    min-width: calc(100vw - 4rem);
-    max-width: calc(100vw - 4rem);
-    scroll-snap-align: start;
+    min-width: 100%;
+    max-width: 100%;
+    scroll-snap-align: center;
     flex-shrink: 0;
     padding: 1.25rem 1.25rem;
+    box-sizing: border-box;
   }
 
   .service-card__name {
