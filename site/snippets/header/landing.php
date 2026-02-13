@@ -1,28 +1,12 @@
 <header class="landing-header">
-  <?php if ($page->isHomePage()): ?>
-  <img src="<?= url('assets/images/arrow-termin.svg') ?>" alt="" class="landing-header__arrow" aria-hidden="true">
-  <?php endif ?>
-  <div class="landing-header__logo">
-    <img src="<?= url('assets/images/bewerbungenundmehr.png') ?>" alt="<?= $site->title() ?>">
-  </div>
-  <div class="landing-header__contact">
-    <a href="tel:<?= $site->telefon() ?>" class="landing-header__contact-link">
-      <?php snippet('icons/phone') ?>
-      <span>Anrufen <?= $site->telefon_display() ?></span>
-    </a>
-    <a href="<?= $site->whatsapp_url() ?>" class="landing-header__contact-link">
-      <?php snippet('icons/whatsapp') ?>
-      <span>Per Whatsapp kontaktieren</span>
-    </a>
-  </div>
+  <a href="<?= $site->url() ?>" class="landing-header__logo">
+    <img src="<?= url('assets/images/logo_color.png') ?>" alt="Bewerbungen & Mehr" class="landing-header__logo-img">
+  </a>
   <nav class="landing-header__nav">
     <a href="<?= page('preise')->url() ?>" class="landing-header__nav-link">Angebote & Preise</a>
     <a href="<?= page('ueber-mich')->url() ?>" class="landing-header__nav-link">Über Mich</a>
-    <div class="landing-header__cta">
-      <button type="button" class="landing-header__nav-link landing-header__nav-link--cta" data-contact-menu>
-        <?= $site->termin_button_label() ?>
-      </button>
-      <span class="landing-header__cta-subtitle">auch kurzfristig</span>
-    </div>
+    <button type="button" class="landing-header__nav-link landing-header__nav-link--cta" data-contact-menu>
+      <?= $site->termin_button_label() ?>
+    </button>
   </nav>
 </header>

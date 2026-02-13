@@ -11,13 +11,15 @@
   --color-primary: #5781d6;
   --color-secondary: #F3D676;
   --color-background: #FFFFFF;
-  --color-background-cream: #FFF8E7;
+  --color-background-cream: #fbf6f1;
   --color-dot-green: #95FCA8;
   --color-dot-yellow: #F3D676;
   --color-dot-blue: #5781d6;
   --color-text: #2A2A2A;
   --color-white: #FFFFFF;
   --color-address-bg: #CAD6FF;
+  --color-purple: #8e75a0;
+  --color-logo-purple: #845cd0;
 
   /* Violet Theme Colors */
   --color-violet-start: #3931B4;
@@ -27,6 +29,7 @@
 
   /* Typography */
   --font-family: 'Inria Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-quicksand: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-family-reddit: 'Inria Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
@@ -140,7 +143,7 @@ body {
 .page-preise,
 .page-about,
 .page-ablauf {
-  background-color: #fff8e7;
+  background-color: #fbf6f1;
 }
 
 /* Inner pages - wider layout like landing page */
@@ -148,12 +151,14 @@ body {
 .page-about .page-container {
   max-width: 100%;
   padding: 2rem 3rem;
+  margin-top: -32rem;
+  position: relative;
 }
 
 .page-preise .page-main,
 .page-about .page-main {
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: 1100px;
+  margin: 0 auto 0 calc(50% - 500px - 6rem);
   font-size: 1.35rem;
   line-height: 1.6;
 }
@@ -163,6 +168,14 @@ body {
   color: var(--color-primary);
   font-size: 3rem;
   margin-bottom: 2rem;
+}
+
+.page-title__highlight {
+  display: inline;
+  background-color: #fdefd3b8;
+  padding: 0.1em 0.3em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .page-preise .section-title,
@@ -328,13 +341,13 @@ body {
 .price-item__name {
   flex: 1;
   font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-lg);
   color: var(--color-text);
 }
 
 .price-item__price {
   font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-lg);
   color: var(--color-text);
 }
 
@@ -382,125 +395,89 @@ body {
 .header-wrapper {
   width: 100%;
   padding: 1rem 3rem;
-  background-color: #fff8e7;
+  background-color: #fbf6f1;
+}
+
+/* Full-width hero image for inner pages (below nav) */
+.page-hero-image {
+  width: 100vw;
+  height: calc(100vh - 120px);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.page-hero-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 .landing-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
+  height: 137px;
   padding: 0;
   font-family: var(--font-family);
   position: relative;
   z-index: 100;
 }
 
-.landing-header__arrow {
-  position: absolute;
-  right: 7%;
-  top: 211.1%;
-  width: 580px;
-  height: auto;
-  z-index: 10;
-  pointer-events: none;
-}
-
 .landing-header__logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-}
-
-.landing-header__logo img {
-  width: auto;
-  height: 4rem;
-}
-
-.landing-header__contact {
-  display: flex;
-  gap: 3rem;
-  font-size: 1rem;
-  color: var(--color-primary);
-  font-family: 'Inria Sans';
-}
-
-.landing-header__contact-link {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--color-primary);
-  font-weight: 600;
   text-decoration: none;
 }
 
-.landing-header__contact-link:hover {
-  opacity: 0.8;
-}
-
-.landing-header__contact-link svg {
-  width: 1rem;
-  height: 1rem;
+.landing-header__logo-img {
+  height: 3.9rem;
+  width: auto;
+  display: block;
 }
 
 .landing-header__nav {
   display: flex;
-  gap: 2.5rem;
-  position: absolute;
-  top: 3.2rem;
-  right: 0rem;
-  z-index: 20;
+  align-items: center;
+  gap: 5.5rem;
 }
 
 .landing-header__nav-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.5rem;
-  height: 3.25rem;
-  background-color: #fdefd3b8;
-  /* border: 1px solid #e0e0e0; */
-  border-radius: 0.25rem;
-  color: var(--color-primary);
-  font-size: 1.75rem;
-  font-weight: 600;
+  padding: 0;
+  background: none;
+  color: #5781D6;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: normal;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .landing-header__nav-link:hover {
-  background-color: var(--color-white);
-  opacity: 0.9;
+  opacity: 0.7;
 }
 
 /* CTA button in nav */
-.landing-header__cta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
 .landing-header__nav-link--cta {
   background-color: #fd6767;
-  color: var(--color-white);
-  font-family: var(--font-family);
-  font-weight: var(--font-weight-bold);
-  font-style: normal;
+  color: #fff;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: normal;
+  padding: 0.5rem 1.75rem;
+  border-radius: 0.25rem;
   border: none;
   cursor: pointer;
 }
 
 .landing-header__nav-link--cta:hover {
-  background-color: #fd6767;
   opacity: 0.9;
-}
-
-.landing-header__cta-subtitle {
-  font-size: 1.175rem;
-  font-style: italic;
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-top: 0.25rem;
-  padding-right: 0.5rem;
 }
 
 /* Legacy header styles (keep for compatibility) */
@@ -586,6 +563,37 @@ body {
   object-fit: cover;
 }
 
+/* Hero image overlay effect */
+.hero-image-overlay {
+  position: relative;
+}
+
+.hero-image-overlay img {
+  opacity: 0.56;
+}
+
+.hero-image-overlay__bar {
+  position: absolute;
+  left: 0;
+  height: 28%;
+  background-color: rgba(255, 255, 255, 0.72);
+}
+
+.hero-image-overlay__bar--1 {
+  bottom: 0;
+  width: 100%;
+}
+
+.hero-image-overlay__bar--2 {
+  bottom: 28%;
+  width: 75%;
+}
+
+.hero-image-overlay__bar--3 {
+  bottom: 56%;
+  width: 50%;
+}
+
 /* Februar Hero Content Wrapper - overlapping layout */
 .hero-content-wrapper {
   display: flex;
@@ -642,9 +650,9 @@ body {
 
 /* Februar Lead Text - with white background highlight */
 .hero-lead {
-  font-family: var(--font-family);
+  font-family: var(--font-family-quicksand);
   font-size: var(--font-size-lead);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.4;
   color: var(--color-primary);
   margin: 0;
@@ -652,35 +660,74 @@ body {
 
 .hero-lead-line {
   display: inline;
-  background-color: #fdefd3b8;
-  padding: 0.1em 0.3em;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
   line-height: 89px;
 }
 
-/* Februar Body Text */
+/* Februar Body Text - Two Column Layout */
+.hero-body-icons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 2.5rem 0 1.5rem 0;
+  max-width: 60%;
+}
+
+.hero-body-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.hero-body-icon--blue {
+  background-color: var(--color-primary);
+}
+
+.hero-body-icon--coral {
+  background-color: #fd6867;
+}
+
+.hero-body-columns {
+  display: flex;
+  gap: 3rem;
+  margin: 0;
+  max-width: 60%;
+}
+
+.hero-body-columns__col {
+  flex: 1;
+}
+
+.hero-body-columns__text {
+  font-family: var(--font-family-quicksand);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-purple);
+  margin: 0;
+}
+
+/* Single paragraph body text below columns */
 .hero-body {
-  font-family: var(--font-family);
-  font-size: var(--font-size-body);
-  font-weight: 600;
-  line-height: var(--line-height-body);
-  color: #fd6867;
-  margin: 2.5rem 0 0 0;
+  font-family: var(--font-family-quicksand);
+  font-size: 1.625rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-purple);
+  margin: 2rem 0 0 0;
   max-width: 70%;
 }
 
 .hero-cta {
   margin-top: 2rem;
-  max-width: 50%;
+  max-width: 70%;
 }
 
 .hero-cta__text {
-  font-family: var(--font-family);
-  font-size: 1.5rem;
-  font-weight: 600;
-  line-height: 2.1rem;
-  color: #fd6867;
+  font-family: var(--font-family-quicksand);
+  font-size: var(--font-size-body);
+  font-weight: 700;
+  line-height: var(--line-height-body);
+  color: var(--color-purple);
   margin: 0 0 1rem 0;
 }
 
@@ -702,6 +749,15 @@ body {
 
 .hero-cta__btn:hover {
   background-color: #e85d5c;
+}
+
+.hero-cta__subtitle {
+  font-family: var(--font-family-quicksand);
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-primary);
+  margin-top: 0.25rem;
 }
 
 /* Legacy hero text styles */
@@ -859,14 +915,14 @@ body {
 /* Februar Services Section */
 .services-section {
   width: 100%;
-  margin-top: 10.5rem;
+  margin-top: 5rem;
   margin-left: 50px;
 }
 
 .services-section__title {
-  font-family: var(--font-family);
+  font-family: var(--font-family-quicksand);
   font-size: 3rem;
-  font-weight: var(--font-weight-bold);
+  font-weight: 700;
   line-height: 1.3;
   color: var(--color-primary);
   margin: 0 0 2rem 0;
@@ -886,18 +942,18 @@ body {
 }
 
 .services-section__subtitle {
-  font-family: var(--font-family);
+  font-family: var(--font-family-quicksand);
   font-size: 1.5rem;
-  font-weight: 900;
-  color: #fd6867;
+  font-weight: 700;
+  color: var(--color-purple);
   margin: 0 0 0.75rem 0;
 }
 
 .services-section__text {
-  font-family: var(--font-family);
+  font-family: var(--font-family-quicksand);
   font-size: 1.525rem;
-  font-weight: 500;
-  color: #fd6867;
+  font-weight: 400;
+  color: var(--color-purple);
   line-height: 1.4;
   margin: 0;
 }
@@ -917,36 +973,26 @@ body {
   align-items: start;
   justify-content: flex-start;
   padding: 1.5rem 2rem;
-  border: 2px solid #fd6867;
+  border: 2px solid var(--color-purple);
   border-radius: 20px;
   background: transparent;
   max-width: 460px;
   text-align: left;
 }
 
-.service-card__icon {
-  margin-bottom: 0.75rem;
-  color: #fd6867;
-}
-
-.service-card__icon .pi {
-  font-size: 1.5rem;
-  color: #fd6867;
-}
-
 .service-card__name {
-  font-family: var(--font-family);
+  font-family: var(--font-family-quicksand);
   font-size: 1.725rem;
   font-weight: 700;
-  color: #fd6867;
+  color: var(--color-purple);
   line-height: 1.3;
 }
 
 .service-card__body {
-  font-family: var(--font-family);
+  font-family: var(--font-family-quicksand);
   font-size: 1.275rem;
-  font-weight: 500;
-  color: #fd6867;
+  font-weight: 400;
+  color: var(--color-purple);
   line-height: 1.4;
   margin: 0.75rem 0;
   text-align: left;
@@ -961,10 +1007,10 @@ body {
 }
 
 .service-card__meta-item {
-  font-family: var(--font-family);
+  font-family: var(--font-family-quicksand);
   font-size: 1rem;
   font-weight: 400;
-  color: #fd6867;
+  color: var(--color-purple);
   line-height: 1.4;
   background-color: var(--color-white);
   padding: 0.25rem 0.5rem;
@@ -998,6 +1044,11 @@ body {
   opacity: 0.9;
 }
 
+.service-card__btn--purple {
+  background-color: var(--color-purple);
+  color: var(--color-white);
+}
+
 .service-card__buttons {
   display: flex;
   gap: 0.5rem;
@@ -1006,11 +1057,6 @@ body {
 
 .service-card__buttons .service-card__btn {
   margin-top: 0;
-}
-
-.service-card__btn--light {
-  background-color: #feb3b3;
-  color: #fd6867;
 }
 
 /* Legacy list styles */
@@ -1560,7 +1606,7 @@ body {
 .contact-menu__content {
   position: relative;
   background: var(--color-white);
-  border: 2px solid #fd6867;
+  border: 2px solid var(--color-purple);
   border-radius: 20px;
   padding: 2rem 1.5rem;
   width: 100%;
@@ -1591,7 +1637,7 @@ body {
   border: none;
   background: transparent;
   font-size: 1.5rem;
-  color: #fd6867;
+  color: var(--color-purple);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1610,7 +1656,7 @@ body {
   padding: 0.875rem 1rem;
   border: none;
   background: transparent;
-  color: #fd6867;
+  color: var(--color-purple);
   font-family: var(--font-family);
   font-size: 1.125rem;
   font-weight: 600;
@@ -1623,7 +1669,7 @@ body {
 }
 
 .contact-menu__item:hover {
-  background-color: #feb3b3;
+  background-color: rgba(142, 117, 160, 0.15);
 }
 
 .contact-menu__item .pi {
@@ -1743,6 +1789,14 @@ button.service-card__btn {
   opacity: 1;
 }
 
+.footer-februar__logo-text {
+  font-family: var(--font-family-quicksand);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
 .footer-februar__info {
   display: flex;
   align-items: flex-start;
@@ -1756,10 +1810,10 @@ button.service-card__btn {
 }
 
 .footer-februar__address p {
-  font-family: var(--font-family);
+  font-family: var(--font-family-quicksand);
   font-size: 1.125rem;
-  font-weight: 500;
-  color: #fd6867;
+  font-weight: 400;
+  color: var(--color-purple);
   margin: 0;
   line-height: 1.4;
 }
@@ -1774,10 +1828,10 @@ button.service-card__btn {
   display: flex;
   align-items: center;
   gap: 0.625rem;
-  color: #fd6867;
-  font-family: var(--font-family);
+  color: var(--color-purple);
+  font-family: var(--font-family-quicksand);
   font-size: 1.125rem;
-  font-weight: 500;
+  font-weight: 400;
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
@@ -1856,6 +1910,16 @@ button.service-card__btn {
   .hero-lead {
     font-size: 1.75rem;
     line-height: 1.4;
+  }
+
+  .hero-body-icons {
+    max-width: 100%;
+  }
+
+  .hero-body-columns {
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 100%;
   }
 
   .hero-body {
