@@ -1376,9 +1376,115 @@ body {
   margin-bottom: 80px;
 }
 
-.page-about .footer-februar {
+.page-about .footer-februar,
+.page-preise .footer-februar {
   width: 100%;
   margin-left: 0;
+}
+
+/* Preise Page - Redesign */
+.preise-hero {
+  position: relative;
+  width: 100%;
+  height: 55vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  background-color: lightgray;
+}
+
+.preise-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../assets/images/glaeser.jpg') lightgray -461.55px -48.736px / 132.591% 187.801% no-repeat;
+  transform: scaleX(-1);
+}
+
+.preise-hero__title {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 77px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: normal;
+  color: #5781D6;
+  margin: 0 0 6rem 13rem;
+  max-width: 500px;
+}
+
+.preise-content {
+  max-width: 100%;
+  padding: 8rem 3rem;
+  background-color: #fbf6f1;
+}
+
+.preise-main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.preise-heading {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 41px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: normal;
+  color: #002198;
+  margin: 0 0 30px 0;
+}
+
+.preise-table {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+}
+
+.preise-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  max-width: 850px;
+  background: #fff;
+  padding: 0.6em 1em;
+  border-radius: 8px;
+  margin-bottom: 0.4em;
+}
+
+.preise-row__name,
+.preise-row__price {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 41px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: normal;
+  color: #474747;
+}
+
+.preise-row__price {
+  white-space: nowrap;
+  margin-left: 2rem;
+}
+
+.preise-note {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 41px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: normal;
+  color: rgba(71, 71, 71, 0.64);
+  margin: 0;
+  max-width: 850px;
+}
+
+.preise-block {
+  margin-bottom: 80px;
+}
+
+.preise-block:last-of-type {
+  margin-bottom: 40px;
 }
 
 .language-highlight {
@@ -2234,6 +2340,44 @@ button.service-card__btn {
   .page-preise .page-title,
   .page-about .page-title {
     font-size: 2rem;
+  }
+
+  /* Preise mobile */
+  .preise-hero {
+    height: 35vh;
+  }
+
+  .preise-hero::before {
+    background-position: center;
+    background-size: cover;
+  }
+
+  .preise-hero__title {
+    font-size: 36px;
+    padding: 0 0 1rem 1rem;
+    max-width: 250px;
+  }
+
+  .preise-content {
+    padding: 2rem 1rem;
+  }
+
+  .preise-heading {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .preise-row__name,
+  .preise-row__price {
+    font-size: 22px;
+  }
+
+  .preise-note {
+    font-size: 22px;
+  }
+
+  .preise-block {
+    margin-bottom: 50px;
   }
 }
 
