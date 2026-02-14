@@ -3,7 +3,7 @@
    Februar Variant
    ======================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+/* Quicksand loaded via head.php */
 
 /* ----- 1. CSS Custom Properties ----- */
 :root {
@@ -28,9 +28,9 @@
   --color-accent-red: #F83F3F;
 
   /* Typography */
-  --font-family: 'Inria Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-family-quicksand: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-family-reddit: 'Inria Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-reddit: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;

@@ -2,7 +2,15 @@ Title: Home
 
 ----
 
-Mehr-link-text: Mehr
+Hero-cta-text: Ich habe damit Erfahrung und unterstütze Sie günstig und kurzfristig vor Ort in Basel oder online. Fragen Sie mich an. Oder noch schneller, machen Sie gleich selbst einen Termin.
+
+----
+
+Section2-card1-text: Sie möchten sich auf eine Stelle bewerben, oder Deutsch ist nicht Ihre Muttersprache?
+
+----
+
+Section2-card2-text: Sie mussten sich schon länger nicht mehr bewerben und Ihre Bewerbungsunterlagen benötigen ein Update?
 
 ----
 
@@ -10,99 +18,73 @@ Cta-subtitle: auch kurzfristig
 
 ----
 
-Hero-lead: Ihre Unterstützung bei Bewerbungen, Motivationsschreiben, Lebenslauf und mehr. In Basel.
+Services-section-title: Womit kann ich Ihnen helfen?
 
 ----
 
-Hero-body: Sie möchten sich auf eine Stelle bewerben, aber Deutsch ist nicht Ihre Muttersprache? Oder Ihre letzte Bewerbung ist schon eine Weile her? Wir haben damit Erfahrung und unterstützen Sie günstig und kurzfristig.
-
-----
-
-Hero-cta-text: Kontaktieren Sie uns unkompliziert und wir schauen was Sie brauchen. Oder machen Sie direkt online einen Termin.
-
-----
-
-Services-title: Ich unterstütze Sie bei folgenden Dokumenten:
-
-----
-
-Services-list:
+Service-cards:
 -
-  name: Bewerbungsschreiben (Motivationsschreben)
+  name: "Bewerbungsschreiben (Motivationsschreiben)"
+  description: "Ein Bewerbungsschreiben wird meistens vom Arbeitgeber erwartet. Darin werden Ihre Stärken und Erfahrungen hervorgehoben und Sie haben die Möglichkeit, sich allgemein positiv zu präsentieren."
+  time: "max 1h"
+  cost: "30.00 (erstes Bewerbungsschreiben)"
+  cost_note: "20.00 (Folgeschreiben online)"
+  online: "nach erstem Termin"
 -
-  name: Lebenslauf (CV)
+  name: "Lebenslauf (CV)"
+  description: "Der Lebenslauf ist das wichtigste Dokument Ihrer Bewerbung. Es lohnt sich dabei etwas Zeit zu investieren und sorgfältig zu sein. Bringen Sie ein gutes und aktuelles Foto mit, um Ihre Chancen zu erhöhen."
+  time: "max 1h"
+  cost: "30.00"
+  cost_note: ""
+  online: "nicht möglich"
 -
-  name: Rekurs
+  name: "Rekurs"
+  description: "Wenn eine Behörde Ihren Antrag ablehnt, können Sie normalerweise Rekurs einlegen. Bringen Sie für einen Rekurs alle notwendigen Dokumente mit und wir helfen Ihnen, einen erfolgreichen Rekurs zu verfassen. Achtung: wir haben keine juristischen Kompetenzen. Bitte erkundigen Sie sich selber, was Ihre rechtlichen Möglichkeiten sind."
+  time: "max 1h"
+  cost: "30.00"
+  cost_note: ""
+  online: "möglich"
 -
-  name: Brief
+  name: "Schreiben/Mail"
+  description: "Wir formulieren für Sie einen Brief oder ein Mail nach Ihren Wünschen. Es kann ein Schreiben an die Nachbarschaft sein, ein persönlicher Brief oder ein Schreiben an die Behörden. Uns ist es wichtig, den richtigen Ton und die passenden Worte für Ihre individuelle Situation zu finden."
+  time: "max 1h"
+  cost: "30.00"
+  cost_note: ""
+  online: "möglich"
 -
-  name: Formular ausfüllen
+  name: "Formular ausfüllen"
+  description: "Formulare können lang und kompliziert sein. Wir helfen Ihnen mit Geduld es vollständig auszufüllen. Bitte bringen Sie alle notwendigen Dokumente und Belege mit."
+  time: "max 1h"
+  cost: "30.00"
+  cost_note: ""
+  online: "nicht möglich"
 -
-  name: Steuerklärung
+  name: "Steuererklärung"
+  description: "Niemand füllt gerne Steuererklärungen aus. Wir nehmen uns gemeinsam die Zeit um das mit Ihnen zu erledigen. Achtung: wir können nur einfache Steuererklärungen ohne Immobilien und komplizierte Vermögensverhältnisse bearbeiten."
+  time: "max 1h"
+  cost: "30.00"
+  cost_note: ""
+  online: "nicht möglich"
 
 ----
 
-Hero-line-1: Hilfe
+Location-title: Vorbeikommen oder online?
 
 ----
 
-Hero-line-2: beim Erstellen von
+Location-block1-title: Unterstützung vor Ort in Basel
 
 ----
 
-Hero-line-3: Motivationsschreiben
+Location-block1-text: Für persönliche Dokumente wie Bewerbungsschreiben und Lebenslauf empfehle ich einen Termin vor Ort. In ruhiger Atmosphäre können wir uns kennenlernen und zusammen ein individuelles Dokument anfertigen.
 
 ----
 
-Hero-line-4-highlight: Lebenslauf
+Location-block2-title: Unterstützung Online
 
 ----
 
-Hero-line-4-suffix: und mehr.
-
-----
-
-Hero-line-5-prefix: In
-
-----
-
-Hero-line-5-highlight: Basel
-
-----
-
-Hero-line-5-suffix: .
-
-----
-
-Section2-card1-text: Sie möchten sich auf eine Stelle bewerben - aber Deutsch ist nicht Ihre Mutter&shy;sprache?
-
-----
-
-Section2-card2-text: Ihre Be&shy;wer&shy;bungs&shy;un&shy;ter&shy;la&shy;gen sind schon etwas älter und brauchen eine Auf&shy;fri&shy;schung?
-
-----
-
-Section2-card3-text: Sie brauchen Un&shy;ter&shy;stüt&shy;zung beim Ausfüllen von Formularen wie Er&shy;gän&shy;zungs&shy;leis&shy;tun&shy;gen oder Ihrer Steuer&shy;er&shy;klä&shy;rung?
-
-----
-
-Section2-intro: Dann sind Sie hier richtig. Ich erstelle seit vier Jahren beim GGG Wegweiser erfolgreich Be&shy;wer&shy;bungs&shy;schrei&shy;ben, Lebenslauf und andere Dokumente für Menschen mit und ohne Mi&shy;gra&shy;tions&shy;hin&shy;ter&shy;grund.
-
-----
-
-Section2-cta-text: Neu bin ich am <span class="highlight">Luft&shy;gäss&shy;lein 3 in Basel</span> für Sie da. Rufen Sie mich an oder machen Sie direkt hier online einen Termin, auch kurz&shy;fris&shy;tig.
-
-----
-
-Section2-link1-text: Termin machen
-
-----
-
-Section2-link2-text: Whatsapp
-
-----
-
-Section2-link3-text: Anrufen
+Location-block2-text: Folgedokumente wie weitere Bewerbungsschreiben oder Anpassungen erledige ich einfache Schreiben oder Kontaktieren Sie mich per Mail und laden Sie Ihre Dokumente direkt hoch.
 
 ----
 

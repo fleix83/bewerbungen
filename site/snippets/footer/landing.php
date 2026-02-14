@@ -2,13 +2,13 @@
   <div class="footer-februar__inner">
     <div class="footer-februar__brand">
       <img src="<?= url('assets/images/Logo_sw.png') ?>" alt="<?= $site->title() ?>" class="footer-februar__logo">
-      <span class="footer-februar__name">Felix Weissheimer</span>
+      <span class="footer-februar__name"><?= $site->footer_name() ?></span>
     </div>
 
     <div class="footer-februar__info">
       <div class="footer-februar__address">
-        <p>Luftgässlein 3</p>
-        <p>4051 Basel</p>
+        <p><?= $site->footer_street() ?></p>
+        <p><?= $site->footer_city() ?></p>
       </div>
 
       <div class="footer-februar__contact">
@@ -24,7 +24,7 @@
     </div>
 
     <button type="button" class="footer-februar__cta" data-contact-menu>
-      Termin machen
+      <?= $site->termin_button_label()->or('Termin machen') ?>
     </button>
   </div>
 </footer>

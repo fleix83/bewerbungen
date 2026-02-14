@@ -51,15 +51,6 @@ tabs:
                 type: textarea
                 buttons: false
 
-  cta:
-    label: Kontakt-CTA
-    fields:
-      contact_cta_text:
-        label: CTA Text (ueberschreibt global)
-        type: textarea
-        buttons: false
-        help: Leer lassen fuer globalen Text
-
   seo:
     label: SEO
     fields:

@@ -7,16 +7,6 @@ columns:
       fields:
         type: fields
         fields:
-          hero_image_heading:
-            type: headline
-            label: Hero Bild
-          hero_image:
-            label: Bild (Startseite)
-            type: files
-            max: 1
-            uploads:
-              template: photo
-            help: Bild im organischen Oval-Rahmen
           contact_heading:
             type: headline
             label: Kontakt
@@ -58,15 +48,6 @@ columns:
           termin_button_label:
             label: Termin-Button Text
             type: text
-            width: 1/2
-          termin_button_price:
-            label: Termin-Button Preis
-            type: text
-            placeholder: "CHF 30.00 pro Dokument"
-            width: 1/2
-          termin_button_url:
-            label: Termin-Button URL
-            type: url
           contact_cta_text:
             label: Kontakt-CTA Text
             type: textarea

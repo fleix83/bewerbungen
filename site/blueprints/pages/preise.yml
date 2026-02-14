@@ -26,27 +26,6 @@ tabs:
         type: textarea
         buttons: false
 
-  additional:
-    label: Zusatzleistungen
-    fields:
-      additional_services:
-        label: Zusatzleistungen (inklusive)
-        type: structure
-        sortable: true
-        fields:
-          name:
-            label: Leistung
-            type: text
-            required: true
-      service_note:
-        label: Hinweis zu Zusatzleistungen
-        type: textarea
-        buttons: false
-      service_note_price:
-        label: Zusatzkosten
-        type: text
-        placeholder: "CHF 10.00"
-
   payment:
     label: Zahlung
     fields:
@@ -58,19 +37,6 @@ tabs:
         label: Text
         type: textarea
         buttons: false
-      payment_methods:
-        label: Zahlungsmethoden (hervorgehoben)
-        type: tags
-        help: Woerter die hervorgehoben werden (z.B. Bar, TWINT)
-
-  cta:
-    label: Kontakt-CTA
-    fields:
-      contact_cta_text:
-        label: CTA Text (ueberschreibt global)
-        type: textarea
-        buttons: false
-        help: Leer lassen fuer globalen Text
 
   seo:
     label: SEO
