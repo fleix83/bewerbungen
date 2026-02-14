@@ -81,10 +81,9 @@ html {
 
 body {
   font-family: var(--font-family);
-  font-size: 20px;
-  line-height: 2.4rem;
   color: var(--color-text);
   background-color: var(--color-background);
+  line-height: 1.5;
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -1364,10 +1363,10 @@ body {
 
 .about-text {
   font-family: 'Quicksand', sans-serif;
-  font-size: 41px;
+  font-size: 20px;
   font-weight: 700;
   font-style: normal;
-  line-height: normal;
+  line-height: 2.4rem;
   color: #474747;
   margin: 0;
 }
@@ -1474,10 +1473,10 @@ body {
 
 .preise-note {
   font-family: 'Quicksand', sans-serif;
-  font-size: 41px;
+  font-size: 20px;
   font-weight: 700;
   font-style: normal;
-  line-height: normal;
+  line-height: 2.4rem;
   color: rgba(71, 71, 71, 0.64);
   margin: 0;
   max-width: 850px;
