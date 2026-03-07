@@ -629,8 +629,9 @@ a {
 }
 
 .stellen-modal__body {
-    padding: 24px 6vw;
+    padding: 16px 4vw;
     overflow-y: auto;
+    overflow-x: hidden;
     flex: 1;
 }
 
@@ -645,6 +646,7 @@ a {
 .stellen-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 .stellen-table thead {
@@ -655,10 +657,12 @@ a {
     display: block;
     background: rgba(89, 89, 89, 0.06);
     border-radius: 12px;
-    padding: 18px 16px;
-    margin-bottom: 12px;
+    padding: 14px 12px;
+    margin-bottom: 10px;
     cursor: pointer;
     transition: background 0.2s;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .stellen-table tr:hover {
