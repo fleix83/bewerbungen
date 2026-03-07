@@ -127,6 +127,7 @@ a {
     padding: 16px 44px;
     font-size: 1.15rem;
     margin-top: 32px;
+    width: 250px;
 }
 
 .btn--golden {
@@ -162,7 +163,7 @@ a {
 
 .topnav__brand {
     font-weight: 700;
-    font-size: 1.15rem;
+    font-size: 1.35rem;
     color: #ffffff;
     letter-spacing: -0.01em;
 }
@@ -287,28 +288,28 @@ a {
 
 .hero__visual {
     position: absolute;
-    top: 20px;
+    top: -73px;
     right: 5%;
     bottom: 0;
-    width: 45%;
+    width: 100%;
 }
 
 .hero__roche {
     position: absolute;
-    bottom: 4%;
+    bottom: 21%;
     left: 66%;
     transform: translateX(-50%);
-    height: 65%;
+    height: 59%;
     width: auto;
     mix-blend-mode: multiply;
 }
 
 .hero__figuren {
     position: absolute;
-    bottom: 7%;
-    left: 46%;
+    bottom: 13%;
+    left: 66%;
     transform: translateX(-50%);
-    height: 40%;
+    height: 35%;
     width: auto;
     z-index: 1;
     mix-blend-mode: color;
@@ -316,7 +317,7 @@ a {
 
 .hero__boden {
     position: absolute;
-    bottom: -1%;
+    bottom: 11%;
     left: 54%;
     transform: translateX(-50%);
     width: 130%;
@@ -326,15 +327,23 @@ a {
 }
 
 .hero__title {
-    font-size: clamp(1.85rem, 6.5vw, 2.8rem);
+    font-size: clamp(2.1rem, 6.5vw, 2.8rem);
     font-weight: 700;
     line-height: 1.18;
     color: #fff;
-    padding-top: 50px;
+    padding-top: 245px;
 }
 
 .hero__title-line {
     display: block;
+}
+
+.hero__title-line--desktop {
+    display: none;
+}
+
+.hero__basel {
+    display: inline;
 }
 
 
@@ -807,20 +816,32 @@ body.stellen-modal-open {
 
     /* --- Hero visuals desktop restore --- */
     .hero__visual {
+        top: 20px;
         right: 11%;
         width: 50%;
     }
 
     .hero__roche {
+        bottom: 4%;
         height: 85%;
     }
 
     .hero__figuren {
+        bottom: 7%;
+        left: 46%;
         height: 55%;
     }
 
     .hero__boden {
         width: 163%;
+    }
+
+    .hero__title-line--desktop {
+        display: block;
+    }
+
+    .hero__basel {
+        display: none;
     }
 
     /* --- Hero --- */

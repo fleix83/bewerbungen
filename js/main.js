@@ -136,7 +136,8 @@
         var loaded = false;
 
         function openModal() {
-            modal.style.setProperty('--stellen-top', '170px');
+            var isMobile = window.innerWidth < 768;
+            modal.style.setProperty('--stellen-top', isMobile ? '100px' : '170px');
             modal.removeAttribute('hidden');
             requestAnimationFrame(function () {
                 requestAnimationFrame(function () {
