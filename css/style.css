@@ -644,13 +644,16 @@ a {
 
 /* --- Stellen table --- */
 .stellen-table {
+    display: block;
     width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
 }
 
 .stellen-table thead {
     display: none;
+}
+
+.stellen-table tbody {
+    display: block;
 }
 
 .stellen-table tr {
@@ -661,7 +664,6 @@ a {
     margin-bottom: 10px;
     cursor: pointer;
     transition: background 0.2s;
-    word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
@@ -883,8 +885,18 @@ body.stellen-modal-open {
         padding: 32px 8vw;
     }
 
+    .stellen-table {
+        display: table;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+
     .stellen-table thead {
         display: table-header-group;
+    }
+
+    .stellen-table tbody {
+        display: table-row-group;
     }
 
     .stellen-table tr {
