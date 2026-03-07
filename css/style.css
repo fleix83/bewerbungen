@@ -53,6 +53,12 @@ a {
     transform: translateY(0);
 }
 
+.deutsch__visual.slide-in.blend-ready {
+    opacity: unset;
+    transform: unset;
+    transition: none;
+}
+
 /* Stagger children */
 .slide-in:nth-child(2) { transition-delay: 0.12s; }
 .slide-in:nth-child(3) { transition-delay: 0.24s; }

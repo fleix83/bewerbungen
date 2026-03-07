@@ -27,6 +27,13 @@
 
         elements.forEach(function (el) {
             observer.observe(el);
+            // After slide-in completes, remove opacity/transition so mix-blend-mode works
+            if (el.classList.contains('deutsch__visual')) {
+                el.addEventListener('transitionend', function handler() {
+                    el.removeEventListener('transitionend', handler);
+                    el.classList.add('blend-ready');
+                });
+            }
         });
     }
 
