@@ -205,11 +205,33 @@
         });
     }
 
+    /* ---------- Mobile Nav Toggle ---------- */
+    function initNavToggle() {
+        var toggle = document.getElementById('nav-toggle');
+        var menu = document.getElementById('nav-menu');
+        if (!toggle || !menu) return;
+
+        toggle.addEventListener('click', function () {
+            var open = toggle.classList.toggle('is-open');
+            menu.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', open);
+        });
+
+        menu.querySelectorAll('.topnav__pill').forEach(function (link) {
+            link.addEventListener('click', function () {
+                toggle.classList.remove('is-open');
+                menu.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
     /* ---------- Init ---------- */
     document.addEventListener('DOMContentLoaded', function () {
         initSlideIn();
         initSmoothScroll();
         initNavScroll();
+        initNavToggle();
         initStellenModal();
     });
 })();
