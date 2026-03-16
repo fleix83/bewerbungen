@@ -784,13 +784,21 @@ body.stellen-modal-open {
     overflow: hidden;
 }
 
-/* --- Stellen modal header layout (mobile: button below title, left) --- */
+/* --- Stellen modal header layout (mobile) --- */
+.stellen-modal__header {
+    position: relative;
+    flex-wrap: wrap;
+    padding-right: 48px;
+}
+
 .stellen-modal__header-actions {
     display: contents;
 }
 
-.stellen-modal__header {
-    flex-wrap: wrap;
+.stellen-modal__header .stellen-modal__close {
+    position: absolute;
+    top: 16px;
+    right: 6vw;
 }
 
 .stellen-meine-btn {
@@ -1191,7 +1199,12 @@ body.stellen-modal-open {
     /* --- Stellen modal --- */
     .stellen-modal__header {
         padding: 48px 8vw 32px;
+        padding-right: 8vw;
         flex-wrap: nowrap;
+    }
+
+    .stellen-modal__header .stellen-modal__close {
+        position: static;
     }
 
     .stellen-modal__header-actions {
