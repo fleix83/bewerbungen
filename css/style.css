@@ -862,6 +862,12 @@ body.stellen-modal-open {
     padding: 10px 22px;
     font-size: 0.95rem;
     position: relative;
+    margin-top: 0.8rem;
+}
+
+.stellen-meine-btn__arrow {
+    vertical-align: middle;
+    margin-right: 6px;
 }
 
 .stellen-meine-btn[disabled] {
