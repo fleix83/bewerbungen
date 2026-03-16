@@ -127,7 +127,7 @@ a {
     padding: 16px 44px;
     font-size: 1.15rem;
     margin-top: 32px;
-    width: 250px;
+    width: 300px;
 }
 
 .btn--golden {
@@ -317,7 +317,7 @@ a {
 
 .hero__boden {
     position: absolute;
-    bottom: 11%;
+    bottom: 0%;
     left: 54%;
     transform: translateX(-50%);
     width: 130%;
@@ -865,7 +865,6 @@ body.stellen-modal-open {
     .deutsch__visual {
         margin-bottom: 0;
         mix-blend-mode: lighten;
-        margin-top: -130px;
     }
 
     .deutsch__illustration {
@@ -875,7 +874,7 @@ body.stellen-modal-open {
     }
 
     .deutsch__title {
-        font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+        font-size: clamp(2.8rem, 2.6vw, 2.4rem);
     }
 
     /* --- Fisch --- */
@@ -902,7 +901,7 @@ body.stellen-modal-open {
     }
 
     .fisch__title {
-        font-size: clamp(1.4rem, 2.2vw, 1.95rem);
+        font-size: clamp(1.4rem, 2.2vw, 2.4rem);
         color: #f8dc7e;
     }
 
@@ -1112,7 +1111,7 @@ body.stellen-modal-open {
     .vorbeikommen {
         padding-left: 10vw;
         padding-right: 10vw;
-        padding-top: 18rem;
+        padding-top: 12rem;
         padding-bottom: 10rem;
     }
 
