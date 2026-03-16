@@ -327,7 +327,7 @@ a {
 }
 
 .hero__title {
-    font-size: clamp(2.1rem, 6.5vw, 2.8rem);
+    font-size: clamp(2.0rem, 6.5vw, 2.8rem);
     font-weight: 700;
     line-height: 1.18;
     color: #fff;
@@ -683,6 +683,14 @@ a {
     color: #595959;
 }
 
+.stellen-modal__subtitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ff817f;
+    padding: 0 6vw;
+    text-align: left;
+}
+
 .stellen-modal__close {
     background: none;
     border: none;
@@ -774,6 +782,196 @@ a {
 
 body.stellen-modal-open {
     overflow: hidden;
+}
+
+/* --- Stellen modal header layout (mobile: button below title, left) --- */
+.stellen-modal__header-actions {
+    display: contents;
+}
+
+.stellen-modal__header {
+    flex-wrap: wrap;
+}
+
+.stellen-meine-btn {
+    order: 1;
+    margin-top: 4px;
+}
+
+/* --- "Hinzufügen" button on rows --- */
+.stellen-add-btn {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    background: #ff817f;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.stellen-add-btn:hover {
+    transform: translateY(-1px);
+}
+
+.stellen-add-btn--added {
+    background: #ccc;
+    color: #fff;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* Mobile: position button top-right of card */
+.stellen-table tr {
+    position: relative;
+}
+
+.stellen-table td.stellen-add-cell {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    top: auto;
+    padding: 0;
+}
+
+.stellen-table td.stellen-add-cell::before {
+    display: none;
+}
+
+/* --- "Meine Stellen" button --- */
+.stellen-meine-btn {
+    background: #ff817f;
+    color: #fff;
+    padding: 10px 22px;
+    font-size: 0.95rem;
+    position: relative;
+}
+
+.stellen-meine-btn[disabled] {
+    background: #ccc;
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+}
+
+.stellen-meine-btn__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #e74529;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    padding: 0 5px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+/* --- Meine Stellen modal list --- */
+.meine-stellen-list {
+    margin-bottom: 24px;
+}
+
+.meine-stellen-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(89, 89, 89, 0.06);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+}
+
+.meine-stellen-item__info {
+    flex: 1;
+    min-width: 0;
+}
+
+.meine-stellen-item__titel {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #595959;
+}
+
+.meine-stellen-item__firma {
+    font-size: 0.9rem;
+    color: rgba(89, 89, 89, 0.6);
+}
+
+.meine-stellen-item__remove {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: #999;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+    flex-shrink: 0;
+    margin-left: 12px;
+}
+
+.meine-stellen-item__remove:hover {
+    background: rgba(0, 0, 0, 0.06);
+    color: #e74529;
+}
+
+.meine-stellen-empty {
+    text-align: center;
+    color: #999;
+    padding: 32px 0;
+    font-size: 1rem;
+}
+
+/* --- Meine Stellen form --- */
+.meine-stellen-form {
+    border-top: 1px solid rgba(89, 89, 89, 0.15);
+    padding-top: 24px;
+}
+
+.meine-stellen-form__hint {
+    font-size: 0.88rem;
+    color: #999;
+    margin-bottom: 14px;
+}
+
+.meine-stellen-form__input {
+    display: block;
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 12px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.meine-stellen-form__input:focus {
+    border-color: #ff817f;
+}
+
+.meine-stellen-form__submit {
+    display: block;
+    width: 100%;
+    background: #ff817f;
+    color: #fff;
+    padding: 16px 24px;
+    font-size: 1.05rem;
+    margin-top: 8px;
+}
+
+.meine-stellen-form__submit[disabled] {
+    background: #ccc;
+    cursor: default;
+    pointer-events: none;
 }
 
 /* ============================================================
@@ -946,11 +1144,13 @@ body.stellen-modal-open {
 
     .services__grid {
         flex-direction: row;
+        flex-wrap: wrap;
         gap: 28px;
     }
 
     .card {
-        flex: 1;
+        flex: 1 1 calc(33.333% - 19px);
+        min-width: 250px;
         padding: 36px 32px 32px;
     }
 
@@ -991,6 +1191,31 @@ body.stellen-modal-open {
     /* --- Stellen modal --- */
     .stellen-modal__header {
         padding: 48px 8vw 32px;
+        flex-wrap: nowrap;
+    }
+
+    .stellen-modal__header-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .stellen-modal__subtitle {
+        padding: 0 8vw;
+    }
+
+    .stellen-meine-btn--mobile {
+        display: none;
+    }
+
+    .stellen-meine-btn {
+        order: 0;
+        margin-top: 0;
+    }
+
+    .stellen-table__th-meine {
+        text-align: center;
+        vertical-align: middle;
     }
 
     .stellen-modal__title {
@@ -1063,6 +1288,17 @@ body.stellen-modal-open {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    .stellen-table td.stellen-add-cell {
+        position: static;
+        text-align: center;
+        vertical-align: middle;
+        width: 130px;
+    }
+
+    .meine-stellen-form {
+        max-width: 480px;
     }
 
     /* --- Footer --- */
@@ -1140,7 +1376,8 @@ body.stellen-modal-open {
     }
 
     .card__title {
-        font-size: 1.4rem;
+        font-size: 1.9rem;
+        font-weight: 900;
     }
 
     .card__text {
@@ -1149,6 +1386,10 @@ body.stellen-modal-open {
 
     .stellen-modal__header {
         padding: 70px 10vw 32px;
+    }
+
+    .stellen-modal__subtitle {
+        padding: 0 10vw;
     }
 
     .stellen-modal__body {

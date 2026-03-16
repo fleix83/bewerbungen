@@ -82,6 +82,54 @@
         return rows;
     }
 
+    /* ---------- Meine Stellen (localStorage) ---------- */
+    function getMeineStellen() {
+        try {
+            return JSON.parse(localStorage.getItem('meineStellen')) || [];
+        } catch (e) {
+            return [];
+        }
+    }
+
+    function saveMeineStellen(list) {
+        localStorage.setItem('meineStellen', JSON.stringify(list));
+    }
+
+    function isStelleGespeichert(titel, firma) {
+        return getMeineStellen().some(function (s) {
+            return s.titel === titel && s.firma === firma;
+        });
+    }
+
+    function addStelle(titel, firma, url) {
+        var list = getMeineStellen();
+        if (!list.some(function (s) { return s.titel === titel && s.firma === firma; })) {
+            list.push({ titel: titel, firma: firma, url: url });
+            saveMeineStellen(list);
+        }
+    }
+
+    function removeStelle(index) {
+        var list = getMeineStellen();
+        list.splice(index, 1);
+        saveMeineStellen(list);
+    }
+
+    function updateMeineStellenBtn() {
+        var count = getMeineStellen().length;
+        var btns = document.querySelectorAll('.stellen-meine-btn');
+        btns.forEach(function (btn) {
+            var badge = btn.querySelector('.stellen-meine-btn__badge');
+            if (count > 0) {
+                btn.disabled = false;
+                if (badge) { badge.textContent = count; badge.hidden = false; }
+            } else {
+                btn.disabled = true;
+                if (badge) { badge.hidden = true; }
+            }
+        });
+    }
+
     /* ---------- Stellen Table Renderer ---------- */
     function renderStellenTable(rows) {
         var table = document.createElement('table');
@@ -96,6 +144,20 @@
             th.textContent = labels[col];
             headerRow.appendChild(th);
         });
+        // Desktop "Meine Stellen" button in header row
+        var thAdd = document.createElement('th');
+        thAdd.className = 'stellen-table__th-meine';
+        var desktopBtn = document.createElement('button');
+        desktopBtn.type = 'button';
+        desktopBtn.className = 'btn stellen-meine-btn stellen-meine-btn--desktop';
+        desktopBtn.disabled = true;
+        desktopBtn.innerHTML = 'Meine Stellen<span class="stellen-meine-btn__badge" hidden>0</span>';
+        desktopBtn.addEventListener('click', function () {
+            var mobileBtn = document.getElementById('meine-stellen-open');
+            if (mobileBtn) mobileBtn.click();
+        });
+        thAdd.appendChild(desktopBtn);
+        headerRow.appendChild(thAdd);
         thead.appendChild(headerRow);
         table.appendChild(thead);
 
@@ -119,6 +181,33 @@
                 td.textContent = row[col] || '';
                 tr.appendChild(td);
             });
+
+            // Add button cell
+            var tdAdd = document.createElement('td');
+            tdAdd.className = 'stellen-add-cell';
+            var addBtn = document.createElement('button');
+            addBtn.type = 'button';
+
+            if (isStelleGespeichert(row.titel, row.firma)) {
+                addBtn.className = 'stellen-add-btn stellen-add-btn--added';
+                addBtn.textContent = 'Gemerkt \u2713';
+                addBtn.disabled = true;
+            } else {
+                addBtn.className = 'stellen-add-btn';
+                addBtn.textContent = 'Hinzufügen';
+            }
+
+            addBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                addStelle(row.titel || '', row.firma || '', row.url || '');
+                addBtn.className = 'stellen-add-btn stellen-add-btn--added';
+                addBtn.textContent = 'Gemerkt \u2713';
+                addBtn.disabled = true;
+                updateMeineStellenBtn();
+            });
+
+            tdAdd.appendChild(addBtn);
+            tr.appendChild(tdAdd);
             tbody.appendChild(tr);
         });
         table.appendChild(tbody);
@@ -146,6 +235,8 @@
             });
             document.body.classList.add('stellen-modal-open');
             modal.querySelector('.stellen-modal__close').focus();
+
+            updateMeineStellenBtn();
 
             if (!loaded) {
                 loaded = true;
@@ -213,6 +304,151 @@
         });
     }
 
+    /* ---------- Meine Stellen Modal ---------- */
+    function initMeineStellenModal() {
+        var openBtn = document.getElementById('meine-stellen-open');
+        var modal = document.getElementById('meine-stellen-modal');
+        var listEl = document.getElementById('meine-stellen-list');
+        var form = document.getElementById('meine-stellen-form');
+        var telInput = document.getElementById('meine-stellen-tel');
+        var emailInput = document.getElementById('meine-stellen-email');
+        var submitBtn = document.getElementById('meine-stellen-submit');
+        if (!openBtn || !modal) return;
+
+        var closeBtns = modal.querySelectorAll('[data-meine-stellen-close]');
+
+        function renderList() {
+            var stellen = getMeineStellen();
+            listEl.innerHTML = '';
+            if (stellen.length === 0) {
+                var empty = document.createElement('p');
+                empty.className = 'meine-stellen-empty';
+                empty.textContent = 'Noch keine Stellen gemerkt.';
+                listEl.appendChild(empty);
+                return;
+            }
+            stellen.forEach(function (s, i) {
+                var item = document.createElement('div');
+                item.className = 'meine-stellen-item';
+                var info = document.createElement('div');
+                info.className = 'meine-stellen-item__info';
+                var titel = document.createElement('div');
+                titel.className = 'meine-stellen-item__titel';
+                titel.textContent = s.titel;
+                var firma = document.createElement('div');
+                firma.className = 'meine-stellen-item__firma';
+                firma.textContent = s.firma;
+                info.appendChild(titel);
+                info.appendChild(firma);
+                var removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'meine-stellen-item__remove';
+                removeBtn.innerHTML = '&times;';
+                removeBtn.setAttribute('aria-label', 'Entfernen');
+                removeBtn.addEventListener('click', function () {
+                    removeStelle(i);
+                    renderList();
+                    updateMeineStellenBtn();
+                    updateSubmitState();
+                });
+                item.appendChild(info);
+                item.appendChild(removeBtn);
+                listEl.appendChild(item);
+            });
+        }
+
+        function updateSubmitState() {
+            var hasContact = telInput.value.trim() !== '' || emailInput.value.trim() !== '';
+            var hasStellen = getMeineStellen().length > 0;
+            submitBtn.disabled = !(hasContact && hasStellen);
+        }
+
+        telInput.addEventListener('input', updateSubmitState);
+        emailInput.addEventListener('input', updateSubmitState);
+
+        function openModal() {
+            renderList();
+            updateSubmitState();
+            var isMobile = window.innerWidth < 768;
+            modal.style.setProperty('--stellen-top', isMobile ? '100px' : '170px');
+            modal.removeAttribute('hidden');
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                    modal.classList.add('is-active');
+                });
+            });
+            document.body.classList.add('stellen-modal-open');
+            modal.querySelector('.stellen-modal__close').focus();
+        }
+
+        function closeModal() {
+            modal.classList.remove('is-active');
+            document.body.classList.remove('stellen-modal-open');
+            modal.addEventListener('transitionend', function handler() {
+                modal.removeEventListener('transitionend', handler);
+                if (!modal.classList.contains('is-active')) {
+                    modal.setAttribute('hidden', '');
+                }
+            });
+            openBtn.focus();
+        }
+
+        openBtn.addEventListener('click', openModal);
+
+        closeBtns.forEach(function (btn) {
+            btn.addEventListener('click', closeModal);
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+                closeModal();
+            }
+        });
+
+        // Focus trap
+        modal.addEventListener('keydown', function (e) {
+            if (e.key !== 'Tab') return;
+            var focusable = modal.querySelectorAll('button:not([disabled]), input, [href], [tabindex]:not([tabindex="-1"])');
+            if (!focusable.length) return;
+            var first = focusable[0];
+            var last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        });
+
+        // Form submit → mailto
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var stellen = getMeineStellen();
+            if (!stellen.length) return;
+
+            var tel = telInput.value.trim();
+            var email = emailInput.value.trim();
+            if (!tel && !email) return;
+
+            var subject = 'Bewerbungsanfrage — ' + stellen.length + ' Stellen';
+            var body = 'Guten Tag\nIch möchte mich auf diese Stellen bewerben und dafür bei Dir einen Termin abmachen.\n\nMeine Stellen:\n';
+            stellen.forEach(function (s) {
+                body += '- ' + s.titel + ' bei ' + s.firma;
+                if (s.url) body += ' (' + s.url + ')';
+                body += '\n';
+            });
+            body += '\nKontaktiere mich per:\n';
+            if (tel) body += 'Telefon: ' + tel + '\n';
+            if (email) body += 'Email: ' + email + '\n';
+
+            var mailto = 'mailto:felix@bewerbungenundmehr.ch'
+                + '?subject=' + encodeURIComponent(subject)
+                + '&body=' + encodeURIComponent(body);
+            window.location.href = mailto;
+        });
+    }
+
     /* ---------- Mobile Nav Toggle ---------- */
     function initNavToggle() {
         var toggle = document.getElementById('nav-toggle');
@@ -241,5 +477,6 @@
         initNavScroll();
         initNavToggle();
         initStellenModal();
+        initMeineStellenModal();
     });
 })();

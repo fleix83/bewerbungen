@@ -156,31 +156,68 @@
         <h2 class="services__heading slide-in">Meine Angebote</h2>
         <div class="services__grid">
 
-            <!-- Card 1: Bewerbungsschreiben -->
             <article class="card card--red slide-in">
                 <h3 class="card__title">Bewerbungsschreiben (Motivationsschreiben)</h3>
                 <p class="card__text">
                     Ein Bewerbungsschreiben wird meistens vom Arbeitgeber erwartet. Darin werden Deine Stärken und Erfahrungen hervorgehoben und Du hast die Möglichkeit, Dich positiv zu präsentieren.
                 </p>
-                <a href="tel:+41767576052" class="btn btn--card btn--card-red">Anfragen</a>
+                <a href="tel:+41767576012" class="btn btn--card btn--card-red">Anfragen</a>
             </article>
 
-            <!-- Card 2: Lebenslauf -->
             <article class="card card--golden slide-in">
                 <h3 class="card__title">Lebenslauf (CV)</h3>
                 <p class="card__text">
                     Dein Lebenslauf ist Deine Visitenkarte. Ich helfe Dir, einen übersichtlichen und professionellen Lebenslauf zu erstellen, der Deine Erfahrungen und Fähigkeiten optimal darstellt.
                 </p>
-                <a href="tel:+41767576052" class="btn btn--card btn--card-golden">Anfragen</a>
+                <a href="tel:+41767576012" class="btn btn--card btn--card-golden">Anfragen</a>
             </article>
 
-            <!-- Card 3: Briefe & Formulare -->
             <article class="card card--blue slide-in">
-                <h3 class="card__title">Briefe, Formulare &amp; Steuern</h3>
+                <h3 class="card__title">Portfolio Webseite für Bewerbung</h3>
                 <p class="card__text">
-                    Du brauchst Hilfe bei offiziellen Briefen, beim Ausfüllen von Formularen oder bei der Steuererklärung? Ich unterstütze Dich kompetent und unkompliziert.
+                    Eine persönliche Webseite macht Deine Bewerbung einzigartig. Ich erstelle Dir eine einfache Portfolio-Seite, die Deine Stärken und Erfahrungen professionell präsentiert.
                 </p>
-                <a href="tel:+41767576052" class="btn btn--card btn--card-blue">Anfragen</a>
+                <a href="tel:+41767576012" class="btn btn--card btn--card-blue">Anfragen</a>
+            </article>
+
+            <article class="card card--red slide-in">
+                <h3 class="card__title">Administrative Korrespondenz</h3>
+                <p class="card__text">
+                    Offizielle Briefe an Behörden, Versicherungen oder Arbeitgeber? Ich helfe Dir, professionelle und korrekte Schreiben zu verfassen.
+                </p>
+                <a href="tel:+41767576012" class="btn btn--card btn--card-red">Anfragen</a>
+            </article>
+
+            <article class="card card--golden slide-in">
+                <h3 class="card__title">Persönlicher Brief / Dokument</h3>
+                <p class="card__text">
+                    Du brauchst Hilfe bei einem persönlichen Brief oder Dokument? Ich unterstütze Dich beim Formulieren und Strukturieren.
+                </p>
+                <a href="tel:+41767576012" class="btn btn--card btn--card-golden">Anfragen</a>
+            </article>
+
+            <article class="card card--blue slide-in">
+                <h3 class="card__title">Formular ausfüllen (z.B. EL, Sozialhilfe, RAV)</h3>
+                <p class="card__text">
+                    Formulare können kompliziert sein. Ich helfe Dir beim korrekten Ausfüllen von Anträgen für Ergänzungsleistungen, Sozialhilfe, RAV und mehr.
+                </p>
+                <a href="tel:+41767576012" class="btn btn--card btn--card-blue">Anfragen</a>
+            </article>
+
+            <article class="card card--red slide-in">
+                <h3 class="card__title">Steuererklärung BS/BL ausfüllen</h3>
+                <p class="card__text">
+                    Die Steuererklärung muss gemacht werden. Ich unterstütze Dich beim Ausfüllen für die Kantone Basel-Stadt und Baselland.
+                </p>
+                <a href="tel:+41767576012" class="btn btn--card btn--card-red">Anfragen</a>
+            </article>
+
+            <article class="card card--golden slide-in">
+                <h3 class="card__title">Unterstützung mit Mac / PC / Internet</h3>
+                <p class="card__text">
+                    Du brauchst Hilfe mit Deinem Computer oder im Internet? Ich zeige Dir, wie Du Dich sicher und effizient im digitalen Alltag bewegst.
+                </p>
+                <a href="tel:+41767576012" class="btn btn--card btn--card-golden">Anfragen</a>
             </article>
 
         </div>
@@ -239,12 +276,38 @@
         <div class="stellen-modal__panel">
             <div class="stellen-modal__header">
                 <h2 class="stellen-modal__title" id="stellen-modal-title">Interessante Stellen für Dich?</h2>
-                <button type="button" class="stellen-modal__close" data-stellen-close aria-label="Schliessen">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-                </button>
+                <div class="stellen-modal__header-actions">
+                    <button type="button" class="btn stellen-meine-btn stellen-meine-btn--mobile" id="meine-stellen-open" disabled>Meine Stellen<span class="stellen-meine-btn__badge" id="meine-stellen-badge" hidden>0</span></button>
+                    <button type="button" class="stellen-modal__close" data-stellen-close aria-label="Schliessen">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    </button>
+                </div>
             </div>
             <div class="stellen-modal__body" id="stellen-modal-body">
                 <p class="stellen-modal__loading">Stellen werden geladen…</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MEINE STELLEN MODAL ==================== -->
+    <div class="stellen-modal meine-stellen-modal" id="meine-stellen-modal" role="dialog" aria-modal="true" aria-labelledby="meine-stellen-modal-title" hidden>
+        <div class="stellen-modal__backdrop" data-meine-stellen-close></div>
+        <div class="stellen-modal__panel">
+            <div class="stellen-modal__header">
+                <h2 class="stellen-modal__title" id="meine-stellen-modal-title">Meine gemerkten Stellen</h2>
+                <button type="button" class="stellen-modal__close" data-meine-stellen-close aria-label="Schliessen">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+            <p class="stellen-modal__subtitle">Du kannst für Deine gemerkten Stellen direkt einen Termin abmachen.</p>
+            <div class="stellen-modal__body" id="meine-stellen-modal-body">
+                <div class="meine-stellen-list" id="meine-stellen-list"></div>
+                <form class="meine-stellen-form" id="meine-stellen-form">
+                    <p class="meine-stellen-form__hint">Mindestens eines der Felder ausfüllen</p>
+                    <input type="tel" class="meine-stellen-form__input" id="meine-stellen-tel" placeholder="Telefon">
+                    <input type="email" class="meine-stellen-form__input" id="meine-stellen-email" placeholder="Email">
+                    <button type="submit" class="btn meine-stellen-form__submit" id="meine-stellen-submit" disabled>Jetzt Termin abmachen &amp; auf diese Stellen bewerben</button>
+                </form>
             </div>
         </div>
     </div>
