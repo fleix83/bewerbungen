@@ -684,11 +684,16 @@ a {
 }
 
 .stellen-modal__subtitle {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #ff817f;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #7cb5d9;
     padding: 0 6vw;
     text-align: left;
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .stellen-modal__close {
