@@ -12,10 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-define('DB_HOST', 'localhost');
-define('DB_USER', 'luftgaessli');
-define('DB_PASS', 'luftgaessli2026!!!');
-define('DB_NAME', 'luftgaessli');
+// Credentials live in config.local.php (gitignored). See config.local.example.php.
+if (file_exists(__DIR__ . '/config.local.php')) {
+    require_once __DIR__ . '/config.local.php';
+}
+
+if (!defined('DB_HOST')) define('DB_HOST', 'localhost');
+if (!defined('DB_USER')) define('DB_USER', 'luftgaessli');
+if (!defined('DB_PASS')) define('DB_PASS', '');
+if (!defined('DB_NAME')) define('DB_NAME', 'luftgaessli');
 
 function getDBConnection() {
     try {

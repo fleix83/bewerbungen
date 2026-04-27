@@ -61,6 +61,7 @@ terminmanager/api/vendor/
 # Environment files with credentials
 terminmanager/frontend/.env
 terminmanager/api/.env
+terminmanager/api/config.local.php
 
 # Build output (committed for deployment)
 # terminmanager/frontend/dist/
