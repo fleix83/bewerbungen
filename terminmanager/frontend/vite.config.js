@@ -6,6 +6,15 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   base: process.env.VITE_BASE_PATH || '/terminmanager/frontend/dist/',
+  server: {
+    proxy: {
+      '/terminmanager/api': {
+        target: 'http://localhost',
+        changeOrigin: true,
+        rewrite: (path) => '/bewerbungen' + path
+      }
+    }
+  },
   build: {
     rollupOptions: {
       output: {
