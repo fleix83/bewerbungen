@@ -1,7 +1,8 @@
 import axios from 'axios'
 
-// Use relative path that works from /terminmanager/frontend/dist/
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '../../api'
+// Path-absolute URL works from any SPA route (e.g. /buchen) without depending on URL depth.
+// Local XAMPP under /bewerbungen/ should use the Vite dev server (which proxies /terminmanager/api).
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/terminmanager/api'
 
 const api = axios.create({
   baseURL: API_BASE_URL,
