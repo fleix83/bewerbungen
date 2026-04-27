@@ -13,28 +13,13 @@
       />
     </div>
 
-    <div class="service-type-field">
-      <select
-        id="service-type"
-        :value="selectedServiceType"
-        @change="handleServiceTypeChange"
-        class="service-type-select"
-      >
-        <option value="">Weitere Angebote</option>
-        <option value="Brief">Brief CHF 30.00</option>
-        <option value="Rekurs">Rekurs CHF 30.00</option>
-        <option value="Formular ausfüllen">Formular ausfüllen CHF 20.00</option>
-        <option value="Steuererklärung ausfüllen">Steuererklärung ausfüllen CHF 20.00</option>
-        <option value="Etwas anderes">Etwas anderes</option>
-      </select>
-    </div>
-
-    <div v-if="selectedServiceType === 'Etwas anderes'" class="notes-field">
+    <h3 class="other-title">Etwas anderes</h3>
+    <div class="notes-field">
       <textarea
         id="notes-input"
         :value="notesText"
         @input="handleNotesInput"
-        placeholder="Ich brauche... Preis innerhalb 1h CHF 30.00"
+        placeholder="Ich brauche folgendes..."
         rows="3"
         class="notes-textarea"
       />
@@ -67,12 +52,6 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue', 'update:notes', 'update:serviceType'])
 
-const selectedServiceType = computed({
-  get: () => props.serviceType,
-  set: (newValue) => {
-    emit('update:serviceType', newValue)
-  }
-})
 const additionalNotes = ref(props.notes)
 
 // Filter out "Etwas anderes" (id: 3) from checkbox list
@@ -108,10 +87,7 @@ const notesText = computed(() => {
 const handleNotesInput = (event) => {
   additionalNotes.value = event.target.value
   emit('update:notes', additionalNotes.value)
-}
-
-const handleServiceTypeChange = (event) => {
-  selectedServiceType.value = event.target.value
+  emit('update:serviceType', additionalNotes.value.trim() ? 'Etwas anderes' : '')
 }
 </script>
 
@@ -126,25 +102,13 @@ const handleServiceTypeChange = (event) => {
   gap: var(--spacing-sm);
 }
 
-.service-type-field {
-  margin-top: var(--spacing-sm);
-}
-
-.service-type-select {
-  width: 100%;
-  padding: 12px 16px;
-  background: #FFFFFF;
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
+.other-title {
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
   font-family: var(--font-primary);
-  font-size: 16px;
-  color: #000;
-  cursor: pointer;
-}
-
-.service-type-select:focus {
-  outline: none;
-  border-color: #002198;
+  font-size: 23px;
+  font-weight: 600;
+  color: var(--color-text-title, #002198);
 }
 
 .notes-field {
