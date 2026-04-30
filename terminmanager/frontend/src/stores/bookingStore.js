@@ -36,6 +36,12 @@ export const useBookingStore = defineStore('booking', () => {
     bookingConfirmation.value = confirmation
   }
 
+  function markCancelled() {
+    if (bookingConfirmation.value) {
+      bookingConfirmation.value.cancelled = true
+    }
+  }
+
   function resetBooking() {
     selectedServices.value = []
     customerData.value = {
@@ -63,6 +69,7 @@ export const useBookingStore = defineStore('booking', () => {
     setSelectedDate,
     setSelectedSlot,
     setBookingConfirmation,
+    markCancelled,
     resetBooking
   }
 })

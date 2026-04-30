@@ -22,6 +22,10 @@ if (!defined('DB_USER')) define('DB_USER', 'luftgaessli');
 if (!defined('DB_PASS')) define('DB_PASS', '');
 if (!defined('DB_NAME')) define('DB_NAME', 'luftgaessli');
 
+// Public origin used in customer-facing emails (e.g. cancellation links).
+// Override in config.local.php for staging or local testing.
+if (!defined('SITE_URL')) define('SITE_URL', 'https://bewerbungenundmehr.ch');
+
 function getDBConnection() {
     try {
         $conn = new PDO(

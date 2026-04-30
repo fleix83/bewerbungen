@@ -118,10 +118,11 @@ const handleSlotSelected = async (slot) => {
     if (response.data.success) {
       bookingStore.setBookingConfirmation({
         eventId: response.data.event_id,
+        cancellationToken: response.data.cancellation_token,
         date: selectedDate.value,
         slot: slot,
         services: serviceIds,
-        customer: bookingStore.customerData
+        customer: { ...bookingStore.customerData }
       })
 
       router.push('/buchen/bestaetigung')

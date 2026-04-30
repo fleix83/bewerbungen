@@ -21,6 +21,7 @@ function sendBookingConfirmation($bookingData) {
     $services = $bookingData['services'];
     $total = $bookingData['total'];
     $notes = $bookingData['notes'] ?? '';
+    $cancellationToken = $bookingData['cancellation_token'] ?? '';
 
     $subject = 'Terminbestätigung - Bewerbungen & Mehr';
 
@@ -54,6 +55,14 @@ function sendBookingConfirmation($bookingData) {
     $message .= "WICHTIG\n";
     $message .= "Bitte bringen Sie alle vorhandenen Unterlagen mit: Zeugnisse, Lebenslauf (falls vorhanden), bereits vorhandene Dokumente...\n\n";
     $message .= "Bei Fragen kontaktieren Sie mich. Ich freue mich auf Sie.\n\n";
+
+    if ($cancellationToken !== '') {
+        $cancelUrl = rtrim(SITE_URL, '/') . '/buchen/#/buchen/bestaetigung?token=' . $cancellationToken;
+        $message .= "TERMIN STORNIEREN\n";
+        $message .= "Falls Sie den Termin stornieren möchten, klicken Sie auf diesen Link:\n";
+        $message .= $cancelUrl . "\n\n";
+    }
+
     $message .= "ZAHLUNGSMÖGLICHKEITEN\n";
     $message .= "Sie können vor Ort in bar oder mit TWINT bezahlen.\n\n";
     $message .= "KONTAKT\n";
@@ -124,6 +133,64 @@ function sendAdminNotification($bookingData) {
         return sendWithPHPMailer($to, $subject, $message);
     } else {
         error_log("Admin Email: PHPMailer not found, using mail() to send to: " . $to);
+        return sendWithMailFunction($to, $subject, $message);
+    }
+}
+
+function sendCancellationConfirmationCustomer($cancellationData) {
+    $to = $cancellationData['customer_email'];
+    $customerName = $cancellationData['customer_name'];
+    $date = $cancellationData['date'];
+    $time = $cancellationData['time'];
+
+    $subject = 'Terminstornierung - Bewerbungen & Mehr';
+
+    $message = "Guten Tag " . $customerName . ",\n\n";
+    $message .= "Ihr Termin wurde erfolgreich storniert:\n\n";
+    $message .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+    $message .= "STORNIERTER TERMIN\n";
+    $message .= $date . "\n";
+    $message .= $time . " Uhr\n\n";
+    $message .= "Name: " . $customerName . "\n\n";
+    $message .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+    $message .= "Falls Sie einen neuen Termin buchen möchten, besuchen Sie uns unter\n";
+    $message .= "https://bewerbungenundmehr.ch/buchen\n\n";
+    $message .= "Mit freundlichen Grüssen\n";
+    $message .= "Bewerbungen & Mehr\n";
+
+    if (class_exists('PHPMailer\PHPMailer\PHPMailer')) {
+        error_log("Cancellation Email: Using PHPMailer to send to: " . $to);
+        return sendWithPHPMailer($to, $subject, $message);
+    } else {
+        error_log("Cancellation Email: PHPMailer not found, using mail() to send to: " . $to);
+        return sendWithMailFunction($to, $subject, $message);
+    }
+}
+
+function sendCancellationNotificationAdmin($cancellationData) {
+    $to = 'f.weissheimer@gmx.ch';
+    $customerName = $cancellationData['customer_name'];
+    $customerEmail = $cancellationData['customer_email'];
+    $date = $cancellationData['date'];
+    $time = $cancellationData['time'];
+
+    $subject = 'Terminstornierung: ' . $customerName . ' - ' . $date;
+
+    $message = "Der Termin wurde vom Kunden storniert:\n\n";
+    $message .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+    $message .= "STORNIERTER TERMIN\n";
+    $message .= $date . "\n";
+    $message .= $time . " Uhr\n\n";
+    $message .= "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+    $message .= "KUNDENDATEN\n";
+    $message .= "Name: " . $customerName . "\n";
+    $message .= "E-Mail: " . $customerEmail . "\n";
+
+    if (class_exists('PHPMailer\PHPMailer\PHPMailer')) {
+        error_log("Admin Cancellation Email: Using PHPMailer to send to: " . $to);
+        return sendWithPHPMailer($to, $subject, $message);
+    } else {
+        error_log("Admin Cancellation Email: PHPMailer not found, using mail() to send to: " . $to);
         return sendWithMailFunction($to, $subject, $message);
     }
 }

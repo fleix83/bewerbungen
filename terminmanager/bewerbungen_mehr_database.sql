@@ -137,15 +137,18 @@ CREATE TABLE events (
     
     -- Status
     status ENUM('pending', 'confirmed', 'cancelled', 'completed') DEFAULT 'confirmed',
-    
+
+    -- Self-service cancellation token (sent to customer via email link)
+    cancellation_token VARCHAR(32) UNIQUE NULL,
+
     -- Metadaten
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    
+
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (event_type_id) REFERENCES event_types(id),
     FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE SET NULL,
-    
+
     INDEX idx_availability (user_id, event_date, start_slot, end_slot),
     INDEX idx_event_date (event_date),
     INDEX idx_status (status)

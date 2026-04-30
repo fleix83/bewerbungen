@@ -33,6 +33,9 @@ export const bookingsAPI = {
   },
   getById(id) {
     return api.get(`/bookings.php?id=${id}`)
+  },
+  getByToken(token) {
+    return api.get(`/bookings.php?token=${encodeURIComponent(token)}`)
   }
 }
 
@@ -51,6 +54,15 @@ export const appointmentsAPI = {
   },
   updateStatus(id, status) {
     return api.put(`/appointments.php?id=${id}`, { status })
+  }
+}
+
+export const cancellationsAPI = {
+  cancel({ token, eventId, email }) {
+    const payload = token
+      ? { cancellation_token: token }
+      : { event_id: eventId, customer_email: email }
+    return api.post('/cancellations.php', payload)
   }
 }
 

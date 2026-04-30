@@ -2,9 +2,47 @@
   <div class="booking-confirmation">
     <div class="confirmation-section">
       <h2 class="section-title">Ihr Termin</h2>
-      <div class="termin-box">
-        <p><strong>{{ formattedDate }}</strong></p>
-        <p>{{ timeDisplay }}</p>
+      <div v-if="!cancelled" class="termin-box termin-box--row">
+        <div class="termin-info">
+          <p><strong>{{ formattedDate }}</strong></p>
+          <p>{{ timeDisplay }}</p>
+        </div>
+        <div class="termin-actions">
+          <button
+            v-if="!confirming && canCancel"
+            type="button"
+            class="btn-cancel"
+            @click="confirming = true"
+          >Stornieren</button>
+        </div>
+      </div>
+
+      <div v-if="!cancelled && !canCancel" class="termin-note">
+        Stornierung nur bis 24 Stunden vorher möglich. Bitte telefonisch absagen.
+      </div>
+
+      <div v-if="!cancelled && confirming" class="cancel-confirm">
+        <p>Möchten Sie den Termin wirklich stornieren?</p>
+        <div class="cancel-confirm-actions">
+          <button
+            type="button"
+            class="btn-cancel-confirm"
+            :disabled="submitting"
+            @click="onCancelConfirm"
+          >{{ submitting ? 'Wird storniert…' : 'Bestätigen' }}</button>
+          <button
+            type="button"
+            class="btn-cancel-abort"
+            :disabled="submitting"
+            @click="confirming = false"
+          >Abbrechen</button>
+        </div>
+        <p v-if="cancelError" class="cancel-error">{{ cancelError }}</p>
+      </div>
+
+      <div v-if="cancelled" class="cancel-success">
+        <p><strong>Ihr Termin wurde storniert.</strong></p>
+        <p>Eine Bestätigung wurde an Ihre E-Mail-Adresse gesendet.</p>
       </div>
     </div>
 
@@ -74,7 +112,9 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+import { useBookingStore } from '../../stores/bookingStore'
+import { cancellationsAPI } from '../../services/api'
 
 const props = defineProps({
   confirmation: {
@@ -90,6 +130,41 @@ const props = defineProps({
     default: ''
   }
 })
+
+const bookingStore = useBookingStore()
+
+const confirming = ref(false)
+const submitting = ref(false)
+const cancelled = ref(Boolean(props.confirmation?.cancelled))
+const cancelError = ref('')
+
+const canCancel = computed(() => {
+  const slot = props.confirmation?.slot
+  if (!slot || slot.start_slot == null) return false
+  const d = new Date(props.confirmation.date)
+  const start = new Date(d.getFullYear(), d.getMonth(), d.getDate(), slot.start_slot, 0, 0)
+  return (start.getTime() - Date.now()) > 24 * 60 * 60 * 1000
+})
+
+async function onCancelConfirm() {
+  submitting.value = true
+  cancelError.value = ''
+  try {
+    await cancellationsAPI.cancel({
+      token: props.confirmation.cancellationToken,
+      eventId: props.confirmation.eventId,
+      email: props.confirmation.customer?.email
+    })
+    cancelled.value = true
+    confirming.value = false
+    bookingStore.markCancelled()
+  } catch (e) {
+    cancelError.value = e?.response?.data?.error
+      || 'Stornierung fehlgeschlagen. Bitte versuchen Sie es erneut.'
+  } finally {
+    submitting.value = false
+  }
+}
 
 const formattedDate = computed(() => {
   const date = new Date(props.confirmation.date)
@@ -182,5 +257,125 @@ const formatPrice = (price) => {
 .contact-link:hover {
   background-color: var(--color-bg-card);
   text-decoration: none;
+}
+
+.termin-box--row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.termin-info p {
+  margin: 8px 0;
+}
+
+.termin-actions {
+  flex-shrink: 0;
+}
+
+.btn-cancel {
+  background-color: #e7e6ff;
+  color: var(--color-text-title);
+  border: none;
+  border-radius: 4px;
+  padding: 8px 14px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.btn-cancel:hover {
+  filter: brightness(0.95);
+}
+
+.termin-note {
+  margin-top: var(--spacing-sm);
+  font-family: var(--font-primary);
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.cancel-confirm {
+  margin-top: var(--spacing-md);
+  padding: 16px 20px;
+  background-color: var(--color-bg-white);
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  font-size: 16px;
+}
+
+.cancel-confirm p {
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.cancel-confirm-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.btn-cancel-confirm {
+  background-color: var(--color-text-title);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 16px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-cancel-confirm:hover:not(:disabled) {
+  background-color: #001470;
+}
+
+.btn-cancel-confirm:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-cancel-abort {
+  background-color: #e7e6ff;
+  color: var(--color-text-title);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 16px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-cancel-abort:hover:not(:disabled) {
+  filter: brightness(0.95);
+}
+
+.btn-cancel-abort:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cancel-error {
+  margin-top: var(--spacing-sm) !important;
+  color: #b00020;
+  font-size: 14px;
+}
+
+.cancel-success {
+  background-color: var(--color-bg-white);
+  border-left: 4px solid #4CAF50;
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  color: #000;
+}
+
+.cancel-success p {
+  margin: 8px 0;
 }
 </style>

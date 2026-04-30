@@ -58,7 +58,8 @@ try {
                 $customerId = $conn->lastInsertId();
             }
 
-            // Create event
+            // Create event with a self-service cancellation token
+            $cancellationToken = bin2hex(random_bytes(16));
             $stmt = $conn->prepare("
                 INSERT INTO events (
                     user_id,
@@ -68,6 +69,7 @@ try {
                     start_slot,
                     end_slot,
                     status,
+                    cancellation_token,
                     notes
                 ) VALUES (
                     1,
@@ -77,6 +79,7 @@ try {
                     :start_slot,
                     :end_slot,
                     'pending',
+                    :cancellation_token,
                     :notes
                 )
             ");
@@ -85,6 +88,7 @@ try {
                 'event_date' => $eventDate,
                 'start_slot' => $startSlot,
                 'end_slot' => $endSlot,
+                'cancellation_token' => $cancellationToken,
                 'notes' => $notes
             ]);
             $eventId = $conn->lastInsertId();
@@ -113,8 +117,9 @@ try {
 
             $conn->commit();
 
-            // Prepare email data
+            // Prepare email data (includes cancellation_token for the cancel link)
             $emailData = prepareBookingEmail($conn, $eventId, $customer, $eventDate, $startSlot, $endSlot, $serviceIds, $notes, $serviceType);
+            $emailData['cancellation_token'] = $cancellationToken;
 
             // Send confirmation email to customer
             $emailSent = sendBookingConfirmation($emailData);
@@ -125,6 +130,7 @@ try {
             sendJSON([
                 'success' => true,
                 'event_id' => $eventId,
+                'cancellation_token' => $cancellationToken,
                 'message' => 'Booking created successfully',
                 'email_sent' => $emailSent,
                 'admin_email_sent' => $adminEmailSent
@@ -136,6 +142,57 @@ try {
 
     } elseif ($method === 'GET') {
         $id = $_GET['id'] ?? null;
+        $token = isset($_GET['token']) ? trim($_GET['token']) : '';
+
+        if ($token !== '') {
+            // Public token-based lookup for the email cancellation link.
+            $stmt = $conn->prepare("
+                SELECT e.id AS event_id, e.event_date, e.start_slot, e.end_slot, e.notes,
+                       e.cancellation_token,
+                       c.first_name, c.last_name, c.email, c.phone
+                  FROM events e
+                  LEFT JOIN customers c ON c.id = e.customer_id
+                 WHERE e.cancellation_token = :token
+                 LIMIT 1
+            ");
+            $stmt->execute(['token' => $token]);
+            $event = $stmt->fetch();
+
+            if (!$event) {
+                sendError('Termin nicht gefunden oder bereits storniert', 404);
+            }
+
+            $stmt = $conn->prepare("
+                SELECT s.id, s.name, b.price_at_booking AS price
+                  FROM bookings b
+                  JOIN services s ON s.id = b.service_id
+                 WHERE b.event_id = :id
+            ");
+            $stmt->execute(['id' => $event['event_id']]);
+            $services = $stmt->fetchAll();
+
+            sendJSON([
+                'event_id' => intval($event['event_id']),
+                'cancellation_token' => $event['cancellation_token'],
+                'event_date' => $event['event_date'],
+                'start_slot' => intval($event['start_slot']),
+                'end_slot' => intval($event['end_slot']),
+                'notes' => $event['notes'],
+                'customer' => [
+                    'first_name' => $event['first_name'],
+                    'last_name' => $event['last_name'],
+                    'email' => $event['email'],
+                    'phone' => $event['phone']
+                ],
+                'services' => array_map(function ($s) {
+                    return [
+                        'id' => intval($s['id']),
+                        'name' => $s['name'],
+                        'price' => floatval($s['price'])
+                    ];
+                }, $services)
+            ]);
+        }
 
         if (!$id) {
             sendError('Booking ID required');

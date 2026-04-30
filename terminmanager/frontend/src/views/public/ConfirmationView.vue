@@ -1,8 +1,19 @@
 <template>
   <div class="screen">
-    <h1 class="screen-title">Buchung bestätigt!</h1>
+    <h1 class="screen-title">{{ pageTitle }}</h1>
 
-    <div v-if="confirmation" class="success-message">
+    <div v-if="loading" class="loading-message">
+      <p>Termin wird geladen…</p>
+    </div>
+
+    <div v-else-if="loadError" class="error-message">
+      <p>{{ loadError }}</p>
+      <AppButton @click="$router.push('/buchen')">
+        Neuen Termin buchen
+      </AppButton>
+    </div>
+
+    <div v-else-if="confirmation && !fromToken" class="success-message">
       <div class="success-icon">✓</div>
       <p>Ihre Buchung wurde erfolgreich erstellt.</p>
     </div>
@@ -14,7 +25,7 @@
       :notes="customerNotes"
     />
 
-    <div v-else class="error-message">
+    <div v-if="!loading && !loadError && !confirmation" class="error-message">
       <p>Keine Buchungsdetails verfügbar.</p>
       <AppButton @click="$router.push('/buchen')">
         Neuen Termin buchen
@@ -24,21 +35,61 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, computed, onMounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useBookingStore } from '../../stores/bookingStore'
-import { servicesAPI } from '../../services/api'
+import { servicesAPI, bookingsAPI } from '../../services/api'
 import BookingConfirmation from '../../components/booking/BookingConfirmation.vue'
 import AppButton from '../../components/common/AppButton.vue'
 
+const route = useRoute()
 const router = useRouter()
 const bookingStore = useBookingStore()
 
 const confirmation = ref(null)
 const bookedServices = ref([])
 const customerNotes = ref('')
+const loading = ref(false)
+const loadError = ref('')
+const fromToken = ref(false)
+
+const pageTitle = computed(() => fromToken.value ? 'Ihr Termin' : 'Buchung bestätigt!')
 
 onMounted(async () => {
+  const token = route.query.token
+
+  if (token && !bookingStore.bookingConfirmation?.cancellationToken) {
+    loading.value = true
+    fromToken.value = true
+    try {
+      const { data } = await bookingsAPI.getByToken(token)
+      bookingStore.setBookingConfirmation({
+        eventId: data.event_id,
+        cancellationToken: data.cancellation_token,
+        date: data.event_date,
+        slot: { start_slot: data.start_slot, end_slot: data.end_slot },
+        services: (data.services || []).map(s => s.id),
+        customer: data.customer || {}
+      })
+      bookingStore.setCustomerData({
+        firstName: data.customer?.first_name || '',
+        lastName: data.customer?.last_name || '',
+        email: data.customer?.email || '',
+        phone: data.customer?.phone || '',
+        notes: data.notes || '',
+        serviceType: ''
+      })
+    } catch (e) {
+      loadError.value = e?.response?.data?.error
+        || 'Termin konnte nicht geladen werden. Möglicherweise wurde er bereits storniert.'
+      loading.value = false
+      return
+    }
+    loading.value = false
+  } else if (bookingStore.bookingConfirmation?.cancellationToken && token) {
+    fromToken.value = true
+  }
+
   confirmation.value = bookingStore.bookingConfirmation
 
   if (!confirmation.value) {
@@ -124,5 +175,12 @@ onMounted(async () => {
   margin-bottom: var(--spacing-lg);
   font-size: 18px;
   color: var(--color-text-muted);
+}
+
+.loading-message {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--color-text-muted);
+  font-size: 18px;
 }
 </style>
