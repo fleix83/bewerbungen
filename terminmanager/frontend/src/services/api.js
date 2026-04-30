@@ -1,8 +1,18 @@
 import axios from 'axios'
 
-// Path-absolute URL works from any SPA route (e.g. /buchen) without depending on URL depth.
-// Local XAMPP under /bewerbungen/ should use the Vite dev server (which proxies /terminmanager/api).
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/terminmanager/api'
+// Derive the API base from the current page path so the same dist/ works at
+// both production root (https://site/buchen/...) and local XAMPP under a
+// subdir (http://localhost/bewerbungen/buchen/...). The SPA is always mounted
+// at /<prefix>/buchen and the API at /<prefix>/terminmanager/api, where
+// <prefix> is empty in production. An explicit VITE_API_BASE_URL env still
+// wins (handy for the Vite dev server's proxy).
+function deriveApiBase() {
+  if (typeof window === 'undefined') return '/terminmanager/api'
+  const idx = window.location.pathname.indexOf('/buchen')
+  const prefix = idx > 0 ? window.location.pathname.slice(0, idx) : ''
+  return prefix + '/terminmanager/api'
+}
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || deriveApiBase()
 
 const api = axios.create({
   baseURL: API_BASE_URL,
