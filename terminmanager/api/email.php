@@ -82,7 +82,7 @@ function sendBookingConfirmation($bookingData) {
 }
 
 function sendAdminNotification($bookingData) {
-    $to = 'f.weissheimer@gmx.ch';
+    $to = 'felix@bewerbungenundmehr.ch';
     $customerName = $bookingData['customer_name'];
     $customerEmail = $bookingData['customer_email'];
     $customerPhone = $bookingData['customer_phone'] ?? '';
@@ -168,7 +168,7 @@ function sendCancellationConfirmationCustomer($cancellationData) {
 }
 
 function sendCancellationNotificationAdmin($cancellationData) {
-    $to = 'f.weissheimer@gmx.ch';
+    $to = 'felix@bewerbungenundmehr.ch';
     $customerName = $cancellationData['customer_name'];
     $customerEmail = $cancellationData['customer_email'];
     $date = $cancellationData['date'];
