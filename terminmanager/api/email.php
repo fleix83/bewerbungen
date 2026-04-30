@@ -57,7 +57,7 @@ function sendBookingConfirmation($bookingData) {
     $message .= "Bei Fragen kontaktieren Sie mich. Ich freue mich auf Sie.\n\n";
 
     if ($cancellationToken !== '') {
-        $cancelUrl = rtrim(SITE_URL, '/') . '/buchen/#/buchen/bestaetigung?token=' . $cancellationToken;
+        $cancelUrl = rtrim(SITE_URL, '/') . '/buchen/#/buchen/storno/' . $cancellationToken;
         $message .= "TERMIN STORNIEREN\n";
         $message .= "Falls Sie den Termin stornieren möchten, klicken Sie auf diesen Link:\n";
         $message .= $cancelUrl . "\n\n";

@@ -24,7 +24,9 @@ if (!defined('DB_NAME')) define('DB_NAME', 'luftgaessli');
 
 // Public origin used in customer-facing emails (e.g. cancellation links).
 // Override in config.local.php for staging or local testing.
-if (!defined('SITE_URL')) define('SITE_URL', 'https://bewerbungenundmehr.ch');
+// Use the canonical www host so the email link doesn't 301-redirect (which can
+// drop the URL fragment in some email clients / browsers).
+if (!defined('SITE_URL')) define('SITE_URL', 'https://www.bewerbungenundmehr.ch');
 
 function getDBConnection() {
     try {

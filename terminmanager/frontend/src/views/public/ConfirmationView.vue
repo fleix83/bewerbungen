@@ -56,7 +56,7 @@ const fromToken = ref(false)
 const pageTitle = computed(() => fromToken.value ? 'Ihr Termin' : 'Buchung bestätigt!')
 
 onMounted(async () => {
-  const token = route.query.token
+  const token = route.params.token || route.query.token
 
   if (token && !bookingStore.bookingConfirmation?.cancellationToken) {
     loading.value = true
@@ -80,8 +80,12 @@ onMounted(async () => {
         serviceType: ''
       })
     } catch (e) {
-      loadError.value = e?.response?.data?.error
-        || 'Termin konnte nicht geladen werden. Möglicherweise wurde er bereits storniert.'
+      const apiMsg = e?.response?.data?.error
+      const status = e?.response?.status
+      loadError.value = apiMsg
+        || (status
+          ? `Termin konnte nicht geladen werden (HTTP ${status}).`
+          : 'Termin konnte nicht geladen werden. Bitte prüfen Sie Ihre Internetverbindung.')
       loading.value = false
       return
     }

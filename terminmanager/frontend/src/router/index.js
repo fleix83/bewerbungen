@@ -29,6 +29,13 @@ const router = createRouter({
       component: () => import('../views/public/ConfirmationView.vue')
     },
     {
+      // Email cancellation link lands here. Path-based token is more robust
+      // than ?token=… inside a hash route across email clients.
+      path: '/buchen/storno/:token',
+      name: 'cancel',
+      component: () => import('../views/public/ConfirmationView.vue')
+    },
+    {
       path: '/admin/login',
       name: 'admin-login',
       component: () => import('../views/admin/LoginView.vue')
