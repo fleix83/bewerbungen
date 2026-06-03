@@ -1,0 +1,15 @@
+title: Impressum
+icon: text
+
+tabs:
+  seo:
+    label: SEO
+    fields:
+      seo_title:
+        label: Seitentitel
+        type: text
+      seo_description:
+        label: Meta-Beschreibung
+        type: textarea
+        buttons: false
+        maxlength: 160

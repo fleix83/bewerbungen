@@ -128,7 +128,8 @@ body {
 .page-menu,
 .page-preise,
 .page-about,
-.page-ablauf {
+.page-ablauf,
+.page-impressum {
   background-color: #e7e6ff;
 }
 
@@ -749,6 +750,54 @@ body {
 .cta-link .cta-link__text {
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+/* Impressum Page */
+.impressum {
+  margin-bottom: var(--spacing-lg);
+}
+
+.impressum__company {
+  color: var(--color-primary);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.3;
+  margin-bottom: var(--spacing-sm);
+}
+
+.impressum__address {
+  font-style: normal;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-lg);
+}
+
+.impressum__contact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.impressum__link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: #4766b9;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+}
+
+.impressum__link:hover {
+  text-decoration: underline;
+}
+
+.impressum__link svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
 }
 
 /* Additional Services */
