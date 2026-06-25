@@ -7,7 +7,7 @@ try {
     $stmt = $conn->prepare("
         SELECT id, name, duration_slots, price
         FROM services
-        WHERE active = 1
+        WHERE active = 1 AND is_public = 1
         ORDER BY sort_order, name
     ");
 

@@ -82,6 +82,7 @@ CREATE TABLE services (
     price DECIMAL(10,2) NOT NULL,
     description TEXT,
     active BOOLEAN DEFAULT TRUE,
+    is_public TINYINT(1) NOT NULL DEFAULT 1,  -- 0 = intern (z.B. "Miete Araceli"), nicht online buchbar
     sort_order INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
