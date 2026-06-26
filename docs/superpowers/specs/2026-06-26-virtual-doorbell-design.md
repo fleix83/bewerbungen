@@ -12,14 +12,14 @@ loud alert on his phone** — even when his screen is locked and no browser tab 
 
 ## Solution Summary
 
-A public page at **`https://www.bewerbungenundmehr.ch/klingeln`** with a single big
+A public page at **`https://www.bewerbungenundmehr.ch/klingel`** with a single big
 "KLINGELN" button. On tap, a PHP relay endpoint sends a **max-priority push via
 [ntfy](https://ntfy.sh)** to Felix's phone. ntfy is free, open-source, cross-platform
 (iOS + Android), and its app delivers a loud alert that bypasses silent mode when the
 topic is configured for max priority.
 
 ```
-Client opens /klingeln
+Client opens /klingel
    │  taps "KLINGELN"
    ▼
 POST /terminmanager/api/ring.php          (same-origin fetch)
@@ -55,8 +55,8 @@ ntfy app on Felix's phone → LOUD alert "🔔 Jemand klingelt an der Tür"
   1. Disable the button, show a "Klingelt…" intermediate state.
   2. `fetch('…/terminmanager/api/ring.php', { method: 'POST' })`.
   3. On `200`: show **"✓ Es hat geklingelt – einen Moment, ich komme gleich."** and keep
-     the button disabled for a **~30s client-side cooldown** (prevents accidental
-     double-rings), then re-enable.
+     the button disabled for a **~10s client-side cooldown** (matches the server rate
+     limit; prevents accidental double-rings), then re-enable.
   4. On `429`: show **"Es hat eben schon geklingelt – bitte einen Moment."**
   5. On any other error / network failure: show **"Konnte nicht benachrichtigen –
      bitte nochmal."** and re-enable the button.
@@ -64,13 +64,13 @@ ntfy app on Felix's phone → LOUD alert "🔔 Jemand klingelt an der Tür"
 
 ### 2. Clean URL — `.htaccess`
 
-Add a rewrite so the page is reachable at `/klingeln` (production) and
-`/bewerbungen/klingeln` (local XAMPP). Place it alongside the existing Terminmanager
+Add a rewrite so the page is reachable at `/klingel` (production) and
+`/bewerbungen/klingel` (local XAMPP). Place it alongside the existing Terminmanager
 exclusion rules in the root `.htaccess`:
 
 ```apache
 # Virtual doorbell page
-RewriteRule ^klingeln/?$ terminmanager/doorbell/index.html [L]
+RewriteRule ^klingel/?$ terminmanager/doorbell/index.html [L]
 ```
 
 This must sit **before** the catch-all Kirby rule and after `RewriteEngine on`. The
@@ -85,7 +85,7 @@ assets under `terminmanager/` be served directly.
 - **Rate limiting** (file-based, no DB):
   - Store a small JSON/timestamp record per client IP under a writable temp dir
     (e.g. `sys_get_temp_dir() . '/doorbell_<hash(ip)>'`).
-  - Reject with `429` if the same IP rang within the last **20 seconds**.
+  - Reject with `429` if the same IP rang within the last **10 seconds**.
   - Also enforce a coarse global/hourly cap (e.g. **max 60 rings/hour total**) to bound
     abuse from many IPs; on exceed, return `429`. Use a single global counter file with
     an hourly window.
@@ -133,7 +133,7 @@ the topic.
 - **Topic secrecy:** the ntfy topic is the only access control ntfy.sh offers. It lives
   server-side only (`config.local.php`), never in the client page or git. Use a long
   random string. Rotating = change the value + re-subscribe on the phone.
-- **Rate limiting:** per-IP (20s) + global hourly cap prevent a public button from
+- **Rate limiting:** per-IP (10s) + global hourly cap prevent a public button from
   flooding Felix's phone.
 - **No PII / no DB:** the ring carries no personal data; nothing is persisted beyond
   transient rate-limit files.
@@ -150,7 +150,7 @@ the topic.
   dev and confirm a ring arrives with the right title/priority.
 - **Page UX:** verify success, `429`, and error states render the correct German
   messages and the cooldown disables the button.
-- **End-to-end:** on Felix's phone with the ntfy app subscribed, open `/klingeln`, tap,
+- **End-to-end:** on Felix's phone with the ntfy app subscribed, open `/klingel`, tap,
   confirm a loud alert arrives within ~1–2s while the screen is locked.
 
 ## Out of Scope (YAGNI)
@@ -160,7 +160,7 @@ the topic.
 - Email/SMS backup channel (ntfy only for now).
 - Self-hosted ntfy server (public ntfy.sh is sufficient for "someone is ringing"; can
   revisit for privacy later).
-- Per-client unique links (one shared `/klingeln` URL).
+- Per-client unique links (one shared `/klingel` URL).
 
 ## Files Touched
 
@@ -171,4 +171,4 @@ the topic.
 | `terminmanager/api/ring.php` | New — PHP relay → ntfy |
 | `terminmanager/api/config.local.example.php` | Add `NTFY_TOPIC` / `NTFY_SERVER` |
 | `terminmanager/api/config.local.php` | (local, gitignored) set real topic |
-| `.htaccess` | Add `^klingeln/?$` rewrite |
+| `.htaccess` | Add `^klingel/?$` rewrite |
