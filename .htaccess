@@ -14,6 +14,9 @@ RewriteRule ^terminmanager/ - [L]
 RewriteRule ^buchen$ terminmanager/frontend/dist/index.html [L]
 RewriteRule ^buchen/(.*)$ terminmanager/frontend/dist/index.html [L]
 
+# Virtual doorbell page
+RewriteRule ^klingel/?$ terminmanager/doorbell/index.html [L]
+
 # block dot files
 RewriteRule (^|/)\.(?!well-known\/) index.php [L]
 
