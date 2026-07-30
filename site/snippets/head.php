@@ -32,7 +32,7 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "<?= $site->owner_name() ?>",
-    "jobTitle": "Bewerbungsexperte",
+    "jobTitle": "Inhaber",
     "worksFor": {
       "@type": "LocalBusiness",
       "name": "Bewerbungen & Mehr"

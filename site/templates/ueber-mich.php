@@ -9,7 +9,7 @@
       <?php if ($image = $page->images()->first()): ?>
       <figure class="about-photo">
         <img src="<?= $image->url() ?>"
-             alt="<?= $image->alt()->or($site->owner_name() . ' - Bewerbungsexperte Basel') ?>"
+             alt="<?= $image->alt()->or($site->owner_name() . ' - Bewerbungshilfe Basel') ?>"
              width="340"
              height="220"
              loading="lazy">
