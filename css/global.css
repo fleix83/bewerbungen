@@ -383,15 +383,16 @@ body {
 .landing-header__mehr {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
   color: #ff7371;
-  font-size: 1.6875rem;
-  font-weight: 700;
-  line-height: 2.4375rem;
   text-decoration: none;
-  font-family: var(--font-family);
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
+}
+
+/* Plus-Grafik ersetzt den frueheren "Mehr"-Schriftzug.
+   Hoehe ueber das Seitenverhaeltnis der SVG (108x105). */
+.landing-header__plus {
+  width: 2.75rem;
+  height: auto;
+  display: block;
 }
 
 .landing-header__mehr:hover {

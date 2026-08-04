@@ -7,6 +7,12 @@
     </div>
   </div>
   <nav>
-    <a href="<?= page('menu')->url() ?>" class="landing-header__mehr"> <?= $page->mehr_link_text() ?></a>
+    <a href="<?= page('menu')->url() ?>" class="landing-header__mehr">
+      <img src="<?= url('assets/images/plus.svg') ?>"
+           alt="<?= $page->mehr_link_text() ?>"
+           class="landing-header__plus"
+           width="108"
+           height="105">
+    </a>
   </nav>
 </header>
