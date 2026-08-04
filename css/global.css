@@ -2,7 +2,6 @@
    BEWERBUNGEN & MEHR - Global Styles
    ======================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 /* ----- 1. CSS Custom Properties ----- */
@@ -17,6 +16,8 @@
   --color-text: #2A2A2A;
   --color-white: #FFFFFF;
   --color-address-bg: #CAD6FF;
+  --color-services-bg: #4866b9;
+  --color-footer-bg: #8281a5;
 
   /* Violet Theme Colors */
   --color-violet-start: #3931B4;
@@ -26,7 +27,6 @@
 
   /* Typography */
   --font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-family-reddit: 'Reddit Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
@@ -345,7 +345,7 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   padding: 0;
-  font-family: var(--font-family-reddit);
+  font-family: var(--font-family);
 }
 
 .landing-header__address {
@@ -355,15 +355,15 @@ body {
 }
 
 .landing-header__title {
-  font-size: var(--font-size-2xs);
-  font-weight: 800;
+  font-size: 15px;
+  font-weight: 700;
   line-height: 1.0625rem;
   margin-bottom: 0.25rem;
 }
 
 .landing-header__phone {
-  font-size: 1.3125rem;
-  font-weight: 800;
+  font-size: 1.5rem;
+  font-weight: 700;
   line-height: 1.0625rem;
   margin-bottom: 0.375rem;
   text-decoration: none;
@@ -386,10 +386,10 @@ body {
   gap: 0.25rem;
   color: #ff7371;
   font-size: 1.6875rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 2.4375rem;
   text-decoration: none;
-  font-family: var(--font-family-reddit);
+  font-family: var(--font-family);
   text-decoration: underline;
   text-decoration-thickness: 3px;
 }
@@ -421,6 +421,10 @@ body {
   margin-right: 0.875rem;
 }
 
+.landing-contact {
+  display: none;
+}
+
 .landing-illustration img {
   width: 16.6875rem;
   height: 17.5rem;
@@ -434,26 +438,29 @@ body {
 
 .hero-text {
   display: block;
-  font-family: var(--font-family-reddit);
+  font-family: var(--font-family);
   font-size: 26px;
-  font-weight: 800;
+  font-weight: 700;
   font-style: italic;
   color: #4766b9;
   /* color: #fff8e7; */
   line-height: 2.0rem;
-  margin: 0;
+  margin: 10px 0 0;
 }
 
 .hero-text__line {
   display: block;
 }
 
-.hero-text__line--normal {
-  font-style: normal;
-}
-
-.hero-text__keyword {
-  font-style: italic;
+/* Weiss hinterlegtes Einzelwort.
+   Hoehe = font-size + 2x padding; bleibt unter der line-height,
+   damit vertikal 2px Abstand zwischen den Flaechen bleibt. */
+.hero-text__mark {
+  display: inline-block;
+  line-height: 1;
+  padding: 2px 6px;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-2xs);
 }
 
 /* Legacy highlight styles - keeping for other pages */
@@ -508,7 +515,7 @@ body {
   background-color: #ff7371;
   border-radius: var(--border-radius-xs);
   text-decoration: none;
-  font-family: var(--font-family-reddit);
+  font-family: var(--font-family);
   color: white;
   gap: 0;
   box-sizing: border-box;
@@ -533,7 +540,7 @@ body {
 }
 
 .cta-subtitle {
-    font-family: var(--font-family-reddit);
+    font-family: var(--font-family);
     font-size: var(--font-size-2xs);
     font-weight: 700;
     font-style: italic;
@@ -871,7 +878,7 @@ body {
 /* ----- 10. Desktop ----- */
 /* ----- 11. About Section (Section 2) ----- */
 .about-section {
-  background-color: var(--color-background);
+  background-color: var(--color-services-bg);
   padding: 5.625rem 0.9375rem 1.25rem 0.9375rem;
   width: 100%;
   box-sizing: border-box;
@@ -888,12 +895,12 @@ body {
 }
 
 .about-section__intro {
-  font-family: var(--font-family-reddit);
+  font-family: var(--font-family);
   font-size: 1.375rem;
   font-weight: 700;
   font-style: italic;
   line-height: 1.3;
-  color: var(-color-primary);
+  color: var(--color-white);
   margin-top: 3.375rem;
   margin-bottom: 0;
 }
@@ -926,20 +933,20 @@ body {
 }
 
 .about-card__text {
-  font-family: var(--font-family-reddit);
+  font-family: var(--font-family);
   font-size: 1.3125rem;
   font-weight: 700;
   line-height: 1.3;
-  color: var(--color-primary);
+  color: var(--color-white);
 }
 
 .about-section__cta-text {
-  font-family: var(--font-family-reddit);
+  font-family: var(--font-family);
   font-size: 1.3125rem;
   font-weight: 700;
   font-style: italic;
   line-height: 1.3;
-  color: var(--color-primary);
+  color: var(--color-white);
   margin-top: 3.375rem;
   margin-bottom: 0;
 }
@@ -960,10 +967,10 @@ body {
 }
 
 .about-section__link {
-  font-family: var(--font-family-reddit);
+  font-family: var(--font-family);
   font-size: 1.3125rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-white);
   text-decoration: underline;
   text-underline-offset: 0.1875rem;
 }
@@ -977,7 +984,7 @@ body {
   width: 100%;
   padding: 3.75rem 0.9375rem 4.375rem 2.5rem;
   box-sizing: border-box;
-  background: #5370be;
+  background: var(--color-footer-bg);
 }
 
 .landing-footer__content {
@@ -990,9 +997,9 @@ body {
 }
 
 .landing-footer__address p {
-  font-family: var(--font-family-reddit);
+  font-family: var(--font-family);
   font-size: var(--font-size-sm);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.4;
   color: var(--color-white);
   margin: 0;
@@ -1013,9 +1020,9 @@ body {
   align-items: center;
   gap: 0.75rem;
   color: var(--color-white);
-  font-family: var(--font-family-reddit);
+  font-family: var(--font-family);
   font-size: var(--font-size-sm);
-  font-weight: 500;
+  font-weight: 400;
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
@@ -1048,7 +1055,7 @@ body {
 }
 
 .btn--cta-footer__label {
-  font-family: var(--font-family-reddit);
+  font-family: var(--font-family);
   font-size: var(--font-size-sm);
   font-weight: 600;
   font-style: italic;
@@ -1076,9 +1083,9 @@ body {
 
 .landing-footer__nav-link {
   color: var(--color-white);
-  font-family: var(--font-family-reddit);
+  font-family: var(--font-family);
   font-size: var(--font-size-sm);
-  font-weight: 500;
+  font-weight: 400;
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
@@ -1111,5 +1118,210 @@ body {
 
   .landing-footer__content {
     margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-landing {
+    position: relative;
+    overflow-x: clip;
+  }
+
+  .page-landing::before,
+  .page-landing::after {
+    content: '';
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.85;
+  }
+
+  .page-landing::before {
+    background-image: url('../assets/images/1.png');
+    width: 54rem;
+    height: 40rem;
+    top: -2rem;
+    left: -3rem;
+    transform: rotate(-8deg);
+  }
+
+  .page-landing::after {
+    background-image: url('../assets/images/2.png');
+    width: 18rem;
+    height: 32rem;
+    top: 52%;
+    right: -2rem;
+    transform: rotate(6deg);
+  }
+
+
+  .hero-text {
+    font-family: var(--font-family);
+    font-size: 3.5625rem;
+    /* Marke = 57px (line-height:1) + 2x2px Padding = 61px.
+       63px line-height laesst die geforderten 2px Abstand.
+       Vorher 3.6rem/57.6px -> Flaechen haetten sich ueberlappt. */
+    line-height: 3.9375rem;
+  }
+
+  /* seitlich etwas mehr Luft, passend zur groesseren Schrift */
+  .hero-text__mark {
+    padding: 2px 8px;
+  }
+
+  .hero-text__line {
+    white-space: nowrap;
+  }
+
+  .hero-section {
+    align-self: flex-start;
+    width: max-content;
+    margin-left: -20rem;
+    margin-top: 0;
+  }
+
+  .landing-header nav {
+    position: absolute;
+    top: 2rem;
+    right: 4rem;
+  }
+
+  .landing-illustration {
+    margin-top: -3rem;
+    margin-right: -30.125rem;
+  }
+
+  .landing-illustration svg,
+  .landing-illustration img {
+    width: 25rem;
+    height: auto;
+    max-width: none;
+  }
+
+  .landing-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0;
+    width: 100%;
+    margin-top: -1rem;
+  }
+
+  .landing-contact {
+    position: absolute;
+    top: 31rem;
+    right: 2rem;
+    width: 22rem;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-family: var(--font-family);
+    color: var(--color-primary);
+  }
+
+  .page-landing > .about-section {
+    display: none;
+  }
+
+  .landing-header__address {
+    display: none;
+  }
+
+  .landing-contact .about-section {
+    background: transparent;
+    padding: 0;
+    width: 100%;
+    display: block;
+  }
+
+  /* Desktop: Sektion sitzt auf hellem Verlauf, nicht auf Blau -> Text bleibt blau */
+  .landing-contact .about-card__text,
+  .landing-contact .about-section__intro,
+  .landing-contact .about-section__cta-text,
+  .landing-contact .about-section__link {
+    color: var(--color-primary);
+  }
+
+  .landing-contact .about-section__content {
+    padding: 0;
+    max-width: none;
+    padding-bottom: 0;
+  }
+
+  .landing-contact .about-section__cards {
+    gap: 1.5rem;
+  }
+
+  .landing-contact .about-card {
+    gap: 0.5rem;
+  }
+
+  .landing-contact .about-card__text,
+  .landing-contact .about-section__intro,
+  .landing-contact .about-section__cta-text {
+    line-height: 1.3;
+    font-size: 1.0625rem;
+  }
+
+  .landing-contact .about-section__intro,
+  .landing-contact .about-section__cta-text {
+    margin-top: 1.5rem;
+  }
+
+  .landing-contact .about-section__links {
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .landing-contact .about-section__link {
+    font-size: 1.0625rem;
+    line-height: 1.3;
+  }
+
+  .landing-contact__brand {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .landing-contact__title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .landing-contact__phone {
+    font-size: 1.3125rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-decoration: none;
+    color: var(--color-primary);
+  }
+
+  .landing-contact__details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .landing-contact__link {
+    color: var(--color-primary);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 1.3;
+  }
+
+  .landing-contact__link:hover {
+    opacity: 0.8;
+  }
+
+  .landing-contact__address {
+    font-weight: 700;
   }
 }

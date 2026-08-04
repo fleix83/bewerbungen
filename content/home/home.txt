@@ -10,11 +10,15 @@ Cta-subtitle: auch kurzfristig
 
 ----
 
-Hero-line-1: Hilfe
+Hero-line-1: Deine Unterstützung
 
 ----
 
-Hero-line-2: beim Erstellen von
+Hero-line-2-prefix: bei
+
+----
+
+Hero-line-2-highlight: Bewerbungen
 
 ----
 

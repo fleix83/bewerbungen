@@ -27,3 +27,21 @@ $heroImage = $site->hero_image()->toFile();
   <img src="<?= url('assets/images/image-violett.svg') ?>" alt="Schreibtisch mit Computer">
   <?php endif ?>
 </figure>
+<div class="landing-contact">
+  <?php snippet('components/about-section') ?>
+  <div class="landing-contact__brand">
+    <span class="landing-contact__title"><?= $site->title() ?></span>
+    <a href="tel:<?= $site->telefon() ?>" class="landing-contact__phone"><?= $site->telefon_display() ?></a>
+  </div>
+  <div class="landing-contact__details">
+    <a href="<?= $site->google_maps_url() ?>" class="landing-contact__link landing-contact__address" target="_blank" rel="noopener">
+      <?= $site->footer_street() ?>, <?= $site->footer_city() ?>
+    </a>
+    <a href="mailto:<?= $site->footer_email() ?>" class="landing-contact__link">
+      <?= $site->footer_email() ?>
+    </a>
+    <a href="<?= $site->whatsapp_url() ?>" class="landing-contact__link" target="_blank" rel="noopener">
+      WhatsApp
+    </a>
+  </div>
+</div>

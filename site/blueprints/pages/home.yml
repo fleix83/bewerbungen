@@ -23,16 +23,20 @@ tabs:
         type: text
         default: "Hilfe"
         help: Normal (nicht kursiv)
-      hero_line_2:
-        label: Zeile 2
+      hero_line_2_prefix:
+        label: Zeile 2 - Prefix
         type: text
-        default: "beim Erstellen von"
-        help: Normal (nicht kursiv)
+        default: "bei"
+        width: 1/2
+      hero_line_2_highlight:
+        label: Zeile 2 - Weiss hinterlegt
+        type: text
+        default: "Bewerbungen"
+        width: 1/2
       hero_line_3:
-        label: Zeile 3
+        label: Zeile 3 - Weiss hinterlegt
         type: text
         default: "Motivationsschreiben,"
-        help: Kursiv
       hero_line_4_highlight:
         label: Zeile 4 - Kursiv
         type: text
