@@ -387,11 +387,10 @@ body {
   text-decoration: none;
 }
 
-/* Plus-Grafik ersetzt den frueheren "Mehr"-Schriftzug.
-   Hoehe ueber das Seitenverhaeltnis der SVG (108x105). */
+/* Plus-Grafik ersetzt den frueheren "Mehr"-Schriftzug. */
 .landing-header__plus {
-  width: 2.75rem;
-  height: auto;
+  width: 50px;
+  height: 50px;
   display: block;
 }
 

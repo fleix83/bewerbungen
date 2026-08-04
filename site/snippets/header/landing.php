@@ -11,8 +11,8 @@
       <img src="<?= url('assets/images/plus.svg') ?>"
            alt="<?= $page->mehr_link_text() ?>"
            class="landing-header__plus"
-           width="108"
-           height="105">
+           width="50"
+           height="50">
     </a>
   </nav>
 </header>
