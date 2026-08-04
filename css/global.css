@@ -425,9 +425,12 @@ body {
   display: none;
 }
 
+/* Hoehe vorgegeben, Breite ueber das viewBox-Verhaeltnis 256:290
+   -> 270px hoch ergibt rund 238px breit. */
+.landing-illustration svg,
 .landing-illustration img {
-  width: 16.6875rem;
-  height: 17.5rem;
+  height: 270px;
+  width: auto;
   display: block;
 }
 
