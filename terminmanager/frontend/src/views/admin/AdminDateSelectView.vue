@@ -25,19 +25,6 @@
       </div>
     </div>
 
-    <!-- Generate slots button -->
-    <div class="admin-actions">
-      <button
-        class="btn-primary btn-generate"
-        :disabled="generating"
-        @click="generateFreeSlots"
-      >
-        {{ generating ? 'Generiere...' : 'Freie Slots generieren' }}
-      </button>
-      <p v-if="generateResult" class="generate-result">
-        {{ generateResult }}
-      </p>
-    </div>
   </div>
 </template>
 
@@ -45,7 +32,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../../stores/authStore'
-import { availabilityAPI, slotsAPI } from '../../services/api'
+import { availabilityAPI } from '../../services/api'
 import CalendarMonth from '../../components/booking/CalendarMonth.vue'
 
 const router = useRouter()
@@ -55,9 +42,6 @@ const currentDate = new Date()
 const currentYear = ref(currentDate.getFullYear())
 const currentMonth = ref(currentDate.getMonth() + 1)
 const monthAvailability = ref([])
-
-const generating = ref(false)
-const generateResult = ref('')
 
 const loadMonthAvailability = async () => {
   try {
@@ -99,21 +83,6 @@ const goToNextMonth = () => {
 const handleLogout = async () => {
   await authStore.logout()
   router.push('/admin/login')
-}
-
-const generateFreeSlots = async () => {
-  generating.value = true
-  generateResult.value = ''
-  try {
-    const response = await slotsAPI.generate(3)
-    generateResult.value = `${response.data.slots_created} Slots wurden für ${response.data.days_processed} Tage generiert!`
-    await loadMonthAvailability()
-  } catch (error) {
-    console.error('Failed to generate slots:', error)
-    generateResult.value = 'Fehler beim Generieren der Slots'
-  } finally {
-    generating.value = false
-  }
 }
 
 onMounted(() => {
@@ -176,24 +145,4 @@ onMounted(() => {
   background-color: #767676;
 }
 
-.admin-actions {
-  margin-top: var(--spacing-xl);
-  text-align: center;
-  padding: var(--spacing-lg);
-  background-color: var(--color-bg-card);
-  border-radius: 8px;
-  border: 2px dashed var(--color-text-title);
-}
-
-.btn-generate {
-  width: auto;
-  padding: 14px 24px;
-}
-
-.generate-result {
-  margin-top: var(--spacing-md);
-  font-size: 14px;
-  color: var(--color-text-title);
-  font-weight: 600;
-}
 </style>

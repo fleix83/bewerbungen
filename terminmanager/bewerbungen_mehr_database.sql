@@ -16,6 +16,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS events;
 DROP TABLE IF EXISTS blocked_dates;
+DROP TABLE IF EXISTS blocked_slots;
 DROP TABLE IF EXISTS availability_settings;
 DROP TABLE IF EXISTS services;
 DROP TABLE IF EXISTS customers;
@@ -117,6 +118,24 @@ CREATE TABLE blocked_dates (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================
+-- 6b. MANUELL BLOCKIERTE SLOTS (Slot Manager)
+-- Slots im Wochenplan sind standardmaessig frei;
+-- hier blockiert der Admin einzelne Stunden.
+-- ============================================
+CREATE TABLE blocked_slots (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL DEFAULT 1,
+    slot_date DATE NOT NULL,
+    slot_hour TINYINT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_by VARCHAR(50) DEFAULT 'admin',
+
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    UNIQUE KEY unique_blocked_slot (user_id, slot_date, slot_hour),
+    INDEX idx_blocked_slot_date (slot_date)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================
 -- 7. EVENTS/TERMINE (Haupttabelle)
 -- ============================================
 CREATE TABLE events (
@@ -200,15 +219,15 @@ INSERT INTO services (name, duration_slots, price, sort_order) VALUES
 ('Bewerbungsschreiben', 1, 30.00, 2),
 ('Etwas anderes', 1, 30.00, 3);
 
--- Standard-Verfügbarkeit Felix (Mo-So, 8-22 Uhr)
-INSERT INTO availability_settings (user_id, day_of_week, start_slot, end_slot) VALUES 
-(1, 0, 8, 22),  -- Sonntag
-(1, 1, 8, 22),  -- Montag
-(1, 2, 8, 22),  -- Dienstag
-(1, 3, 8, 22),  -- Mittwoch
-(1, 4, 8, 22),  -- Donnerstag
-(1, 5, 8, 22),  -- Freitag
-(1, 6, 8, 22);  -- Samstag
+-- Wochenplan Felix (Slots innerhalb dieser Fenster sind automatisch frei)
+INSERT INTO availability_settings (user_id, day_of_week, start_slot, end_slot, active) VALUES
+(1, 0, 8, 22, FALSE),  -- Sonntag: geschlossen
+(1, 1, 14, 17, TRUE),  -- Montag: 14-17
+(1, 2, 8, 12, TRUE),   -- Dienstag: 8-12
+(1, 3, 14, 17, TRUE),  -- Mittwoch: 14-17
+(1, 4, 8, 14, TRUE),   -- Donnerstag: 8-14
+(1, 5, 8, 16, TRUE),   -- Freitag: 8-16
+(1, 6, 8, 22, FALSE);  -- Samstag: geschlossen
 
 -- Standard-Verfügbarkeit Mitmieterin (Mo-So, 8-22 Uhr)
 INSERT INTO availability_settings (user_id, day_of_week, start_slot, end_slot) VALUES 
@@ -238,35 +257,47 @@ INSERT INTO blocked_dates (user_id, blocked_date, reason) VALUES
 -- ============================================
 
 -- View: Freie Slots für Kundenbuchungen (User 1 = Felix)
+-- Automatisch aus dem Wochenplan (availability_settings) generiert,
+-- abzueglich Feiertagen, manuell blockierten Slots und Buchungen.
 CREATE VIEW v_available_slots AS
-SELECT 
+SELECT
     d.date_value AS event_date,
     s.slot_hour AS start_slot,
     s.slot_hour + 1 AS end_slot,
     CONCAT(
-        LPAD(s.slot_hour, 2, '0'), ':00 - ', 
+        LPAD(s.slot_hour, 2, '0'), ':00 - ',
         LPAD(s.slot_hour + 1, 2, '0'), ':00'
     ) AS time_display
 FROM (
-    -- Generiere Daten für die nächsten 60 Tage
-    SELECT DATE_ADD(CURDATE(), INTERVAL n DAY) AS date_value
-    FROM (
-        SELECT a.N + b.N * 10 AS n
-        FROM (SELECT 0 AS N UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 
-              UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) a,
-             (SELECT 0 AS N UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5) b
-    ) numbers
+    -- Heute + 89 Tage
+    SELECT DATE_ADD(CURDATE(), INTERVAL a.N + b.N * 10 DAY) AS date_value
+    FROM (SELECT 0 AS N UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4
+          UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9) a,
+         (SELECT 0 AS N UNION SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4
+          UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8) b
 ) d
 CROSS JOIN (
-    -- Slots von 8:00 bis 21:00 (letzter Slot endet um 22:00)
-    SELECT 8 AS slot_hour UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 
-    UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15 
-    UNION SELECT 16 UNION SELECT 17 UNION SELECT 18 UNION SELECT 19 
+    SELECT 8 AS slot_hour UNION SELECT 9 UNION SELECT 10 UNION SELECT 11
+    UNION SELECT 12 UNION SELECT 13 UNION SELECT 14 UNION SELECT 15
+    UNION SELECT 16 UNION SELECT 17 UNION SELECT 18 UNION SELECT 19
     UNION SELECT 20 UNION SELECT 21
 ) s
+-- Nur Slots innerhalb des Wochenplans (day_of_week: 0=So .. 6=Sa)
+JOIN availability_settings av
+    ON av.user_id = 1
+    AND av.active = TRUE
+    AND av.day_of_week = DAYOFWEEK(d.date_value) - 1
+    AND s.slot_hour >= av.start_slot
+    AND s.slot_hour < av.end_slot
 WHERE d.date_value NOT IN (
-    SELECT blocked_date FROM blocked_dates 
+    SELECT blocked_date FROM blocked_dates
     WHERE user_id = 1 OR user_id IS NULL
+)
+AND NOT EXISTS (
+    SELECT 1 FROM blocked_slots bs
+    WHERE bs.user_id = 1
+    AND bs.slot_date = d.date_value
+    AND bs.slot_hour = s.slot_hour
 )
 AND NOT EXISTS (
     SELECT 1 FROM events e
@@ -275,7 +306,7 @@ AND NOT EXISTS (
     AND e.event_date = d.date_value
     AND et.blocks_availability = TRUE
     AND e.status != 'cancelled'
-    AND s.slot_hour >= e.start_slot 
+    AND s.slot_hour >= e.start_slot
     AND s.slot_hour < e.end_slot
 );
 

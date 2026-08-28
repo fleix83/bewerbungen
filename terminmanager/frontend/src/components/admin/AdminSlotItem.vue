@@ -32,9 +32,10 @@ defineEmits(['toggle'])
 const isFree = computed(() => props.slot.status === 'free')
 const isBooked = computed(() => props.slot.status === 'booked')
 const isHoliday = computed(() => props.slot.status === 'blocked_holiday')
+const isBlocked = computed(() => props.slot.status === 'blocked')
 
 const canToggle = computed(() =>
-  props.slot.status === 'free' || props.slot.status === 'not_released'
+  props.slot.status === 'free' || props.slot.status === 'blocked'
 )
 
 const slotClass = computed(() => ({
@@ -53,7 +54,8 @@ const statusText = computed(() => {
   if (isFree.value) return 'frei'
   if (isBooked.value) return 'belegt'
   if (isHoliday.value) return 'Feiertag'
-  return 'belegt'
+  if (isBlocked.value) return 'blockiert'
+  return 'nicht buchbar'
 })
 
 const buttonText = computed(() => {
