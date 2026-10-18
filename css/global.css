@@ -156,6 +156,7 @@ body {
 .page-preise,
 .page-about,
 .page-ablauf,
+.page-anfahrt,
 .page-impressum {
   background-color: #e7e6ff;
 }
@@ -205,7 +206,7 @@ body {
   padding: 0;
 }
 
-/* Ueber mich, Wie laeuft das, Preise: Schliessen fuehrt auf Desktop zur Startseite statt ins Menue */
+/* Ueber mich, Wie laeuft das, Preise, Anfahrt: Schliessen fuehrt auf Desktop zur Startseite statt ins Menue */
 .btn-close--desktop {
   display: none;
 }
@@ -777,6 +778,44 @@ body {
 
 .content-section p:last-child {
   margin-bottom: 0;
+}
+
+/* Anfahrt: Plan direkt unter dem Titel, Adresse mit Abstand darunter */
+.anfahrt-plan {
+  margin: 0 0 var(--spacing-xl) 0;
+}
+
+.anfahrt-address a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Hinweis zur Klingel unter der Adresse */
+.anfahrt-address__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* Glocke steht inline vor "Bitte", Folgezeile beginnt am linken Rand */
+.anfahrt-address__note svg {
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  vertical-align: -0.25em;   /* Glocke optisch mittig zur Textzeile */
+}
+
+.content-section .anfahrt-address__note {
+  font-size: var(--font-size-2xs);
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+.anfahrt-plan img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* Payment Options */
@@ -1458,6 +1497,16 @@ body {
     font-size: 1.5rem;
   }
 
+  /* Anfahrt: Fliesstext 24px, Titel bleiben */
+  .page-anfahrt .content-section p {
+    font-size: 1.5rem;
+  }
+
+  .page-anfahrt .content-section .anfahrt-address__note {
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+  }
+
   /* Wie laeuft das: Schritte 24px, Titel bleibt */
   .page-ablauf .process-step {
     font-size: 1.5rem;
@@ -1518,6 +1567,28 @@ body {
   .landing-footer__subtitle {
     width: auto;
     padding-left: 0.625rem;
+  }
+}
+
+/* Schmaler Desktop: Logo und Navigation kompakter, damit der Header
+   inkl. Anfahrt-Link in eine Zeile passt */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .landing-header__title {
+    font-size: 2rem;
+  }
+
+  .landing-header__nav {
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1365px) {
+  .landing-header__title {
+    font-size: 2.75rem;
+  }
+
+  .landing-header__nav {
+    gap: 2rem;
   }
 }
 
