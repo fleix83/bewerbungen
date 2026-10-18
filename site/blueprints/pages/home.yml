@@ -80,6 +80,10 @@ tabs:
         type: textarea
         buttons: false
         help: Text für die Karte mit dem Raster-Icon
+      section2_answer:
+        label: Antwort-Zeile
+        type: text
+        help: Grosse gelbe Zeile als Antwort auf die drei Fragen (z.B. "Dann sind Sie hier richtig.")
       section2_intro:
         label: Einleitungstext
         type: textarea

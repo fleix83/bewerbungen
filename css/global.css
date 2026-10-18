@@ -2,7 +2,7 @@
    BEWERBUNGEN & MEHR - Global Styles
    ======================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
 
 /* ----- 1. CSS Custom Properties ----- */
 :root {
@@ -18,6 +18,8 @@
   --color-address-bg: #CAD6FF;
   --color-services-bg: #4866b9;
   --color-footer-bg: #8281a5;
+  --color-on-blue: oklch(0.985 0.012 85);        /* warmes Weiss fuer Fragen */
+  --color-on-blue-soft: oklch(0.95 0.018 85);    /* etwas weicher fuer Fliesstext */
 
   /* Violet Theme Colors */
   --color-violet-start: #3931B4;
@@ -122,6 +124,31 @@ body {
 .page-landing {
   background: linear-gradient(180deg, #e7e6ff 0%, rgb(30 42 86 / 23%) 100%);
   min-height: 100vh;
+}
+
+/* Basel-Karte als Hero-Hintergrund: volle Bildschirmbreite,
+   blendet zum unteren Rand des Hero hin aus.
+   Weisse Linien auf Schwarz - "screen" laesst nur die Linien
+   ueber dem Hintergrundverlauf stehen. */
+.page-landing > .page-container {
+  position: relative;
+}
+
+.page-landing > .page-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: url('../assets/images/basel_map.jpeg') center / cover no-repeat;
+  mix-blend-mode: screen;
+  opacity: 0.3;
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Other Pages Cream Background */
@@ -355,10 +382,26 @@ body {
 }
 
 .landing-header__title {
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.0625rem;
+  font-family: 'Gveret Levin', cursive;
+  font-size: 2.25rem;
+  font-weight: 400;
+  line-height: 1.1;
   margin-bottom: 0.25rem;
+  position: relative;
+  z-index: 0;
+  transform: translateX(-0.75rem);
+}
+
+/* Weisse Ebene hinter der unteren Haelfte des Logos, leicht nach links versetzt */
+.landing-header__title::before {
+  content: '';
+  position: absolute;
+  left: -0.4em;
+  right: 0.15em;
+  bottom: 0;
+  height: 50%;
+  background-color: var(--color-white);
+  z-index: -1;
 }
 
 .landing-header__phone {
@@ -908,15 +951,35 @@ body {
   padding-bottom: 2.5rem;
 }
 
-.about-section__intro {
+/* Antwort auf die drei Fragen: gelbe Display-Zeile + ruhiger Fliesstext */
+.about-section__answer {
+  margin-top: 4.5rem;
+}
+
+.about-section__answer-title {
   font-family: var(--font-family);
-  font-size: 1.375rem;
+  font-size: 2.25rem;           /* 36px */
   font-weight: 700;
   font-style: italic;
-  line-height: 1.3;
-  color: var(--color-white);
-  margin-top: 3.375rem;
-  margin-bottom: 0;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--color-text-yellow);
+  text-wrap: balance;
+}
+
+.about-section__answer-body {
+  margin-top: 1.5rem;
+}
+
+.about-section__intro {
+  font-family: var(--font-family);
+  font-size: 1.1875rem;         /* 19px */
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--color-on-blue-soft);
+  max-width: 34em;
+  text-wrap: pretty;
+  margin: 0;
 }
 
 .about-section__cards {
@@ -946,45 +1009,52 @@ body {
   filter: drop-shadow(0 0 0.5px #F83F3F) drop-shadow(0 0 0.5px #F83F3F);
 }
 
+/* Kontakt-Button nur auf Desktop, Mobile nutzt .about-section__links */
+.about-card__button {
+  display: none;
+}
+
 .about-card__text {
   font-family: var(--font-family);
-  font-size: 1.3125rem;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--color-white);
+  font-size: 1.25rem;           /* 20px */
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-on-blue);
+  text-wrap: pretty;
 }
 
 .about-section__cta-text {
   font-family: var(--font-family);
-  font-size: 1.3125rem;
-  font-weight: 700;
-  font-style: italic;
-  line-height: 1.3;
-  color: var(--color-white);
-  margin-top: 3.375rem;
-  margin-bottom: 0;
+  font-size: 1.1875rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--color-on-blue-soft);
+  max-width: 34em;
+  text-wrap: pretty;
+  margin: 1.125rem 0 0 0;
 }
 
 .about-section__cta-text .highlight {
   background-color: var(--color-accent-red);
   color: var(--color-background);
-  padding: 0.125rem 0.375rem;
+  font-weight: 600;
+  padding: 0.0625rem 0.375rem;
   border-radius: var(--border-radius-2xs);
-  font-style: italic;
+  white-space: nowrap;
 }
 
 .about-section__links {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    margin-top: 3.375rem;
+    margin-top: 2.5rem;
 }
 
 .about-section__link {
   font-family: var(--font-family);
   font-size: 1.3125rem;
   font-weight: 700;
-  color: var(--color-white);
+  color: var(--color-on-blue);
   text-decoration: underline;
   text-underline-offset: 0.1875rem;
 }
@@ -1161,8 +1231,8 @@ body {
   }
 
   .landing-header__title {
-    font-size: 1.3125rem;
-    line-height: 1.2;
+    font-size: 3.25rem;
+    line-height: 1.1;
     margin-bottom: 0;
   }
 
@@ -1208,14 +1278,14 @@ body {
     grid-template-columns: minmax(0, 1fr) auto;
     grid-template-rows: 1fr auto;
     column-gap: 3rem;
-    padding: 0 0 5rem 0;
+    padding: 0 0 10rem 0;   /* 160px: Text + Button sitzen 80px hoeher */
   }
 
   .landing-illustration {
     grid-column: 2;
     grid-row: 1 / span 2;
     align-self: center;
-    margin: 0;
+    margin: 0 0 -5rem 0;   /* gleicht die hoehere Grid-Unterkante aus, Bild bleibt stehen */
   }
 
   .landing-illustration svg,
@@ -1276,25 +1346,79 @@ body {
     padding-bottom: 0;
   }
 
+  /* Drei einzelne blaue Karten, ragen ins Hero hinein
+     (-7.5rem Sektions-Padding + 5rem Ueberlappung) */
   .about-section__cards {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 3.5rem;
+    gap: 2.5rem;
+    position: relative;
+    margin: -12.5rem -4rem 0;   /* seitlich breiter als der Inhalt darunter */
   }
 
   .about-card {
-    gap: 1.125rem;
+    gap: 1.25rem;
+    padding: 2.5rem;
+    background-color: var(--color-services-bg);
+    border-radius: 10px;
+    box-shadow: 0 1.5rem 3rem rgb(30 42 86 / 25%);
   }
 
-  /* Textspalte: linksbuendig mit den Karten, ca. 1.5 Kartenspalten breit */
-  .about-section__intro {
-    max-width: 36rem;   /* 576px */
-    margin: 5.5rem 0 0 0;
+  /* Button sitzt bei allen Karten auf gleicher Hoehe am unteren Rand */
+  .about-card__button {
+    display: inline-block;
+    align-self: flex-start;
+    margin-top: auto;
+    padding: 0.75rem 1.25rem;
+    background-color: #ff7371;
+    border-radius: var(--border-radius-xs);
+    font-family: var(--font-family);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1;
+    color: white;
+    text-decoration: none;
+  }
+
+  .about-card__button:hover {
+    opacity: 0.9;
+  }
+
+  .about-card__text {
+    font-size: 1.5rem;          /* 24px */
+    line-height: 1.3;
+    max-width: 19em;
+    hyphens: none;              /* ignoriert &shy; - ganze Woerter umbrechen */
+  }
+
+  /* Antwort: Display-Zeile links (1 Kartenspalte), Fliesstext rechts
+     (2 Kartenspalten), auf dasselbe Raster wie die Karten gesetzt */
+  .about-section__answer {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3.5rem;
+    align-items: start;
+    margin-top: 7.5rem;
+  }
+
+  .about-section__answer-title {
+    font-size: clamp(2.75rem, 3.6vw, 3.5rem);   /* 44-56px */
+    line-height: 1;
+  }
+
+  .about-section__answer-body {
+    grid-column: 2 / span 2;
+    margin-top: 0.375rem;
+  }
+
+  .about-section__intro,
+  .about-section__cta-text {
+    font-size: 1.3125rem;       /* 21px */
+    line-height: 1.6;
   }
 
   .about-section__cta-text {
-    max-width: 36rem;
-    margin: 2rem 0 0 0;
+    margin-top: 1.25rem;
   }
 
   .about-section__links {
@@ -1344,5 +1468,28 @@ body {
   .landing-footer__subtitle {
     width: auto;
     padding-left: 0.625rem;
+  }
+}
+
+/* Angebots-Sektion: dezentes Einblenden beim ersten Sichtkontakt (Desktop).
+   .reveal-ready setzt erst das Script, ohne JS bleibt alles sichtbar. */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .about-section.reveal-ready .about-card,
+  .about-section.reveal-ready .about-section__answer {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .about-section.reveal-ready .about-card:nth-child(2) { transition-delay: 80ms; }
+  .about-section.reveal-ready .about-card:nth-child(3) { transition-delay: 160ms; }
+  .about-section.reveal-ready .about-section__answer   { transition-delay: 300ms; }
+
+  .about-section.reveal-ready.is-visible .about-card,
+  .about-section.reveal-ready.is-visible .about-section__answer {
+    opacity: 1;
+    transform: none;
   }
 }
