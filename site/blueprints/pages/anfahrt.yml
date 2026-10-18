@@ -34,6 +34,10 @@ tabs:
             type: textarea
             buttons: false
             help: Jede Zeile wird als eigene Zeile angezeigt
+      highlights:
+        label: Hervorgehobene Begriffe
+        type: tags
+        help: Diese Woerter erhalten in Tram/Auto einen weissen Hintergrund
 
   seo:
     label: SEO

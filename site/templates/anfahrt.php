@@ -28,10 +28,25 @@
       </section>
       <?php endif ?>
 
+      <?php
+        // Hervorgehobene Begriffe: laengste zuerst, damit "Parkhaus Kunstmuseum"
+        // als Ganzes markiert wird und nicht nur "Kunstmuseum"
+        $highlights = $page->highlights()->split();
+        usort($highlights, fn ($a, $b) => mb_strlen($b) - mb_strlen($a));
+        $pattern = $highlights
+          ? '/(' . implode('|', array_map(fn ($h) => preg_quote(esc($h), '/'), $highlights)) . ')/u'
+          : null;
+      ?>
       <?php foreach ($page->sections()->toStructure() as $section): ?>
+      <?php
+        $text = $section->section_text()->escape();
+        if ($pattern) {
+          $text = preg_replace($pattern, '<span class="language-highlight">$1</span>', $text);
+        }
+      ?>
       <section class="content-section">
         <h2 class="section-title"><?= $section->section_title() ?></h2>
-        <p><?= nl2br($section->section_text()->escape()) ?></p>
+        <p class="anfahrt-text"><?= $text ?></p>
       </section>
       <?php endforeach ?>
 

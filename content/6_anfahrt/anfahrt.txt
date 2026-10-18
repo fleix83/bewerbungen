@@ -31,7 +31,11 @@ Sections:
   section_title: Auto
   section_text: |
     Im Parkhaus Kunstmuseum direkt beim Luftgässlein parken
-    Mo-Fr 7-19 Uhr CHF 3.-/Stunde
+    CHF 3.-/Stunde   Mo-Fr 7-19 Uhr
+
+----
+
+Highlights: Kunstmuseum, Bankverein, Parkhaus Kunstmuseum
 
 ----
 

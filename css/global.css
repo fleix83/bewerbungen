@@ -387,19 +387,24 @@ body {
   color: #4766b9;
 }
 
-.landing-header__title {
+/* Logo und Telefonnummer (Mobile): gleiche Schrift und weisse Ebene */
+.landing-header__title,
+.landing-header__phone {
+  align-self: flex-start;
   font-family: 'Gveret Levin', cursive;
-  font-size: 2.25rem;
+  font-size: 1.25rem;          /* Mobile: gleiche Hoehe wie das fruehere Logo */
   font-weight: 400;
   line-height: 1.1;
-  margin-bottom: 0.25rem;
+  white-space: nowrap;
+  margin-bottom: 0;
   position: relative;
   z-index: 0;
-  transform: translateX(-0.75rem);
+  transform: translateX(-0.23em);   /* skaliert mit der Schrift, auf Desktop ca. 12px */
 }
 
 /* Weisse Ebene hinter der unteren Haelfte des Logos, leicht nach links versetzt */
-.landing-header__title::before {
+.landing-header__title::before,
+.landing-header__phone::before {
   content: '';
   position: absolute;
   left: -0.4em;
@@ -411,9 +416,8 @@ body {
 }
 
 .landing-header__phone {
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.0625rem;
+  font-size: 1.75rem;          /* 28px, deutlich groesser als das Logo */
+  margin-top: 5px;
   margin-bottom: 0.375rem;
   text-decoration: none;
   color: #4766b9;
@@ -789,6 +793,11 @@ body {
   color: inherit;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* Zeilenumbrueche und mehrfache Leerzeichen aus dem Panel beibehalten */
+.anfahrt-text {
+  white-space: pre-wrap;
 }
 
 /* Hinweis zur Klingel unter der Adresse */
