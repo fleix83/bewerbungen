@@ -205,6 +205,11 @@ body {
   padding: 0;
 }
 
+/* Ueber mich, Wie laeuft das, Preise: Schliessen fuehrt auf Desktop zur Startseite statt ins Menue */
+.btn-close--desktop {
+  display: none;
+}
+
 .btn-close svg {
   width: 4.0625rem;
   height: 4.0625rem;
@@ -1210,15 +1215,22 @@ body {
    Mobile (<1024px) bleibt unveraendert. */
 @media (min-width: 1024px) {
   /* Breiter Container statt Mobile-Spalte; erste Sektion fuellt den Viewport */
+  /* Hauptspalte 1020px Inhalt + 2x 2.5rem Padding,
+     Startseite 1320px (wie bisher) */
   .page-container {
-    max-width: 1320px;
+    max-width: 1100px;
     padding: 2rem 2.5rem 0 2.5rem;
     min-height: 100vh;
+  }
+
+  .page-landing > .page-container {
+    max-width: 1320px;
   }
 
   /* Header: Marke links, Navigation rechts */
   .landing-header {
     align-items: center;
+    gap: 2rem;
   }
 
   .landing-header__address {
@@ -1238,6 +1250,13 @@ body {
 
   .landing-header__nav {
     gap: 2.5rem;
+  }
+
+  /* Logo und Navigation nicht umbrechen */
+  .landing-header__title,
+  .landing-header__nav-link,
+  .landing-header__nav-phone {
+    white-space: nowrap;
   }
 
   .landing-header__nav-link {
@@ -1423,6 +1442,37 @@ body {
 
   .about-section__links {
     display: none;
+  }
+
+  .btn-close--mobile {
+    display: none;
+  }
+
+  .btn-close--desktop {
+    display: flex;
+  }
+
+  /* Ueber mich: Fliesstext 24px, Titel und Kontakt-Link bleiben */
+  .page-about .about-content,
+  .page-about .content-section p {
+    font-size: 1.5rem;
+  }
+
+  /* Wie laeuft das: Schritte 24px, Titel bleibt */
+  .page-ablauf .process-step {
+    font-size: 1.5rem;
+  }
+
+  .page-ablauf .process-step .dot {
+    margin-top: 0.5rem;
+  }
+
+  /* Preise: Fliesstext und Preise 24px, Titel und Kontakt-Link bleiben */
+  .page-preise .price-item__name,
+  .page-preise .price-item__price,
+  .page-preise .price-note,
+  .page-preise .payment-options p {
+    font-size: 1.5rem;
   }
 
   /* Fusszeile: vier Spalten */
