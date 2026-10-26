@@ -6,25 +6,25 @@ Price-items:
 
 - 
   name: Lebenslauf
-  price: CHF 30.00
+  price: CHF 50.00
 - 
   name: Bewerbungsschreiben
-  price: CHF 30.00
+  price: CHF 50.00
 - 
   name: Brief
-  price: CHF 30.00
+  price: CHF 50.00
 - 
   name: Rekurs
-  price: CHF 30.00
+  price: CHF 50.00
 - 
   name: Formular ausfüllen
   price: CHF 30.00
 - 
   name: Steuererklärung ausfüllen
-  price: CHF 30.00
+  price: CHF 50.00
 - 
   name: Anderes Dokument
-  price: CHF 30.00
+  price: CHF 50.00
 
 ----
 
@@ -32,20 +32,15 @@ Price-note: Eine Stunde pro Dokument. Für mehr als zwei Dokumente, machen Sie b
 
 ----
 
-Additional-services:
-
-- 
-  name: Bewerbungen online hochladen
-- 
-  name: Zeugnisse einscannen
+Additional-services: 
 
 ----
 
-Service-note: Inklusive innerhalb einer Stunde bei einem Dokument oder innerhalb zwei Stunden bei zwei Dokumenten. Braucht es mehr Zeit, zusätzlich
+Service-note: 
 
 ----
 
-Service-note-price: CHF 10.00
+Service-note-price: 
 
 ----
 
@@ -65,11 +60,11 @@ Contact-cta-text: Kontaktieren Sie mich unkompliziert per Whatsapp oder Mobile b
 
 ----
 
-Seo-title: Preise Bewerbungshilfe Basel – CHF 30 pro Dokument
+Seo-title: Preise Bewerbungshilfe Basel – CHF 50 pro Dokument
 
 ----
 
-Seo-description: Bewerbungshilfe in Basel: Lebenslauf, Bewerbungsschreiben, Briefe und mehr für CHF 30 pro Dokument. Etwa 1 Stunde pro Dokument.
+Seo-description: Bewerbungshilfe in Basel: Lebenslauf, Bewerbungsschreiben, Briefe und mehr für CHF 50 pro Dokument. Etwa 1 Stunde pro Dokument.
 
 ----
 
