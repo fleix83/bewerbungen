@@ -1345,14 +1345,14 @@ body {
     grid-template-columns: minmax(0, 1fr) auto;
     grid-template-rows: 1fr auto;
     column-gap: 3rem;
-    padding: 0 0 11.875rem 0;   /* 190px: Text + Button sitzen 110px hoeher */
+    padding: 0 0 14.375rem 0;   /* 230px: Text + Button sitzen 150px hoeher */
   }
 
   .landing-illustration {
     grid-column: 2;
     grid-row: 1 / span 2;
     align-self: center;
-    margin: 0 0 -6.875rem 0;   /* gleicht die hoehere Grid-Unterkante aus, Bild bleibt stehen */
+    margin: 0 0 -9.375rem 0;   /* gleicht die hoehere Grid-Unterkante aus, Bild bleibt stehen */
   }
 
   .landing-illustration svg,
