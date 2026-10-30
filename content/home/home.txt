@@ -46,7 +46,7 @@ Hero-line-5-suffix: .
 
 ----
 
-Section2-card1-text: Sie möchten sich auf eine Stelle bewerben – aber Deutsch ist nicht Ihre Mutter&shy;sprache?
+Section2-card1-text: Sie möchten sich auf eine Stelle bewerben - aber Deutsch ist nicht Ihre Mutter&shy;sprache?
 
 ----
 
@@ -58,11 +58,7 @@ Section2-card3-text: Sie brauchen Un&shy;ter&shy;stüt&shy;zung beim Ausfüllen 
 
 ----
 
-Section2-answer: Dann sind Sie hier richtig.
-
-----
-
-Section2-intro: Ich erstelle seit vier Jahren beim GGG Wegweiser erfolgreich Be&shy;wer&shy;bungs&shy;schrei&shy;ben, Lebenslauf und andere Dokumente für Menschen mit und ohne Mi&shy;gra&shy;tions&shy;hin&shy;ter&shy;grund.
+Section2-intro: Dann sind Sie hier richtig. Ich erstelle seit vier Jahren beim GGG Wegweiser erfolgreich Be&shy;wer&shy;bungs&shy;schrei&shy;ben, Lebenslauf und andere Dokumente für Menschen mit und ohne Mi&shy;gra&shy;tions&shy;hin&shy;ter&shy;grund.
 
 ----
 
