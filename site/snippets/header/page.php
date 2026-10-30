@@ -1,4 +1,4 @@
-<?php $closeToHome = in_array($page->template()->name(), ['ueber-mich', 'ablauf', 'preise']) ?>
+<?php $closeToHome = in_array($page->template()->name(), ['ueber-mich', 'ablauf', 'preise', 'anfahrt']) ?>
 <header class="page-header">
   <a href="<?= page('menu')->url() ?>" class="btn-close<?= $closeToHome ? ' btn-close--mobile' : '' ?>" aria-label="Zurueck zum Menue">
     <?php snippet('icons/close') ?>

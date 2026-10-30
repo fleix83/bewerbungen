@@ -129,6 +129,7 @@ body {
 .page-preise,
 .page-about,
 .page-ablauf,
+.page-anfahrt,
 .page-impressum {
   background-color: #e7e6ff;
 }
@@ -178,7 +179,7 @@ body {
   padding: 0;
 }
 
-/* Ueber mich, Wie laeuft das, Preise: Schliessen fuehrt auf Desktop zur Startseite statt ins Menue */
+/* Ueber mich, Wie laeuft das, Preise, Anfahrt: Schliessen fuehrt auf Desktop zur Startseite statt ins Menue */
 .btn-close--desktop {
   display: none;
 }
@@ -734,6 +735,49 @@ body {
 
 .content-section p:last-child {
   margin-bottom: 0;
+}
+
+/* Anfahrt: Plan direkt unter dem Titel, Adresse mit Abstand darunter */
+.anfahrt-plan {
+  margin: 0 0 var(--spacing-xl) 0;
+}
+
+.anfahrt-address a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Zeilenumbrueche und mehrfache Leerzeichen aus dem Panel beibehalten */
+.anfahrt-text {
+  white-space: pre-wrap;
+}
+
+/* Hinweis zur Klingel unter der Adresse */
+.anfahrt-address__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* Glocke steht inline vor "Bitte", Folgezeile beginnt am linken Rand */
+.anfahrt-address__note svg {
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  vertical-align: -0.25em;   /* Glocke optisch mittig zur Textzeile */
+}
+
+.content-section .anfahrt-address__note {
+  font-size: var(--font-size-2xs);
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+.anfahrt-plan img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* Payment Options */
@@ -1324,6 +1368,16 @@ body {
   .page-about .about-content,
   .page-about .content-section p {
     font-size: 1.5rem;
+  }
+
+  /* Anfahrt: Fliesstext 24px, Titel bleiben */
+  .page-anfahrt .content-section p {
+    font-size: 1.5rem;
+  }
+
+  .page-anfahrt .content-section .anfahrt-address__note {
+    font-size: var(--font-size-base);
+    line-height: 1.5;
   }
 
   /* Wie laeuft das: Schritte 24px, Titel bleibt */

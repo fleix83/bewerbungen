@@ -1,0 +1,50 @@
+Title: Anfahrt
+
+----
+
+Address-title: Adresse
+
+----
+
+Address:
+
+Bewerbungen & Mehr
+Felix Weissheimer
+Luftgässlein 3
+4057 Basel
+
+----
+
+Address-note:
+
+Bitte bei der einzigen Klingel
+neben der Gallerie Lichtfeld läuten
+
+----
+
+Sections:
+
+-
+  section_title: Tram
+  section_text: Von der Station Bankverein oder Kunstmuseum in fünf Minuten zu Fuss zum Luftgässlein 3
+-
+  section_title: Auto
+  section_text: |
+    Im Parkhaus Kunstmuseum direkt beim Luftgässlein parken
+    CHF 3.-/Stunde   Mo-Fr 7-19 Uhr
+
+----
+
+Highlights: Kunstmuseum, Bankverein, Parkhaus Kunstmuseum
+
+----
+
+Seo-title: Anfahrt – Bewerbungen & Mehr, Luftgässlein 3, Basel
+
+----
+
+Seo-description: So finden Sie zu Bewerbungen & Mehr am Luftgässlein 3 in Basel: mit dem Tram ab Bankverein oder Kunstmuseum, mit dem Auto ins Parkhaus Kunstmuseum.
+
+----
+
+Uuid: hu5ym6avku24x73w
