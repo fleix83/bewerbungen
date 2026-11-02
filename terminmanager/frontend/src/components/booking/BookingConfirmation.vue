@@ -9,7 +9,7 @@
         </div>
         <div class="termin-actions">
           <button
-            v-if="!confirming && canCancel"
+            v-if="!review && !confirming && canCancel"
             type="button"
             class="btn-cancel"
             @click="confirming = true"
@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <div v-if="!cancelled && !canCancel" class="termin-note">
+      <div v-if="!review && !cancelled && !canCancel" class="termin-note">
         Stornierung nur bis 24 Stunden vorher möglich. Bitte telefonisch absagen.
       </div>
 
@@ -69,6 +69,15 @@
       </div>
     </div>
 
+    <div v-if="review" class="confirmation-section">
+      <h2 class="section-title">Ihre Angaben</h2>
+      <div class="termin-box">
+        <p>{{ customerName }}</p>
+        <p>{{ confirmation.customer?.email }}</p>
+        <p v-if="confirmation.customer?.phone">{{ confirmation.customer.phone }}</p>
+      </div>
+    </div>
+
     <div class="confirmation-section" v-if="notes && notes.trim()">
       <h2 class="section-title">Ihre Anmerkung</h2>
       <div class="termin-box">
@@ -91,7 +100,7 @@
       </div>
     </div>
 
-    <div class="confirmation-section">
+    <div v-if="!review" class="confirmation-section">
       <h2 class="section-title">Kontakt</h2>
       <div class="contact-links">
         <a href="https://wa.me/41767576052" class="contact-link" target="_blank">
@@ -128,6 +137,12 @@ const props = defineProps({
   notes: {
     type: String,
     default: ''
+  },
+  // Overview before booking: no cancel actions and contact links,
+  // shows the customer's details instead
+  review: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -179,6 +194,11 @@ const formattedDate = computed(() => {
 const timeDisplay = computed(() => {
   const slot = props.confirmation.slot
   return `${slot.start_slot.toString().padStart(2, '0')}:00 - ${slot.end_slot.toString().padStart(2, '0')}:00 Uhr`
+})
+
+const customerName = computed(() => {
+  const c = props.confirmation.customer || {}
+  return [c.salutation, c.firstName, c.lastName].filter(Boolean).join(' ')
 })
 
 const totalPrice = computed(() => {
