@@ -24,6 +24,11 @@ const router = createRouter({
       component: () => import('../views/public/TimeSelectView.vue')
     },
     {
+      path: '/buchen/uebersicht',
+      name: 'review',
+      component: () => import('../views/public/ReviewView.vue')
+    },
+    {
       path: '/buchen/bestaetigung',
       name: 'confirmation',
       component: () => import('../views/public/ConfirmationView.vue')

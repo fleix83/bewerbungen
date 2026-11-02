@@ -38,7 +38,8 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useBookingStore } from '../../stores/bookingStore'
-import { servicesAPI, bookingsAPI } from '../../services/api'
+import { bookingsAPI } from '../../services/api'
+import { loadBookedServices } from '../../services/bookedServices'
 import BookingConfirmation from '../../components/booking/BookingConfirmation.vue'
 import AppButton from '../../components/common/AppButton.vue'
 
@@ -100,44 +101,12 @@ onMounted(async () => {
     return
   }
 
-  // Get serviceType and notes from customerData
-  let serviceTypeName = bookingStore.customerData.serviceType || 'Etwas anderes'
   customerNotes.value = bookingStore.customerData.notes || ''
-
-  // If "Etwas anderes" selected, show truncated notes instead
-  if (serviceTypeName === 'Etwas anderes' && customerNotes.value) {
-    const truncatedNotes = customerNotes.value.length > 50
-      ? customerNotes.value.substring(0, 50) + '...'
-      : customerNotes.value
-    serviceTypeName = truncatedNotes
-  }
-
-  try {
-    const response = await servicesAPI.getAll()
-    // Filter out service ID 3 from API - we'll add it with the correct name
-    let allServices = response.data.filter(s => s.id !== 3)
-
-    // Add the dropdown selection as a service with the actual selected type name
-    if (confirmation.value.services.includes(3)) {
-      allServices.push({ id: 3, name: serviceTypeName, price: 30 })
-    }
-
-    bookedServices.value = allServices.filter(service =>
-      confirmation.value.services.includes(service.id)
-    )
-  } catch (error) {
-    console.error('Failed to load services:', error)
-    const fallbackServices = [
-      { id: 1, name: 'Lebenslauf', price: 30 },
-      { id: 2, name: 'Bewerbungsschreiben', price: 30 }
-    ]
-    if (confirmation.value.services.includes(3)) {
-      fallbackServices.push({ id: 3, name: serviceTypeName, price: 30 })
-    }
-    bookedServices.value = fallbackServices.filter(service =>
-      confirmation.value.services.includes(service.id)
-    )
-  }
+  bookedServices.value = await loadBookedServices(
+    confirmation.value.services,
+    bookingStore.customerData.serviceType,
+    customerNotes.value
+  )
 })
 </script>
 

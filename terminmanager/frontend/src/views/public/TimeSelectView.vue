@@ -31,7 +31,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useBookingStore } from '../../stores/bookingStore'
-import { availabilityAPI, bookingsAPI } from '../../services/api'
+import { availabilityAPI } from '../../services/api'
 import TimeSlotList from '../../components/booking/TimeSlotList.vue'
 
 const route = useRoute()
@@ -83,56 +83,10 @@ const loadAvailableSlots = async () => {
   }
 }
 
-const handleSlotSelected = async (slot) => {
+const handleSlotSelected = (slot) => {
+  bookingStore.setSelectedDate(selectedDate.value)
   bookingStore.setSelectedSlot(slot)
-
-  // Only include service ID 3 for dropdown options with price (not "Etwas anderes")
-  const serviceIds = [...bookingStore.selectedServices]
-  if (bookingStore.customerData.serviceType &&
-      bookingStore.customerData.serviceType !== '' &&
-      bookingStore.customerData.serviceType !== 'Etwas anderes') {
-    if (!serviceIds.includes(3)) {
-      serviceIds.push(3)
-    }
-  }
-
-  const bookingData = {
-    customer: {
-      salutation: bookingStore.customerData.salutation,
-      first_name: bookingStore.customerData.firstName,
-      last_name: bookingStore.customerData.lastName,
-      email: bookingStore.customerData.email,
-      phone: bookingStore.customerData.phone
-    },
-    event_date: selectedDate.value,
-    start_slot: slot.start_slot,
-    end_slot: slot.end_slot,
-    service_ids: serviceIds,
-    notes: bookingStore.customerData.notes,
-    service_type: bookingStore.customerData.serviceType
-  }
-
-  try {
-    const response = await bookingsAPI.create(bookingData)
-
-    if (response.data.success) {
-      bookingStore.setBookingConfirmation({
-        eventId: response.data.event_id,
-        cancellationToken: response.data.cancellation_token,
-        date: selectedDate.value,
-        slot: slot,
-        services: serviceIds,
-        customer: { ...bookingStore.customerData }
-      })
-
-      router.push('/buchen/bestaetigung')
-    } else {
-      alert('Buchung fehlgeschlagen: ' + response.data.message)
-    }
-  } catch (error) {
-    console.error('Booking failed:', error)
-    alert('Fehler bei der Buchung. Bitte versuchen Sie es erneut.')
-  }
+  router.push('/buchen/uebersicht')
 }
 
 const goBack = () => {
