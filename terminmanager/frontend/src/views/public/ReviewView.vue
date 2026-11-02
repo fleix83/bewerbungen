@@ -19,7 +19,7 @@
 
     <div class="confirm-action">
       <AppButton :disabled="submitting" @click="confirmBooking">
-        {{ submitting ? 'Wird gebucht…' : 'Termin vereinbaren' }}
+        {{ submitting ? 'Wird gebucht…' : 'Termin jetzt vereinbaren' }}
       </AppButton>
     </div>
   </div>
@@ -158,7 +158,13 @@ onMounted(async () => {
 
 .confirm-action {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   margin: var(--spacing-xl) 0;
+}
+
+/* Globale Breite von .btn-primary (209px) ist fuer diesen Text zu schmal */
+.confirm-action :deep(.btn-primary) {
+  width: auto;
+  white-space: nowrap;
 }
 </style>
