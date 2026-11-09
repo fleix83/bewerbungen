@@ -50,7 +50,7 @@ Contact-cta-text: Kontaktieren Sie mich unkompliziert per Whatsapp oder Mobile b
 
 ----
 
-Default-description: Hilfe bei Lebenslauf, Bewerbungsschreiben in Basel. Felix Weissheimer hilft Ihnen persönlich – auch kurzfristig. CHF 30 pro Dokument.
+Default-description: Hilfe bei Lebenslauf, Bewerbungsschreiben in Basel. Felix Weissheimer hilft Ihnen persönlich – auch kurzfristig. CHF 50 pro Dokument.
 
 ----
 
