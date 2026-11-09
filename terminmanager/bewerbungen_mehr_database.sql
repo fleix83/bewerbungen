@@ -215,9 +215,9 @@ INSERT INTO event_types (user_id, name, color, blocks_availability, is_customer_
 
 -- Services/Dienstleistungen
 INSERT INTO services (name, duration_slots, price, sort_order) VALUES 
-('Lebenslauf', 1, 30.00, 1),
-('Bewerbungsschreiben', 1, 30.00, 2),
-('Etwas anderes', 1, 30.00, 3);
+('Lebenslauf', 1, 50.00, 1),
+('Bewerbungsschreiben', 1, 50.00, 2),
+('Etwas anderes', 1, 50.00, 3);
 
 -- Wochenplan Felix (Slots innerhalb dieser Fenster sind automatisch frei)
 INSERT INTO availability_settings (user_id, day_of_week, start_slot, end_slot, active) VALUES
