@@ -23,13 +23,13 @@ export async function loadBookedServices(serviceIds, serviceType, notes) {
   } catch (error) {
     console.error('Failed to load services:', error)
     allServices = [
-      { id: 1, name: 'Lebenslauf', price: 30 },
-      { id: 2, name: 'Bewerbungsschreiben', price: 30 }
+      { id: 1, name: 'Lebenslauf', price: 50 },
+      { id: 2, name: 'Bewerbungsschreiben', price: 50 }
     ]
   }
 
   if (serviceIds.includes(3)) {
-    allServices.push({ id: 3, name: dropdownName, price: 30 })
+    allServices.push({ id: 3, name: dropdownName, price: 50 })
   }
 
   return allServices.filter(service => serviceIds.includes(service.id))

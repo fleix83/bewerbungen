@@ -18,6 +18,7 @@
     <p v-if="bookingError" class="booking-error">{{ bookingError }}</p>
 
     <div class="confirm-action">
+      <img :src="arrowIcon" alt="" class="confirm-arrow" width="24" height="24">
       <AppButton :disabled="submitting" @click="confirmBooking">
         {{ submitting ? 'Wird gebucht…' : 'Termin jetzt vereinbaren' }}
       </AppButton>
@@ -33,6 +34,7 @@ import { bookingsAPI } from '../../services/api'
 import { loadBookedServices, bookingServiceIds } from '../../services/bookedServices'
 import BookingConfirmation from '../../components/booking/BookingConfirmation.vue'
 import AppButton from '../../components/common/AppButton.vue'
+import arrowIcon from '../../assets/images/arrow-mehr.png'
 
 const router = useRouter()
 const bookingStore = useBookingStore()
@@ -159,7 +161,14 @@ onMounted(async () => {
 .confirm-action {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
   margin: var(--spacing-xl) 0;
+}
+
+/* Pfeil links vom Button lenkt den Blick auf die Bestaetigung */
+.confirm-arrow {
+  flex-shrink: 0;
 }
 
 /* Globale Breite von .btn-primary (209px) ist fuer diesen Text zu schmal */

@@ -85,7 +85,7 @@
       </div>
     </div>
 
-    <div class="confirmation-section">
+    <div v-if="!review" class="confirmation-section">
       <h2 class="section-title">Wichtig</h2>
       <div class="termin-box hints">
         <p>Bitte bringen Sie alle vorhandenen Unterlagen mit: Zeugnisse, Lebenslauf (falls vorhanden), bereits vorhandene Dokumente...</p>
@@ -138,8 +138,8 @@ const props = defineProps({
     type: String,
     default: ''
   },
-  // Overview before booking: no cancel actions and contact links,
-  // shows the customer's details instead
+  // Overview before booking: no cancel actions, contact links and
+  // "Wichtig" hints, shows the customer's details instead
   review: {
     type: Boolean,
     default: false
