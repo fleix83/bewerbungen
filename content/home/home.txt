@@ -46,39 +46,43 @@ Hero-line-5-suffix: .
 
 ----
 
-Section2-card1-text: Sie möchten sich auf eine Stelle bewerben – aber Deutsch ist nicht Ihre Mutter&shy;sprache?
+Offer1-title: Sie möchten sich auf eine Stelle bewerben – aber Deutsch ist nicht Ihre Muttersprache?
 
 ----
 
-Section2-card2-text: Ihre Be&shy;wer&shy;bungs&shy;un&shy;ter&shy;la&shy;gen sind schon etwas älter und brauchen eine Auf&shy;fri&shy;schung?
+Offer1-text: Ich kläre mit Ihnen Ihre Situation und erstelle mit Ihnen Bewerbungsschreiben, Lebenslauf und ein fertiges Dossier für Ihre Bewerbungen.
 
 ----
 
-Section2-card3-text: Sie brauchen Un&shy;ter&shy;stüt&shy;zung beim Ausfüllen von Formularen wie Er&shy;gän&shy;zungs&shy;leis&shy;tun&shy;gen oder Ihrer Steuer&shy;er&shy;klä&shy;rung?
+Offer2-title: Ihre Bewerbungsunterlagen sind schon etwas älter und brauchen eine Auffrischung?
 
 ----
 
-Section2-answer: Dann sind Sie hier richtig.
+Offer2-text: Sie haben eigentlich keine Probleme einen Text zu verfassen, aber wenn Sie über sich selber schreiben müssen, sind Sie blockiert? Oder Ihr Dossier bräuchte einmal eine Generalüberholung? Dabei unterstütze ich Sie gerne in persönlicher Atmosphäre.
 
 ----
 
-Section2-intro: Ich erstelle seit vier Jahren beim GGG Wegweiser erfolgreich Be&shy;wer&shy;bungs&shy;schrei&shy;ben, Lebenslauf und andere Dokumente für Menschen mit und ohne Mi&shy;gra&shy;tions&shy;hin&shy;ter&shy;grund.
+Offer3-title: Sie brauchen Unterstützung beim Ausfüllen von Formularen wie Ergänzungsleistungen oder Ihrer Steuererklärung?
 
 ----
 
-Section2-cta-text: Neu bin ich am <span class="highlight">Luft&shy;gäss&shy;lein 3 in Basel</span> für Sie da. Rufen Sie mich an oder machen Sie direkt hier online einen Termin, auch kurz&shy;fris&shy;tig.
+Offer3-text: Zu zweit ist das Ausfüllen von Formularen viel leichter. Ich helfe Ihnen gerne dabei.
 
 ----
 
-Section2-link1-text: Termin machen
+Offer-button-text: Fragen Sie mich an
 
 ----
 
-Section2-link2-text: Whatsapp
+Price-title: Und was kostet das?
 
 ----
 
-Section2-link3-text: Anrufen
+Price-text: Ich verrechne nach Anzahl Dokumenten. In der Regel CHF&nbsp;50.- pro Dokument. Hier finden Sie meine
+
+----
+
+Price-link-text: Preisliste.
 
 ----
 

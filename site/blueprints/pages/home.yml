@@ -62,53 +62,52 @@ tabs:
         type: text
         default: "."
         width: 1/3
-      section2_headline:
-        label: Sektion 2
+      offers_headline:
+        label: Angebote
         type: headline
-      section2_card1_text:
-        label: Karte 1 - Sprache
+      offer1_title:
+        label: Angebot 1 - Frage (Deutsch)
         type: textarea
         buttons: false
-        help: Text für die Karte mit dem Übersetzungs-Icon
-      section2_card2_text:
-        label: Karte 2 - Auffrischung
+      offer1_text:
+        label: Angebot 1 - Text
         type: textarea
         buttons: false
-        help: Text für die Karte mit dem Stern-Icon
-      section2_card3_text:
-        label: Karte 3 - Formulare
+      offer2_title:
+        label: Angebot 2 - Frage (Auffrischen)
         type: textarea
         buttons: false
-        help: Text für die Karte mit dem Raster-Icon
-      section2_answer:
-        label: Antwort-Zeile
+      offer2_text:
+        label: Angebot 2 - Text
+        type: textarea
+        buttons: false
+      offer3_title:
+        label: Angebot 3 - Frage (Formulare)
+        type: textarea
+        buttons: false
+      offer3_text:
+        label: Angebot 3 - Text
+        type: textarea
+        buttons: false
+      offer_button_text:
+        label: Button-Text der Angebote
         type: text
-        help: Grosse gelbe Zeile als Antwort auf die drei Fragen (z.B. "Dann sind Sie hier richtig.")
-      section2_intro:
-        label: Einleitungstext
+        default: "Fragen Sie mich an"
+      price_headline:
+        label: Was kostet das?
+        type: headline
+        help: Über mich und Wie läuft das? kommen von den jeweiligen Seiten.
+      price_title:
+        label: Titel
+        type: text
+      price_text:
+        label: Text
         type: textarea
         buttons: false
-        help: Der Text, der erklärt wer Sie sind und was Sie machen
-      section2_cta_text:
-        label: CTA Text
-        type: textarea
-        buttons: false
-        help: Text mit Adresse und Handlungsaufforderung
-      section2_link1_text:
-        label: Link 1 Text
+      price_link_text:
+        label: Link zur Preisliste
         type: text
-        default: "Termin machen"
-        width: 1/3
-      section2_link2_text:
-        label: Link 2 Text
-        type: text
-        default: "Whatsapp"
-        width: 1/3
-      section2_link3_text:
-        label: Link 3 Text
-        type: text
-        default: "Anrufen"
-        width: 1/3
+        width: 1/2
 
   seo:
     label: SEO

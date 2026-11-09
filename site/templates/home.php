@@ -20,7 +20,7 @@
     </main>
   </div>
 
-  <?php snippet('components/about-section') ?>
+  <?php snippet('components/home-sections') ?>
   <?php snippet('footer/landing') ?>
 </body>
 </html>
