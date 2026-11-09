@@ -28,6 +28,7 @@
   --color-accent-red: #F83F3F;
   --color-section-bg: #DADAED;       /* Lavendel der Startseiten-Sektionen */
   --color-title-blue: #4766b9;
+  --color-about-bg: #ffe1ce;         /* Pfirsich hinter Ueber mich */
   --color-coral: #ff7371;
 
   /* Typography */
@@ -1460,6 +1461,22 @@ body {
   margin-top: 1.25rem;
 }
 
+/* Pfirsich-Flaeche ueber die volle Bildschirmbreite (Deutsch, Ueber mich) */
+.offer--deutsch,
+.home-about {
+  position: relative;
+  isolation: isolate;
+}
+
+.offer--deutsch::before,
+.home-about::before {
+  content: '';
+  position: absolute;
+  inset: 0 calc(var(--page-padding) * -1);
+  background-color: var(--color-about-bg);
+  z-index: -1;
+}
+
 /* Ueber mich: Portrait gespiegelt, damit der Blick zum Text geht */
 .home-about {
   padding: 4.5rem 0;
@@ -1633,6 +1650,9 @@ body {
     min-height: 45.625rem;      /* 730px */
   }
 
+  .offer--deutsch     { min-height: var(--h-deutsch, 790px); }
+  .offer--auffrischen { min-height: var(--h-auffrischen, 800px); }
+
   .offer__text {
     gap: 0.875rem;
   }
@@ -1687,7 +1707,7 @@ body {
   .offer--formular {
     grid-template-columns: 5.75% 37% 11% minmax(0, 34%) 1fr;
     align-items: center;
-    min-height: 42.8125rem;     /* 685px */
+    min-height: var(--h-formular, 880px);
   }
 
   .offer--formular .offer__illustration {
@@ -1708,13 +1728,29 @@ body {
   /* 4: Portrait rechts ueber volle Sektionshoehe, Text links ragt hinein */
   .home-about {
     position: relative;
-    min-height: 45rem;          /* 720px */
+    min-height: var(--h-about, 810px);
     padding: 16.25rem 0 5rem 9.25%;
+  }
+
+  /* Foto reicht bis an den rechten Bildschirmrand (ueber den 1320px-Rahmen hinaus).
+     body ist Container, damit 100cqw die Breite ohne Scrollbar ist. */
+  .page-landing {
+    container-type: inline-size;
+  }
+
+  /* Foto reicht bis an den rechten Bildschirmrand (ueber den 1320px-Rahmen hinaus) */
+  .offer--deutsch::before,
+  .home-about::before {
+    left: min(0px, calc((1320px - 100cqw) / 2));
+    right: min(0px, calc((1320px - 100cqw) / 2));
   }
 
   .home-about__photo {
     position: absolute;
-    inset: 0 0 0 32.3%;
+    top: 0;
+    bottom: 0;
+    left: var(--about-photo-left, 32.3%);
+    right: min(0px, calc((1320px - 100cqw) / 2));   /* cqw = Seitenbreite ohne Scrollbar */
     margin: 0;
   }
 
@@ -1727,7 +1763,7 @@ body {
 
   .home-about__text {
     position: relative;
-    max-width: 26.5rem;
+    max-width: var(--about-text-width, 424px);
   }
 
   .home-about__text .home-title {
@@ -1736,7 +1772,7 @@ body {
 
   /* 5: Titel rechtsbuendig, Liste rechte Haelfte */
   .home-ablauf {
-    padding: 8.5rem 7% 15rem 43.5%;
+    padding: 8.5rem 7% var(--ablauf-bottom, 15rem) 43.5%;
   }
 
   .home-ablauf__title {
@@ -1776,11 +1812,41 @@ body {
   }
 
   .home-contact {
-    margin: 15rem 0 0 47.5%;
+    margin: var(--contact-gap, 15rem) 0 0 47.5%;
     max-width: 25rem;
   }
 
   .home-contact__actions {
     margin: 4rem 0 0 7.25rem;
   }
+}
+
+/* Feinjustierung: Verschiebungen (x/y) und Groessen pro Element.
+   Standard 0 bzw. 1 - Werte setzt das Tuning-Panel (?tune in der URL). */
+@media (min-width: 1024px) {
+  .offer--deutsch .offer__illustration     { translate: var(--x-deutsch-illus, -143px) var(--y-deutsch-illus, 29px); scale: var(--s-deutsch-illus, 1); }
+  .offer--deutsch .offer__text             { translate: var(--x-deutsch-text, 0px) var(--y-deutsch-text, 0px); }
+  .offer--deutsch .btn-ask                 { translate: var(--x-deutsch-btn, 0px) var(--y-deutsch-btn, 0px); }
+
+  .offer--auffrischen .offer__text         { translate: var(--x-auffrischen-text, -91px) var(--y-auffrischen-text, 0px); }
+  .offer--auffrischen .btn-ask             { translate: var(--x-auffrischen-btn, 0px) var(--y-auffrischen-btn, 0px); }
+  .offer--auffrischen .offer__illustration { translate: var(--x-auffrischen-illus, -12px) var(--y-auffrischen-illus, -78px); scale: var(--s-auffrischen-illus, 0.83); }
+
+  .offer--formular .offer__illustration    { translate: var(--x-formular-illus, 4px) var(--y-formular-illus, -54px); scale: var(--s-formular-illus, 0.87); }
+  .offer--formular .offer__text            { translate: var(--x-formular-text, 0px) var(--y-formular-text, 0px); }
+  .offer--formular .btn-ask                { translate: var(--x-formular-btn, 0px) var(--y-formular-btn, 0px); }
+
+  .home-about__text                        { translate: var(--x-about-text, 0px) var(--y-about-text, 0px); }
+  .home-about__photo img                   { object-position: var(--about-photo-pos, 100%) var(--about-photo-pos-y, 20%); }
+
+  .home-ablauf__title                      { translate: var(--x-ablauf-title, 0px) var(--y-ablauf-title, 0px); }
+  .home-ablauf__steps                      { translate: var(--x-ablauf-steps, 0px) var(--y-ablauf-steps, 0px); }
+
+  .home-preise__text                       { translate: var(--x-preise-text, 0px) var(--y-preise-text, 0px); }
+  .home-contact                            { translate: var(--x-contact, 0px) var(--y-contact, 0px); }
+  .home-contact__actions                   { translate: var(--x-contact-actions, 0px) var(--y-contact-actions, 0px); }
+
+  .home-sections .home-title               { font-size: var(--fs-title, 2rem); }
+  .home-sections .home-body                { font-size: var(--fs-body, 1.5rem); }
+  .home-sections .home-preise__body        { font-size: var(--fs-preise, 1.625rem); }
 }
