@@ -66,7 +66,7 @@
       "latitude": "47.5547",
       "longitude": "7.5906"
     },
-    "priceRange": "CHF 30",
+    "priceRange": "CHF 30–50",
     "areaServed": {
       "@type": "City",
       "name": "Basel"
