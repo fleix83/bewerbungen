@@ -2,10 +2,11 @@
 // Schieberegler setzen CSS-Variablen auf :root, Werte bleiben im Browser
 // gespeichert. "CSS kopieren" liefert die geaenderten Werte zum Einbauen.
 (function () {
-  var STORAGE_KEY = 'home-tune-v4';
+  var STORAGE_KEY = 'home-tune-v6';
+  var mobileQuery = window.matchMedia('(max-width: 1023px)');
 
   // [Variable, Label, min, max, step, Standard, Einheit]
-  var groups = [
+  var desktopGroups = [
     ['Schrift', [
       ['--fs-title', 'Titel', 20, 44, 1, 32, 'px'],
       ['--fs-body', 'Text', 16, 32, 1, 24, 'px'],
@@ -29,14 +30,15 @@
       ['--y-auffrischen-btn', 'Button y', -200, 200, 1, 0, 'px'],
       ['--x-auffrischen-illus', 'Grafik x', -400, 400, 1, 65, 'px'],
       ['--y-auffrischen-illus', 'Grafik y', -400, 400, 1, -78, 'px'],
-      ['--s-auffrischen-illus', 'Grafik Grösse', 0.4, 1.8, 0.01, 0.83, '']
+      ['--s-auffrischen-illus', 'Grafik Grösse', 0.4, 1.8, 0.01, 0.83, ''],
+      ['--r-auffrischen-illus', 'Grafik Drehung', -180, 180, 0.5, 0, 'deg']
     ]],
     ['3 Formulare', [
       ['--h-formular', 'Sektionshöhe', 400, 1100, 5, 880, 'px'],
       ['--x-formular-illus', 'Grafik x', -400, 400, 1, 4, 'px'],
       ['--y-formular-illus', 'Grafik y', -400, 400, 1, -71, 'px'],
       ['--s-formular-illus', 'Grafik Grösse', 0.4, 1.8, 0.01, 0.87, ''],
-      ['--r-formular-illus', 'Grafik Drehung', -45, 45, 0.5, 4, 'deg'],
+      ['--r-formular-illus', 'Grafik Drehung', -180, 180, 0.5, 4, 'deg'],
       ['--x-formular-text', 'Text x', -400, 400, 1, 71, 'px'],
       ['--y-formular-text', 'Text y', -400, 400, 1, 0, 'px'],
       ['--x-formular-btn', 'Button x', -400, 400, 1, 0, 'px'],
@@ -71,6 +73,84 @@
     ]]
   ];
 
+  // Mobile: eigene Variablen (--m-...), nur unter 1024px wirksam
+  var mobileGroups = [
+    ['Hero', [
+      ['--m-x-hero-illus', 'Bild x', -200, 200, 1, 0, 'px'],
+      ['--m-y-hero-illus', 'Bild y', -200, 200, 1, 0, 'px'],
+      ['--m-s-hero-illus', 'Bild Grösse', 0.4, 1.8, 0.01, 1, ''],
+      ['--m-x-hero-text', 'Text x', -200, 200, 1, 0, 'px'],
+      ['--m-y-hero-text', 'Text y', -200, 200, 1, 0, 'px'],
+      ['--m-x-hero-cta', 'Button x', -200, 200, 1, 0, 'px'],
+      ['--m-y-hero-cta', 'Button y', -200, 200, 1, 0, 'px']
+    ]],
+    ['Schrift', [
+      ['--m-fs-title', 'Titel', 16, 36, 1, 24, 'px'],
+      ['--m-fs-body', 'Text', 14, 28, 1, 20, 'px'],
+      ['--m-fs-preise', 'Text Preise', 14, 30, 1, 20, 'px']
+    ]],
+    ['1 Deutsch', [
+      ['--m-pt-deutsch', 'Abstand oben', 0, 240, 2, 72, 'px'],
+      ['--m-pb-deutsch', 'Abstand unten', 0, 240, 2, 72, 'px'],
+      ['--m-x-deutsch-illus', 'Grafik x', -200, 200, 1, 28, 'px'],
+      ['--m-y-deutsch-illus', 'Grafik y', -200, 200, 1, 0, 'px'],
+      ['--m-s-deutsch-illus', 'Grafik Grösse', 0.4, 1.8, 0.01, 1, ''],
+      ['--m-x-deutsch-text', 'Text x', -200, 200, 1, 0, 'px'],
+      ['--m-y-deutsch-text', 'Text y', -200, 200, 1, 0, 'px'],
+      ['--m-x-deutsch-btn', 'Button x', -200, 200, 1, 0, 'px'],
+      ['--m-y-deutsch-btn', 'Button y', -100, 100, 1, 0, 'px']
+    ]],
+    ['2 Auffrischen', [
+      ['--m-pt-auffrischen', 'Abstand oben', 0, 240, 2, 0, 'px'],
+      ['--m-pb-auffrischen', 'Abstand unten', 0, 240, 2, 72, 'px'],
+      ['--m-x-auffrischen-illus', 'Grafik x', -200, 200, 1, 0, 'px'],
+      ['--m-y-auffrischen-illus', 'Grafik y', -200, 200, 1, 73, 'px'],
+      ['--m-s-auffrischen-illus', 'Grafik Grösse', 0.4, 1.8, 0.01, 1, ''],
+      ['--m-r-auffrischen-illus', 'Grafik Drehung', -180, 180, 0.5, -96, 'deg'],
+      ['--m-x-auffrischen-text', 'Text x', -200, 200, 1, 0, 'px'],
+      ['--m-y-auffrischen-text', 'Text y', -200, 200, 1, 0, 'px'],
+      ['--m-x-auffrischen-btn', 'Button x', -200, 200, 1, 0, 'px'],
+      ['--m-y-auffrischen-btn', 'Button y', -100, 100, 1, 0, 'px']
+    ]],
+    ['3 Formulare', [
+      ['--m-pt-formular', 'Abstand oben', 0, 240, 2, 72, 'px'],
+      ['--m-pb-formular', 'Abstand unten', 0, 240, 2, 72, 'px'],
+      ['--m-x-formular-illus', 'Grafik x', -200, 200, 1, 34, 'px'],
+      ['--m-y-formular-illus', 'Grafik y', -200, 200, 1, 0, 'px'],
+      ['--m-s-formular-illus', 'Grafik Grösse', 0.4, 1.8, 0.01, 1, ''],
+      ['--m-r-formular-illus', 'Grafik Drehung', -180, 180, 0.5, 4, 'deg'],
+      ['--m-x-formular-text', 'Text x', -200, 200, 1, 0, 'px'],
+      ['--m-y-formular-text', 'Text y', -200, 200, 1, 0, 'px'],
+      ['--m-x-formular-btn', 'Button x', -200, 200, 1, 0, 'px'],
+      ['--m-y-formular-btn', 'Button y', -100, 100, 1, 0, 'px']
+    ]],
+    ['4 Über mich', [
+      ['--m-about-gap', 'Abstand Foto–Text', 0, 120, 2, 32, 'px'],
+      ['--m-pb-about', 'Abstand unten', 0, 240, 2, 72, 'px'],
+      ['--m-x-about-text', 'Text x', -200, 200, 1, 0, 'px'],
+      ['--m-y-about-text', 'Text y', -200, 200, 1, 0, 'px']
+    ]],
+    ['5 Wie läuft das', [
+      ['--m-pt-ablauf', 'Abstand oben', 0, 240, 2, 72, 'px'],
+      ['--m-pb-ablauf', 'Abstand unten', 0, 240, 2, 72, 'px'],
+      ['--m-x-ablauf-title', 'Titel x', -200, 200, 1, 0, 'px'],
+      ['--m-y-ablauf-title', 'Titel y', -100, 100, 1, 0, 'px'],
+      ['--m-x-ablauf-steps', 'Liste x', -200, 200, 1, 0, 'px'],
+      ['--m-y-ablauf-steps', 'Liste y', -100, 100, 1, 0, 'px']
+    ]],
+    ['6 Was kostet das + Kontakt', [
+      ['--m-pt-preise', 'Abstand oben', 0, 240, 2, 72, 'px'],
+      ['--m-pb-preise', 'Abstand unten', 0, 240, 2, 80, 'px'],
+      ['--m-x-preise-text', 'Text x', -200, 200, 1, 0, 'px'],
+      ['--m-y-preise-text', 'Text y', -200, 200, 1, 0, 'px'],
+      ['--m-prefooter-pad', 'Kontakt Innenabstand', 16, 200, 2, 64, 'px'],
+      ['--m-x-contact', 'Kontakt x', -200, 200, 1, 0, 'px'],
+      ['--m-y-contact', 'Kontakt y', -100, 100, 1, 0, 'px'],
+      ['--m-x-contact-actions', 'Buttons x', -200, 200, 1, 0, 'px'],
+      ['--m-y-contact-actions', 'Buttons y', -100, 100, 1, 0, 'px']
+    ]]
+  ];
+
   var root = document.documentElement;
   var values = {};
   try { values = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch (e) {}
@@ -92,52 +172,75 @@
     '<div class="tune-panel__foot">' +
     '<button type="button" data-act="copy">CSS kopieren</button>' +
     '<button type="button" data-act="reset">Alles zurücksetzen</button></div>' +
-    '<p class="tune-panel__hint">Nur Desktop (ab 1024px). Werte bleiben in diesem Browser gespeichert.</p>';
+    '<p class="tune-panel__hint"></p>';
   var body = panel.querySelector('.tune-panel__body');
+  var title = panel.querySelector('.tune-panel__head strong');
+  var hint = panel.querySelector('.tune-panel__hint');
 
-  groups.forEach(function (group) {
-    var details = document.createElement('details');
-    details.innerHTML = '<summary>' + group[0] + '</summary>';
-    group[1].forEach(function (c) {
-      var name = c[0], unit = c[6], def = c[5];
-      var value = name in values ? values[name] : def;
-      if (name in values) apply(name, value, unit);
-
-      var row = document.createElement('label');
-      row.className = 'tune-row';
-      row.innerHTML = '<span>' + c[1] + '</span>' +
-        '<input type="range" min="' + c[2] + '" max="' + c[3] + '" step="' + c[4] + '" value="' + value + '">' +
-        '<input type="number" step="' + c[4] + '" value="' + value + '">' +
-        '<button type="button" title="Zurücksetzen">↺</button>';
-      var range = row.querySelector('input[type=range]');
-      var number = row.querySelector('input[type=number]');
-
-      function set(v) {
-        range.value = v;
-        number.value = v;
-        if (Number(v) === def) {
-          delete values[name];
-          root.style.removeProperty(name);
-        } else {
-          values[name] = Number(v);
-          apply(name, v, unit);
-        }
-        save();
-      }
-
-      range.addEventListener('input', function () { set(range.value); });
-      number.addEventListener('input', function () { if (number.value !== '') set(number.value); });
-      row.querySelector('button').addEventListener('click', function (e) { e.preventDefault(); set(def); });
-      row.dataset.def = def;
-      row.reset = function () { set(def); };
-      details.appendChild(row);
-    });
-    body.appendChild(details);
+  // Gespeicherte Werte beider Ansichten sofort anwenden
+  desktopGroups.concat(mobileGroups).forEach(function (g) {
+    g[1].forEach(function (c) { if (c[0] in values) apply(c[0], values[c[0]], c[6]); });
   });
 
+  function currentGroups() {
+    return mobileQuery.matches ? mobileGroups : desktopGroups;
+  }
+
+  // Regler fuer die aktuelle Ansicht (Desktop oder Mobile) aufbauen
+  function render() {
+    var groups = currentGroups();
+    body.innerHTML = '';
+    title.textContent = 'Feinjustierung ' + (mobileQuery.matches ? 'Mobile' : 'Desktop');
+    hint.textContent = (mobileQuery.matches ? 'Mobile (unter 1024px).' : 'Desktop (ab 1024px).') +
+      ' Werte bleiben in diesem Browser gespeichert.';
+
+    groups.forEach(function (group) {
+      var details = document.createElement('details');
+      details.innerHTML = '<summary>' + group[0] + '</summary>';
+      group[1].forEach(function (c) {
+        var name = c[0], unit = c[6], def = c[5];
+        var value = name in values ? values[name] : def;
+
+        var row = document.createElement('label');
+        row.className = 'tune-row';
+        row.innerHTML = '<span>' + c[1] + '</span>' +
+          '<input type="range" min="' + c[2] + '" max="' + c[3] + '" step="' + c[4] + '" value="' + value + '">' +
+          '<input type="number" step="' + c[4] + '" value="' + value + '">' +
+          '<button type="button" title="Zurücksetzen">↺</button>';
+        var range = row.querySelector('input[type=range]');
+        var number = row.querySelector('input[type=number]');
+
+        function set(v) {
+          range.value = v;
+          number.value = v;
+          if (Number(v) === def) {
+            delete values[name];
+            root.style.removeProperty(name);
+          } else {
+            values[name] = Number(v);
+            apply(name, v, unit);
+          }
+          save();
+        }
+
+        range.addEventListener('input', function () { set(range.value); });
+        number.addEventListener('input', function () { if (number.value !== '') set(number.value); });
+        row.querySelector('button').addEventListener('click', function (e) { e.preventDefault(); set(def); });
+        row.dataset.def = def;
+        row.reset = function () { set(def); };
+        details.appendChild(row);
+      });
+      body.appendChild(details);
+    });
+  }
+
+  render();
+  if (mobileQuery.addEventListener) mobileQuery.addEventListener('change', render);
+
+  // Kopiert die geaenderten Werte beider Ansichten
   function cssText() {
     var lines = [];
-    groups.forEach(function (g) {
+    desktopGroups.concat(mobileGroups).forEach(function (g) {
       g[1].forEach(function (c) {
         if (c[0] in values) lines.push('  ' + c[0] + ': ' + values[c[0]] + c[6] + ';');
       });
@@ -176,6 +279,7 @@
     '.tune-panel button{font:inherit;cursor:pointer;border:1px solid #ccc;background:#f6f6f6;border-radius:5px;padding:3px 8px}' +
     '.tune-row button{padding:0;width:22px;height:22px}' +
     '.tune-panel__hint{margin:0;padding:0 12px 10px;color:#666;font-size:11px}' +
+    '@media (max-width:1023px){.tune-panel{top:auto;bottom:8px;left:8px;right:8px;width:auto;max-height:48vh}.tune-row{grid-template-columns:84px 1fr 52px 22px}}' +
     '.tune-panel.is-collapsed .tune-panel__body,.tune-panel.is-collapsed .tune-panel__foot,.tune-panel.is-collapsed .tune-panel__hint{display:none}';
   document.head.appendChild(style);
   document.body.appendChild(panel);

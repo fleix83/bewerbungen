@@ -1453,9 +1453,10 @@ body {
   z-index: -1;
 }
 
-/* Ueber mich: Portrait gespiegelt, damit der Blick zum Text geht */
+/* Ueber mich: Portrait gespiegelt, damit der Blick zum Text geht.
+   Foto sitzt ohne Abstand an der Oberkante der Sektion. */
 .home-about {
-  padding: 4.5rem 0;
+  padding: 0 0 4.5rem;
 }
 
 .home-about__photo {
@@ -1826,7 +1827,7 @@ body {
 
   .offer--auffrischen .offer__text         { translate: var(--x-auffrischen-text, -91px) var(--y-auffrischen-text, 50px); }
   .offer--auffrischen .btn-ask             { translate: var(--x-auffrischen-btn, 0px) var(--y-auffrischen-btn, 0px); }
-  .offer--auffrischen .offer__illustration { translate: var(--x-auffrischen-illus, 65px) var(--y-auffrischen-illus, -78px); scale: var(--s-auffrischen-illus, 0.83); }
+  .offer--auffrischen .offer__illustration { translate: var(--x-auffrischen-illus, 65px) var(--y-auffrischen-illus, -78px); scale: var(--s-auffrischen-illus, 0.83); rotate: var(--r-auffrischen-illus, 0deg); }
 
   .offer--formular .offer__illustration    { translate: var(--x-formular-illus, 4px) var(--y-formular-illus, -71px); scale: var(--s-formular-illus, 0.87); rotate: var(--r-formular-illus, 4deg); }
   .offer--formular .offer__text            { translate: var(--x-formular-text, 71px) var(--y-formular-text, 0px); }
@@ -1845,4 +1846,46 @@ body {
   .home-sections .home-title               { font-size: var(--fs-title, 2rem); }
   .home-sections .home-body                { font-size: var(--fs-body, 1.5rem); }
   .home-sections .home-preise__body        { font-size: var(--fs-preise, 1.625rem); }
+}
+
+/* Feinjustierung Mobile (unter 1024px): eigene Variablen mit --m- Praefix,
+   Werte setzt das Tuning-Panel (?tune in der URL). */
+@media (max-width: 1023px) {
+  .landing-illustration                    { translate: var(--m-x-hero-illus, 0px) var(--m-y-hero-illus, 0px); scale: var(--m-s-hero-illus, 1); }
+  .hero-section                            { translate: var(--m-x-hero-text, 0px) var(--m-y-hero-text, 0px); }
+  .landing-cta                             { translate: var(--m-x-hero-cta, 0px) var(--m-y-hero-cta, 0px); }
+
+  .home-sections .home-title               { font-size: var(--m-fs-title, 1.5rem); }
+  .home-sections .home-body                { font-size: var(--m-fs-body, 1.25rem); }
+  .home-sections .home-preise__body        { font-size: var(--m-fs-preise, 1.25rem); }
+
+  .offer--deutsch                          { padding: var(--m-pt-deutsch, 72px) 0 var(--m-pb-deutsch, 72px); }
+  .offer--deutsch .offer__illustration     { translate: var(--m-x-deutsch-illus, 28px) var(--m-y-deutsch-illus, 0px); scale: var(--m-s-deutsch-illus, 1); }
+  .offer--deutsch .offer__text             { translate: var(--m-x-deutsch-text, 0px) var(--m-y-deutsch-text, 0px); }
+  .offer--deutsch .btn-ask                 { translate: var(--m-x-deutsch-btn, 0px) var(--m-y-deutsch-btn, 0px); }
+
+  .offer--auffrischen                      { padding: var(--m-pt-auffrischen, 0px) 0 var(--m-pb-auffrischen, 72px); }
+  .offer--auffrischen .offer__illustration { translate: var(--m-x-auffrischen-illus, 0px) var(--m-y-auffrischen-illus, 73px); scale: var(--m-s-auffrischen-illus, 1); rotate: var(--m-r-auffrischen-illus, -96deg); }
+  .offer--auffrischen .offer__text         { translate: var(--m-x-auffrischen-text, 0px) var(--m-y-auffrischen-text, 0px); }
+  .offer--auffrischen .btn-ask             { translate: var(--m-x-auffrischen-btn, 0px) var(--m-y-auffrischen-btn, 0px); }
+
+  .offer--formular                         { padding: var(--m-pt-formular, 72px) 0 var(--m-pb-formular, 72px); }
+  .offer--formular .offer__illustration    { translate: var(--m-x-formular-illus, 34px) var(--m-y-formular-illus, 0px); scale: var(--m-s-formular-illus, 1); rotate: var(--m-r-formular-illus, 4deg); }
+  .offer--formular .offer__text            { translate: var(--m-x-formular-text, 0px) var(--m-y-formular-text, 0px); }
+  .offer--formular .btn-ask                { translate: var(--m-x-formular-btn, 0px) var(--m-y-formular-btn, 0px); }
+
+  .home-about                              { padding-bottom: var(--m-pb-about, 72px); }
+  .home-about__photo                       { margin-bottom: var(--m-about-gap, 32px); }
+  .home-about__text                        { translate: var(--m-x-about-text, 0px) var(--m-y-about-text, 0px); }
+
+  .home-ablauf                             { padding: var(--m-pt-ablauf, 72px) 0 var(--m-pb-ablauf, 72px); }
+  .home-ablauf__title                      { translate: var(--m-x-ablauf-title, 0px) var(--m-y-ablauf-title, 0px); }
+  .home-ablauf__steps                      { translate: var(--m-x-ablauf-steps, 0px) var(--m-y-ablauf-steps, 0px); }
+
+  .home-preise                             { padding: var(--m-pt-preise, 72px) 0 var(--m-pb-preise, 80px); }
+  .home-preise__text                       { translate: var(--m-x-preise-text, 0px) var(--m-y-preise-text, 0px); }
+
+  .prefooter                               { padding-block: var(--m-prefooter-pad, 64px); }
+  .contact-block                           { translate: var(--m-x-contact, 0px) var(--m-y-contact, 0px); }
+  .contact-block__actions                  { translate: var(--m-x-contact-actions, 0px) var(--m-y-contact-actions, 0px); }
 }
