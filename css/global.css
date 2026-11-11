@@ -1821,7 +1821,7 @@ body {
 /* Feinjustierung: Verschiebungen (x/y) und Groessen pro Element.
    Standard 0 bzw. 1 - Werte setzt das Tuning-Panel (?tune in der URL). */
 @media (min-width: 1024px) {
-  .offer--deutsch .offer__illustration     { translate: var(--x-deutsch-illus, -143px) var(--y-deutsch-illus, 29px); scale: var(--s-deutsch-illus, 1.56); }
+  .offer--deutsch .offer__illustration     { translate: var(--x-deutsch-illus, -143px) var(--y-deutsch-illus, 29px); scale: var(--s-deutsch-illus, 1.36); }
   .offer--deutsch .offer__text             { translate: var(--x-deutsch-text, 84px) var(--y-deutsch-text, 0px); }
   .offer--deutsch .btn-ask                 { translate: var(--x-deutsch-btn, 0px) var(--y-deutsch-btn, 0px); }
 

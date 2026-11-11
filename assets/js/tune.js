@@ -2,7 +2,7 @@
 // Schieberegler setzen CSS-Variablen auf :root, Werte bleiben im Browser
 // gespeichert. "CSS kopieren" liefert die geaenderten Werte zum Einbauen.
 (function () {
-  var STORAGE_KEY = 'home-tune-v6';
+  var STORAGE_KEY = 'home-tune-v7';
   var mobileQuery = window.matchMedia('(max-width: 1023px)');
 
   // [Variable, Label, min, max, step, Standard, Einheit]
@@ -16,7 +16,7 @@
       ['--h-deutsch', 'Sektionshöhe', 400, 1100, 5, 1100, 'px'],
       ['--x-deutsch-illus', 'Grafik x', -400, 400, 1, -143, 'px'],
       ['--y-deutsch-illus', 'Grafik y', -400, 400, 1, 29, 'px'],
-      ['--s-deutsch-illus', 'Grafik Grösse', 0.4, 1.8, 0.01, 1.56, ''],
+      ['--s-deutsch-illus', 'Grafik Grösse', 0.4, 1.8, 0.01, 1.36, ''],
       ['--x-deutsch-text', 'Text x', -400, 400, 1, 84, 'px'],
       ['--y-deutsch-text', 'Text y', -400, 400, 1, 0, 'px'],
       ['--x-deutsch-btn', 'Button x', -400, 400, 1, 0, 'px'],
