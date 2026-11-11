@@ -1136,7 +1136,7 @@ body {
   }
 
   .landing-header__title {
-    font-size: 3.25rem;
+    font-size: 2.75rem;
     line-height: 1.1;
     margin-bottom: 0;
   }
@@ -1339,10 +1339,6 @@ body {
 }
 
 @media (min-width: 1280px) and (max-width: 1365px) {
-  .landing-header__title {
-    font-size: 2.75rem;
-  }
-
   .landing-header__nav {
     gap: 2rem;
   }
