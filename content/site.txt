@@ -46,7 +46,7 @@ Termin-button-url: https://bewerbungenundmehr.ch/terminmanager/frontend/dist/
 
 ----
 
-Contact-cta-text: Kontaktieren Sie mich unkompliziert per Whatsapp oder Mobile bei Fragen und speziellen Anfragen.
+Contact-cta-text: Möchten Sie einen Termin machen oder haben Sie eine Frage? Kontaktieren Sie mich unkompliziert per Whatsapp, Telefon oder Email.
 
 ----
 

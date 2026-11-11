@@ -33,6 +33,9 @@
       <a href="<?= page('preise')->url() ?>" class="landing-footer__nav-link">Preise & Angebote</a>
       <a href="<?= page('ueber-mich')->url() ?>" class="landing-footer__nav-link">Über mich</a>
       <a href="<?= page('ablauf')->url() ?>" class="landing-footer__nav-link">Wie läuft das?</a>
+      <?php if ($anfahrt = page('anfahrt')): ?>
+      <a href="<?= $anfahrt->url() ?>" class="landing-footer__nav-link">Anfahrt</a>
+      <?php endif ?>
       <a href="<?= page('impressum')->url() ?>" class="landing-footer__nav-link">Impressum</a>
     </nav>
   </div>

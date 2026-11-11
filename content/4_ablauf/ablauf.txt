@@ -11,7 +11,7 @@ Process-steps:
   text: Danach formuliere ich mit Ihnen zusammen Ihr Dokument. Sie können jederzeit korrigierend eingreifen.
   dot_color: green
 -
-  text: Ich gebe Ihrem Schreiben den letzten Schliff. Sie gehen mit einem fertigen Dokument oder mit einer fertigen Bewerbung nachhause.
+  text: Einfache Dokumente können Sie in der Regel direkt mitnehmen. Bewerbungsschreiben und CVs schaue ich in Ruhe nochmals an und sende Ihnen dann das überarbeitete fertige Dokument per Email oder Whatsapp.
   dot_color: blue
 
 ----

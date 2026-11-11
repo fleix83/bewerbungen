@@ -41,10 +41,10 @@
         <?php endforeach ?>
       </section>
       <?php endforeach ?>
-
-      <?php snippet('components/contact-cta') ?>
-      <?php snippet('footer/page-actions') ?>
     </main>
   </div>
+
+  <?php snippet('components/prefooter') ?>
+  <?php snippet('footer/landing') ?>
 </body>
 </html>

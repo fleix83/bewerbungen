@@ -56,7 +56,7 @@ Payment-methods: Bar, TWINT
 
 ----
 
-Contact-cta-text: Kontaktieren Sie mich unkompliziert per Whatsapp oder Mobile bei Fragen und speziellen Anfragen.
+Contact-cta-text: 
 
 ----
 

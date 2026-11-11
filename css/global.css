@@ -2,7 +2,7 @@
    BEWERBUNGEN & MEHR - Global Styles
    ======================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
 
 /* ----- 1. CSS Custom Properties ----- */
 :root {
@@ -18,12 +18,19 @@
   --color-address-bg: #CAD6FF;
   --color-services-bg: #4866b9;
   --color-footer-bg: #8281a5;
+  --color-on-blue: oklch(0.985 0.012 85);        /* warmes Weiss fuer Fragen */
+  --color-on-blue-soft: oklch(0.95 0.018 85);    /* etwas weicher fuer Fliesstext */
 
   /* Violet Theme Colors */
   --color-violet-start: #3931B4;
   --color-violet-end: rgba(0, 33, 152, 0.513);
   --color-text-yellow: #FFE9A1;
   --color-accent-red: #F83F3F;
+  --color-section-bg: #DADAED;       /* Lavendel der Startseiten-Sektionen */
+  --color-title-blue: #4766b9;
+  --color-about-bg: #ffe1ce;         /* Pfirsich hinter Ueber mich */
+  --color-prefooter-bg: #c9c8e4;     /* heller als --color-footer-bg */
+  --color-coral: #ff7371;
 
   /* Typography */
   --font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -119,9 +126,47 @@ body {
 }
 
 /* Landing Page Violet Gradient Background */
+/* Verlauf nur ueber den Hero, darunter flaches Lavendel fuer die Sektionen */
 .page-landing {
-  background: linear-gradient(180deg, #e7e6ff 0%, rgb(30 42 86 / 23%) 100%);
+  background: linear-gradient(180deg, #e7e6ff 0, var(--color-section-bg) 100vh) no-repeat,
+              var(--color-section-bg);
   min-height: 100vh;
+}
+
+/* Basel-Karte als Hero-Hintergrund: volle Bildschirmbreite,
+   blendet zum unteren Rand des Hero hin aus.
+   Weisse Linien auf Schwarz - "screen" laesst nur die Linien
+   ueber dem Hintergrundverlauf stehen. */
+.page-landing > .page-container {
+  position: relative;
+}
+
+.page-landing > .page-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: url('../assets/images/basel_map.jpeg') center / cover no-repeat;
+  mix-blend-mode: screen;
+  opacity: 0.3;
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Unterseiten: Inhalt nicht auf Bildschirmhoehe strecken,
+   Kontakt-Band und Fusszeile folgen direkt danach */
+.page-preise > .page-container,
+.page-about > .page-container,
+.page-ablauf > .page-container,
+.page-anfahrt > .page-container,
+.page-impressum > .page-container {
+  min-height: 0;
+  padding-bottom: 5rem;
 }
 
 /* Other Pages Cream Background */
@@ -360,17 +405,37 @@ body {
   color: #4766b9;
 }
 
-.landing-header__title {
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.0625rem;
-  margin-bottom: 0.25rem;
+/* Logo und Telefonnummer (Mobile): gleiche Schrift und weisse Ebene */
+.landing-header__title,
+.landing-header__phone {
+  align-self: flex-start;
+  font-family: 'Gveret Levin', cursive;
+  font-size: 1.25rem;          /* Mobile: gleiche Hoehe wie das fruehere Logo */
+  font-weight: 400;
+  line-height: 1.1;
+  white-space: nowrap;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 0;
+  transform: translateX(-0.23em);   /* skaliert mit der Schrift, auf Desktop ca. 12px */
+}
+
+/* Weisse Ebene hinter der unteren Haelfte des Logos, leicht nach links versetzt */
+.landing-header__title::before,
+.landing-header__phone::before {
+  content: '';
+  position: absolute;
+  left: -0.4em;
+  right: 0.15em;
+  bottom: 0;
+  height: 50%;
+  background-color: var(--color-white);
+  z-index: -1;
 }
 
 .landing-header__phone {
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.0625rem;
+  font-size: 1.75rem;          /* 28px, deutlich groesser als das Logo */
+  margin-top: 5px;
   margin-bottom: 0.375rem;
   text-decoration: none;
   color: #4766b9;
@@ -436,10 +501,6 @@ body {
   margin-bottom: 0.2rem;
   align-self: flex-end;
   margin-right: 0.875rem;
-}
-
-.landing-contact {
-  display: none;
 }
 
 /* Hoehe vorgegeben, Breite ueber das viewBox-Verhaeltnis 256:290
@@ -673,24 +734,6 @@ body {
   flex: 1;
 }
 
-.page-actions {
-  margin-top: 3.75rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.75rem;
-  padding-bottom: var(--spacing-xl);
-}
-
-.page-actions .btn--primary {
-  width: auto;
-  max-width: none;
-  font-size: var(--font-size-base);
-  height: 3.25rem;
-  padding: 0 2rem;
-  color: var(--color-background);
-}
-
 /* About Page */
 .about-photo {
   margin: 0 0 var(--spacing-lg) 0;
@@ -802,24 +845,6 @@ body {
 .process-illustration img {
   max-width: 12.5rem;
   height: auto;
-}
-
-/* Contact CTA */
-.contact-cta {
-  margin: var(--spacing-lg) 0;
-}
-
-.cta-link {
-  color: var(--color-primary);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
-  text-decoration: none;
-  line-height: 1.5;
-}
-
-.cta-link .cta-link__text {
-  text-decoration: underline;
-  text-underline-offset: 2px;
 }
 
 /* Impressum Page */
@@ -939,108 +964,7 @@ body {
 }
 
 /* ----- 10. Desktop ----- */
-/* ----- 11. About Section (Section 2) ----- */
-.about-section {
-  background-color: var(--color-services-bg);
-  padding: 5.625rem 0.9375rem 1.25rem 0.9375rem;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-}
-
-.about-section__content {
-  width: 100%;
-  max-width: var(--max-width);
-  padding: 0 var(--page-padding);
-  box-sizing: border-box;
-  padding-bottom: 2.5rem;
-}
-
-.about-section__intro {
-  font-family: var(--font-family);
-  font-size: 1.375rem;
-  font-weight: 700;
-  font-style: italic;
-  line-height: 1.3;
-  color: var(--color-white);
-  margin-top: 3.375rem;
-  margin-bottom: 0;
-}
-
-.about-section__cards {
-  display: flex;
-  flex-direction: column;
-  gap: 3.375rem;
-}
-
-.about-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.about-card__icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  flex-shrink: 0;
-}
-
-.about-card__icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.about-card__icon img {
-  filter: drop-shadow(0 0 0.5px #F83F3F) drop-shadow(0 0 0.5px #F83F3F);
-}
-
-.about-card__text {
-  font-family: var(--font-family);
-  font-size: 1.3125rem;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--color-white);
-}
-
-.about-section__cta-text {
-  font-family: var(--font-family);
-  font-size: 1.3125rem;
-  font-weight: 700;
-  font-style: italic;
-  line-height: 1.3;
-  color: var(--color-white);
-  margin-top: 3.375rem;
-  margin-bottom: 0;
-}
-
-.about-section__cta-text .highlight {
-  background-color: var(--color-accent-red);
-  color: var(--color-background);
-  padding: 0.125rem 0.375rem;
-  border-radius: var(--border-radius-2xs);
-  font-style: italic;
-}
-
-.about-section__links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 3.375rem;
-}
-
-.about-section__link {
-  font-family: var(--font-family);
-  font-size: 1.3125rem;
-  font-weight: 700;
-  color: var(--color-white);
-  text-decoration: underline;
-  text-underline-offset: 0.1875rem;
-}
-
-.about-section__link:hover {
-  opacity: 0.8;
-}
+/* ----- 11. Startseite: Sektionen unter dem Hero (siehe Ende der Datei) ----- */
 
 /* ----- 12. Landing Footer ----- */
 .landing-footer {
@@ -1174,11 +1098,6 @@ body {
     margin-bottom: 2.5rem;
   }
 
-  .about-section {
-    padding: 3.75rem var(--page-padding);
-    margin-top: 3.75rem;
-  }
-
   .landing-footer__content {
     margin: 0 auto;
   }
@@ -1204,6 +1123,7 @@ body {
   /* Header: Marke links, Navigation rechts */
   .landing-header {
     align-items: center;
+    gap: 2rem;
   }
 
   .landing-header__address {
@@ -1216,13 +1136,20 @@ body {
   }
 
   .landing-header__title {
-    font-size: 1.3125rem;
-    line-height: 1.2;
+    font-size: 3.25rem;
+    line-height: 1.1;
     margin-bottom: 0;
   }
 
   .landing-header__nav {
     gap: 2.5rem;
+  }
+
+  /* Logo und Navigation nicht umbrechen */
+  .landing-header__title,
+  .landing-header__nav-link,
+  .landing-header__nav-phone {
+    white-space: nowrap;
   }
 
   .landing-header__nav-link {
@@ -1263,14 +1190,14 @@ body {
     grid-template-columns: minmax(0, 1fr) auto;
     grid-template-rows: 1fr auto;
     column-gap: 3rem;
-    padding: 0 0 9.375rem 0;   /* 150px: Text + Button sitzen 70px hoeher */
+    padding: 0 0 14.375rem 0;   /* 230px: Text + Button sitzen 150px hoeher */
   }
 
   .landing-illustration {
     grid-column: 2;
     grid-row: 1 / span 2;
     align-self: center;
-    margin: 0 0 -4.375rem 0;   /* gleicht die hoehere Grid-Unterkante aus, Bild bleibt stehen */
+    margin: 0 0 -9.375rem 0;   /* gleicht die hoehere Grid-Unterkante aus, Bild bleibt stehen */
   }
 
   .landing-illustration svg,
@@ -1310,50 +1237,6 @@ body {
     grid-row: 2;
     align-items: flex-start;
     margin-top: 2.5rem;
-  }
-
-  /* Fruehere Desktop-Seitenspalte entfaellt */
-  .landing-contact {
-    display: none;
-  }
-
-  /* Angebots-Sektion: eigene blaue Sektion in voller Breite,
-     Intro- und CTA-Text weiss auf Blau (wie Mobile) */
-  .page-landing > .about-section {
-    display: flex;
-    margin-top: 0;
-    padding: 7.5rem 2.5rem;
-  }
-
-  .about-section__content {
-    max-width: 77.5rem;   /* 1240px */
-    padding: 0 2.5rem;
-    padding-bottom: 0;
-  }
-
-  .about-section__cards {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 3.5rem;
-  }
-
-  .about-card {
-    gap: 1.125rem;
-  }
-
-  /* Textspalte: linksbuendig mit den Karten, ca. 1.5 Kartenspalten breit */
-  .about-section__intro {
-    max-width: 36rem;   /* 576px */
-    margin: 5.5rem 0 0 0;
-  }
-
-  .about-section__cta-text {
-    max-width: 36rem;
-    margin: 2rem 0 0 0;
-  }
-
-  .about-section__links {
-    display: none;
   }
 
   .btn-close--mobile {
@@ -1441,4 +1324,568 @@ body {
     width: auto;
     padding-left: 0.625rem;
   }
+}
+
+/* Schmaler Desktop: Logo und Navigation kompakter, damit der Header
+   inkl. Anfahrt-Link in eine Zeile passt */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .landing-header__title {
+    font-size: 2rem;
+  }
+
+  .landing-header__nav {
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1365px) {
+  .landing-header__title {
+    font-size: 2.75rem;
+  }
+
+  .landing-header__nav {
+    gap: 2rem;
+  }
+}
+
+/* ----- 13. Startseite: Sektionen unter dem Hero -----
+   Angebote (Deutsch, Auffrischen, Formulare), Ueber mich, Wie laeuft das,
+   Was kostet das + Kontakt. Sektionen sind transparent auf dem Lavendel
+   der Seite, damit Grafiken in die naechste Sektion ragen koennen. */
+.home-sections {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 var(--page-padding);
+  overflow-x: clip;
+}
+
+.home-title {
+  font-family: var(--font-family);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-title-blue);
+  text-wrap: pretty;
+}
+
+.home-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.home-body {
+  font-family: var(--font-family);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #111;
+  text-wrap: pretty;
+}
+
+.btn-ask {
+  display: inline-block;
+  padding: 0.5rem 1.125rem;
+  background-color: var(--color-coral);
+  border-radius: 6px;
+  font-family: var(--font-family);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.btn-ask:hover {
+  opacity: 0.9;
+}
+
+/* Angebote: Mobile untereinander, Grafik ueber dem Text */
+.offer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 4.5rem 0;
+}
+
+.offer__illustration img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.offer--deutsch .offer__illustration,
+.offer--formular .offer__illustration {
+  width: min(16rem, 70%);
+}
+
+.offer--auffrischen .offer__illustration {
+  order: -1;
+  width: min(9rem, 40%);
+  align-self: center;
+}
+
+.offer__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.offer__text .btn-ask {
+  margin-top: 1.25rem;
+}
+
+/* Pfirsich-Flaeche ueber die volle Bildschirmbreite (Deutsch, Ueber mich) */
+.offer--deutsch,
+.home-about {
+  position: relative;
+  isolation: isolate;
+}
+
+.offer--deutsch::before,
+.home-about::before {
+  content: '';
+  position: absolute;
+  inset: 0 calc(var(--page-padding) * -1);
+  background-color: var(--color-about-bg);
+  z-index: -1;
+}
+
+/* Ueber mich: Portrait gespiegelt, damit der Blick zum Text geht.
+   Foto sitzt ohne Abstand an der Oberkante der Sektion. */
+.home-about {
+  padding: 0 0 4.5rem;
+}
+
+.home-about__photo {
+  margin: 0 calc(var(--page-padding) * -1) 2rem;
+}
+
+.home-about__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: scaleX(-1);
+}
+
+.home-about__text .home-title {
+  margin-bottom: 1rem;
+}
+
+/* Wie laeuft das */
+.home-ablauf {
+  padding: 4.5rem 0;
+}
+
+.home-ablauf__title {
+  margin-bottom: 2rem;
+}
+
+.home-ablauf__steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.home-ablauf__step {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.home-ablauf__dot {
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+}
+
+.home-ablauf__step:nth-child(3n + 1) .home-ablauf__dot { background-color: #0a2196; }
+.home-ablauf__step:nth-child(3n + 2) .home-ablauf__dot { background-color: var(--color-dot-yellow); }
+.home-ablauf__step:nth-child(3n + 3) .home-ablauf__dot { background-color: #a9f7a9; }
+
+/* Was kostet das */
+.home-preise {
+  padding: 4.5rem 0 5rem;
+}
+
+.home-preise__text .home-title {
+  margin-bottom: 1rem;
+}
+
+.home-preise__link {
+  background-color: var(--color-white);
+  padding: 0 0.375rem 0 0.25rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.home-preise__link:hover {
+  text-decoration: underline;
+}
+
+/* Pre-Footer mit Kontakt: einige Stufen heller als die Fusszeile */
+.prefooter {
+  background-color: var(--color-prefooter-bg);
+  padding: 4rem var(--page-padding);
+}
+
+.prefooter__inner {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.contact-block__intro {
+  display: block;
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #0a2196;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.contact-block__arrow {
+  display: inline-block;
+  vertical-align: -0.1em;
+  margin-right: 0.375rem;
+}
+
+.contact-block__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+.btn-termin {
+  display: inline-block;
+  min-width: 14rem;
+  padding: 0.5rem 2rem;
+  margin-bottom: 0.5rem;
+  background-color: #0a2196;
+  border-radius: 999px;
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.btn-termin:hover {
+  opacity: 0.9;
+}
+
+.contact-block__link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-left: 0.625rem;
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0a2196;
+  text-decoration: none;
+}
+
+.contact-block__link:hover {
+  text-decoration: underline;
+}
+
+.contact-block__link svg {
+  flex-shrink: 0;
+}
+
+/* Desktop: Positionen nach Entwurf, bezogen auf den 1320px-Rahmen */
+@media (min-width: 1024px) {
+  .home-sections {
+    padding: 0;
+    overflow-x: visible;
+  }
+
+  .home-title {
+    font-size: 2rem;            /* 32px */
+  }
+
+  .home-body {
+    font-size: 1.5rem;          /* 24px */
+  }
+
+  .btn-ask {
+    font-size: 1.5rem;
+    padding: 0.4375rem 1.125rem;
+  }
+
+  .offer {
+    position: relative;
+    display: grid;
+    gap: 0;
+    padding: 0;
+    min-height: 45.625rem;      /* 730px */
+  }
+
+  .offer--deutsch     { min-height: var(--h-deutsch, 1100px); }
+  .offer--auffrischen { min-height: var(--h-auffrischen, 870px); }
+
+  .offer__text {
+    gap: 0.875rem;
+  }
+
+  .offer__text .btn-ask {
+    margin-top: 2rem;
+  }
+
+  /* 1: Grafik links, Text rechts etwas unter der Mitte, Button rechts */
+  .offer--deutsch {
+    grid-template-columns: 8.5% 37% 3.5% minmax(0, 45.5%) 1fr;
+    align-items: center;
+  }
+
+  .offer--deutsch .offer__illustration {
+    grid-column: 2;
+    width: 100%;
+  }
+
+  .offer--deutsch .offer__text {
+    grid-column: 4;
+    margin-top: 8rem;
+  }
+
+  .offer--deutsch .offer__text .btn-ask {
+    align-self: flex-end;
+    margin-right: 6rem;
+  }
+
+  /* 2: Text links oben, Pinselstrich rechts ragt in die naechste Sektion */
+  .offer--auffrischen {
+    grid-template-columns: 12.75% minmax(0, 37.5%) 1fr;
+    align-items: start;
+    padding-top: 8.375rem;
+  }
+
+  .offer--auffrischen .offer__text {
+    grid-column: 2;
+  }
+
+  .offer--auffrischen .offer__illustration {
+    position: absolute;
+    top: 5.25rem;
+    left: 60.5%;
+    z-index: 1;
+    width: 21.875rem;           /* 350px, ca. 800px hoch */
+    order: 0;
+    pointer-events: none;
+  }
+
+  /* 3: Grafik links, Text rechts oben, Button rechtsbuendig */
+  .offer--formular {
+    grid-template-columns: 5.75% 37% 11% minmax(0, 34%) 1fr;
+    align-items: center;
+    min-height: var(--h-formular, 880px);
+  }
+
+  .offer--formular .offer__illustration {
+    grid-column: 2;
+    width: 100%;
+  }
+
+  .offer--formular .offer__text {
+    grid-column: 4;
+    align-self: start;
+    padding-top: 9.6875rem;
+  }
+
+  .offer--formular .offer__text .btn-ask {
+    align-self: flex-end;
+  }
+
+  /* 4: Portrait rechts ueber volle Sektionshoehe, Text links ragt hinein */
+  .home-about {
+    position: relative;
+    min-height: var(--h-about, 810px);
+    padding: 16.25rem 0 5rem 9.25%;
+  }
+
+  /* Foto reicht bis an den rechten Bildschirmrand (ueber den 1320px-Rahmen hinaus).
+     body ist Container, damit 100cqw die Breite ohne Scrollbar ist. */
+  .page-landing {
+    container-type: inline-size;
+  }
+
+  /* Foto reicht bis an den rechten Bildschirmrand (ueber den 1320px-Rahmen hinaus) */
+  .offer--deutsch::before,
+  .home-about::before {
+    left: min(0px, calc((1320px - 100cqw) / 2));
+    right: min(0px, calc((1320px - 100cqw) / 2));
+  }
+
+  .home-about__photo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--about-photo-left, 32.3%);
+    right: min(0px, calc((1320px - 100cqw) / 2));   /* cqw = Seitenbreite ohne Scrollbar */
+    margin: 0;
+  }
+
+  .home-about__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .home-about__text {
+    position: relative;
+    max-width: var(--about-text-width, 424px);
+  }
+
+  .home-about__text .home-title {
+    margin-bottom: 1.25rem;
+  }
+
+  /* 5: Titel rechtsbuendig, Liste rechte Haelfte */
+  .home-ablauf {
+    padding: 8.5rem 7% var(--ablauf-bottom, 15rem) 43.5%;
+  }
+
+  .home-ablauf__title {
+    text-align: right;
+    padding-right: 3.5%;
+    margin-bottom: 2.75rem;
+  }
+
+  .home-ablauf__steps {
+    gap: 1.875rem;
+  }
+
+  .home-ablauf__step {
+    gap: 2.75rem;
+  }
+
+  .home-ablauf__dot {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  /* 6: Text links */
+  .home-preise {
+    padding: 2rem 0 var(--preise-bottom, 160px) 7%;
+  }
+
+  .home-preise__text {
+    max-width: 35rem;
+  }
+
+  .home-preise__body {
+    font-size: 1.625rem;        /* 26px, etwas groesser wie im Entwurf */
+  }
+
+  .home-preise__text .home-title {
+    margin-bottom: 1.25rem;
+  }
+
+  /* Pre-Footer: Kontakt rechts, an der Position aus dem Entwurf */
+  .prefooter {
+    padding: var(--prefooter-pad, 96px) 0;
+  }
+
+  .contact-block {
+    margin-left: 47.5%;
+    max-width: var(--contact-width, 576px);
+  }
+
+  .contact-block__intro {
+    font-size: 1.525rem;
+    line-height: 1.4;
+  }
+
+  /* Button und Kontakte rechtsbuendig in der Kontakt-Spalte */
+  .contact-block__actions {
+    width: max-content;
+    margin: 4rem 0 0 auto;
+  }
+}
+
+/* Feinjustierung: Verschiebungen (x/y) und Groessen pro Element.
+   Standard 0 bzw. 1 - Werte setzt das Tuning-Panel (?tune in der URL). */
+@media (min-width: 1024px) {
+  .offer--deutsch .offer__illustration     { translate: var(--x-deutsch-illus, -143px) var(--y-deutsch-illus, 29px); scale: var(--s-deutsch-illus, 1.36); }
+  .offer--deutsch .offer__text             { translate: var(--x-deutsch-text, 84px) var(--y-deutsch-text, 0px); }
+  .offer--deutsch .btn-ask                 { translate: var(--x-deutsch-btn, 0px) var(--y-deutsch-btn, 0px); }
+
+  .offer--auffrischen .offer__text         { translate: var(--x-auffrischen-text, -91px) var(--y-auffrischen-text, 50px); }
+  .offer--auffrischen .btn-ask             { translate: var(--x-auffrischen-btn, 0px) var(--y-auffrischen-btn, 0px); }
+  .offer--auffrischen .offer__illustration { translate: var(--x-auffrischen-illus, 65px) var(--y-auffrischen-illus, -78px); scale: var(--s-auffrischen-illus, 0.83); rotate: var(--r-auffrischen-illus, 0deg); }
+
+  .offer--formular .offer__illustration    { translate: var(--x-formular-illus, 4px) var(--y-formular-illus, -71px); scale: var(--s-formular-illus, 0.87); rotate: var(--r-formular-illus, 4deg); }
+  .offer--formular .offer__text            { translate: var(--x-formular-text, 71px) var(--y-formular-text, 0px); }
+  .offer--formular .btn-ask                { translate: var(--x-formular-btn, 0px) var(--y-formular-btn, 0px); }
+
+  .home-about__text                        { translate: var(--x-about-text, 0px) var(--y-about-text, 0px); }
+  .home-about__photo img                   { object-position: var(--about-photo-pos, 100%) var(--about-photo-pos-y, 20%); }
+
+  .home-ablauf__title                      { translate: var(--x-ablauf-title, 0px) var(--y-ablauf-title, 0px); }
+  .home-ablauf__steps                      { translate: var(--x-ablauf-steps, 0px) var(--y-ablauf-steps, 0px); }
+
+  .home-preise__text                       { translate: var(--x-preise-text, 0px) var(--y-preise-text, 0px); }
+  .contact-block                            { translate: var(--x-contact, 0px) var(--y-contact, 0px); }
+  .contact-block__actions                   { translate: var(--x-contact-actions, 0px) var(--y-contact-actions, 0px); }
+
+  .home-sections .home-title               { font-size: var(--fs-title, 2rem); }
+  .home-sections .home-body                { font-size: var(--fs-body, 1.5rem); }
+  .home-sections .home-preise__body        { font-size: var(--fs-preise, 1.625rem); }
+}
+
+/* Feinjustierung Mobile (unter 1024px): eigene Variablen mit --m- Praefix,
+   Werte setzt das Tuning-Panel (?tune in der URL). */
+@media (max-width: 1023px) {
+  .landing-illustration                    { translate: var(--m-x-hero-illus, 0px) var(--m-y-hero-illus, 0px); scale: var(--m-s-hero-illus, 1); }
+  .hero-section                            { translate: var(--m-x-hero-text, 0px) var(--m-y-hero-text, 0px); }
+  .landing-cta                             { translate: var(--m-x-hero-cta, 0px) var(--m-y-hero-cta, 0px); }
+
+  .home-sections .home-title               { font-size: var(--m-fs-title, 1.5rem); }
+  .home-sections .home-body                { font-size: var(--m-fs-body, 1.25rem); }
+  .home-sections .home-preise__body        { font-size: var(--m-fs-preise, 1.25rem); }
+
+  .offer--deutsch                          { padding: var(--m-pt-deutsch, 72px) 0 var(--m-pb-deutsch, 72px); }
+  .offer--deutsch .offer__illustration     { translate: var(--m-x-deutsch-illus, 28px) var(--m-y-deutsch-illus, 0px); scale: var(--m-s-deutsch-illus, 1); }
+  .offer--deutsch .offer__text             { translate: var(--m-x-deutsch-text, 0px) var(--m-y-deutsch-text, 0px); }
+  .offer--deutsch .btn-ask                 { translate: var(--m-x-deutsch-btn, 0px) var(--m-y-deutsch-btn, 0px); }
+
+  .offer--auffrischen                      { padding: var(--m-pt-auffrischen, 0px) 0 var(--m-pb-auffrischen, 72px); }
+  .offer--auffrischen .offer__illustration { translate: var(--m-x-auffrischen-illus, 0px) var(--m-y-auffrischen-illus, 73px); scale: var(--m-s-auffrischen-illus, 1); rotate: var(--m-r-auffrischen-illus, -96deg); }
+  .offer--auffrischen .offer__text         { translate: var(--m-x-auffrischen-text, 0px) var(--m-y-auffrischen-text, 0px); }
+  .offer--auffrischen .btn-ask             { translate: var(--m-x-auffrischen-btn, 0px) var(--m-y-auffrischen-btn, 0px); }
+
+  .offer--formular                         { padding: var(--m-pt-formular, 72px) 0 var(--m-pb-formular, 72px); }
+  .offer--formular .offer__illustration    { translate: var(--m-x-formular-illus, 34px) var(--m-y-formular-illus, 0px); scale: var(--m-s-formular-illus, 1); rotate: var(--m-r-formular-illus, 4deg); }
+  .offer--formular .offer__text            { translate: var(--m-x-formular-text, 0px) var(--m-y-formular-text, 0px); }
+  .offer--formular .btn-ask                { translate: var(--m-x-formular-btn, 0px) var(--m-y-formular-btn, 0px); }
+
+  .home-about                              { padding-bottom: var(--m-pb-about, 72px); }
+  .home-about__photo                       { margin-bottom: var(--m-about-gap, 32px); }
+  .home-about__text                        { translate: var(--m-x-about-text, 0px) var(--m-y-about-text, 0px); }
+
+  .home-ablauf                             { padding: var(--m-pt-ablauf, 72px) 0 var(--m-pb-ablauf, 72px); }
+  .home-ablauf__title                      { translate: var(--m-x-ablauf-title, 0px) var(--m-y-ablauf-title, 0px); }
+  .home-ablauf__steps                      { translate: var(--m-x-ablauf-steps, 0px) var(--m-y-ablauf-steps, 0px); }
+
+  .home-preise                             { padding: var(--m-pt-preise, 72px) 0 var(--m-pb-preise, 80px); }
+  .home-preise__text                       { translate: var(--m-x-preise-text, 0px) var(--m-y-preise-text, 0px); }
+
+  .prefooter                               { padding-block: var(--m-prefooter-pad, 64px); }
+  .contact-block                           { translate: var(--m-x-contact, 0px) var(--m-y-contact, 0px); }
+  .contact-block__actions                  { translate: var(--m-x-contact-actions, 0px) var(--m-y-contact-actions, 0px); }
 }

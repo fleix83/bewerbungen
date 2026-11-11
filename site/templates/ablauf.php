@@ -14,9 +14,10 @@
         </li>
         <?php endforeach ?>
       </ol>
-
-      <?php snippet('footer/page-actions') ?>
     </main>
   </div>
+
+  <?php snippet('components/prefooter') ?>
+  <?php snippet('footer/landing') ?>
 </body>
 </html>
