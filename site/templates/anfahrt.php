@@ -49,9 +49,10 @@
         <p class="anfahrt-text"><?= $text ?></p>
       </section>
       <?php endforeach ?>
-
-      <?php snippet('footer/page-actions') ?>
     </main>
   </div>
+
+  <?php snippet('components/prefooter') ?>
+  <?php snippet('footer/landing') ?>
 </body>
 </html>

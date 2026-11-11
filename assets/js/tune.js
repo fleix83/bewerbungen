@@ -2,7 +2,7 @@
 // Schieberegler setzen CSS-Variablen auf :root, Werte bleiben im Browser
 // gespeichert. "CSS kopieren" liefert die geaenderten Werte zum Einbauen.
 (function () {
-  var STORAGE_KEY = 'home-tune-v2';
+  var STORAGE_KEY = 'home-tune-v4';
 
   // [Variable, Label, min, max, step, Standard, Einheit]
   var groups = [
@@ -12,31 +12,32 @@
       ['--fs-preise', 'Text Preise', 16, 34, 1, 26, 'px']
     ]],
     ['1 Deutsch', [
-      ['--h-deutsch', 'Sektionshöhe', 400, 1100, 5, 790, 'px'],
+      ['--h-deutsch', 'Sektionshöhe', 400, 1100, 5, 1100, 'px'],
       ['--x-deutsch-illus', 'Grafik x', -400, 400, 1, -143, 'px'],
       ['--y-deutsch-illus', 'Grafik y', -400, 400, 1, 29, 'px'],
-      ['--s-deutsch-illus', 'Grafik Grösse', 0.4, 1.8, 0.01, 1, ''],
-      ['--x-deutsch-text', 'Text x', -400, 400, 1, 0, 'px'],
+      ['--s-deutsch-illus', 'Grafik Grösse', 0.4, 1.8, 0.01, 1.56, ''],
+      ['--x-deutsch-text', 'Text x', -400, 400, 1, 84, 'px'],
       ['--y-deutsch-text', 'Text y', -400, 400, 1, 0, 'px'],
       ['--x-deutsch-btn', 'Button x', -400, 400, 1, 0, 'px'],
       ['--y-deutsch-btn', 'Button y', -200, 200, 1, 0, 'px']
     ]],
     ['2 Auffrischen', [
-      ['--h-auffrischen', 'Sektionshöhe', 400, 1100, 5, 800, 'px'],
+      ['--h-auffrischen', 'Sektionshöhe', 400, 1100, 5, 870, 'px'],
       ['--x-auffrischen-text', 'Text x', -400, 400, 1, -91, 'px'],
-      ['--y-auffrischen-text', 'Text y', -400, 400, 1, 0, 'px'],
+      ['--y-auffrischen-text', 'Text y', -400, 400, 1, 50, 'px'],
       ['--x-auffrischen-btn', 'Button x', -400, 400, 1, 0, 'px'],
       ['--y-auffrischen-btn', 'Button y', -200, 200, 1, 0, 'px'],
-      ['--x-auffrischen-illus', 'Grafik x', -400, 400, 1, -12, 'px'],
+      ['--x-auffrischen-illus', 'Grafik x', -400, 400, 1, 65, 'px'],
       ['--y-auffrischen-illus', 'Grafik y', -400, 400, 1, -78, 'px'],
       ['--s-auffrischen-illus', 'Grafik Grösse', 0.4, 1.8, 0.01, 0.83, '']
     ]],
     ['3 Formulare', [
       ['--h-formular', 'Sektionshöhe', 400, 1100, 5, 880, 'px'],
       ['--x-formular-illus', 'Grafik x', -400, 400, 1, 4, 'px'],
-      ['--y-formular-illus', 'Grafik y', -400, 400, 1, -54, 'px'],
+      ['--y-formular-illus', 'Grafik y', -400, 400, 1, -71, 'px'],
       ['--s-formular-illus', 'Grafik Grösse', 0.4, 1.8, 0.01, 0.87, ''],
-      ['--x-formular-text', 'Text x', -400, 400, 1, 0, 'px'],
+      ['--r-formular-illus', 'Grafik Drehung', -45, 45, 0.5, 4, 'deg'],
+      ['--x-formular-text', 'Text x', -400, 400, 1, 71, 'px'],
       ['--y-formular-text', 'Text y', -400, 400, 1, 0, 'px'],
       ['--x-formular-btn', 'Button x', -400, 400, 1, 0, 'px'],
       ['--y-formular-btn', 'Button y', -200, 200, 1, 0, 'px']
@@ -57,10 +58,12 @@
       ['--y-ablauf-steps', 'Liste y', -200, 200, 1, 0, 'px'],
       ['--ablauf-bottom', 'Abstand unten', 0, 500, 5, 240, 'px']
     ]],
-    ['6 Was kostet das', [
+    ['6 Was kostet das + Kontakt', [
       ['--x-preise-text', 'Text x', -200, 400, 1, 0, 'px'],
       ['--y-preise-text', 'Text y', -200, 300, 1, 0, 'px'],
-      ['--contact-gap', 'Abstand Kontakt', 0, 500, 5, 240, 'px'],
+      ['--preise-bottom', 'Abstand unten', 0, 400, 5, 160, 'px'],
+      ['--prefooter-pad', 'Kontakt Innenabstand', 24, 240, 4, 96, 'px'],
+      ['--contact-width', 'Kontakt Breite', 300, 800, 4, 576, 'px'],
       ['--x-contact', 'Kontakt x', -600, 300, 1, 0, 'px'],
       ['--y-contact', 'Kontakt y', -200, 200, 1, 0, 'px'],
       ['--x-contact-actions', 'Buttons x', -200, 300, 1, 0, 'px'],

@@ -21,6 +21,7 @@
   </div>
 
   <?php snippet('components/home-sections') ?>
+  <?php snippet('components/prefooter') ?>
   <?php snippet('footer/landing') ?>
   <?php if (get('tune') !== null): ?>
   <script src="<?= url('assets/js/tune.js') ?>"></script>

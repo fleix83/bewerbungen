@@ -26,9 +26,10 @@
           </a>
         </div>
       </div>
-
-      <?php snippet('components/contact-cta') ?>
     </main>
   </div>
+
+  <?php snippet('components/prefooter') ?>
+  <?php snippet('footer/landing') ?>
 </body>
 </html>

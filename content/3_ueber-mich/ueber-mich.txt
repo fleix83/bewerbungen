@@ -43,7 +43,7 @@ Sections:
 
 ----
 
-Contact-cta-text: Kontaktieren Sie mich unkompliziert per Whatsapp oder Mobile bei Fragen und individuellen Anliegen.
+Contact-cta-text: 
 
 ----
 

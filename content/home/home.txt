@@ -78,7 +78,7 @@ Price-title: Und was kostet das?
 
 ----
 
-Price-text: Ich verrechne nach Anzahl Dokumenten. In der Regel CHF&nbsp;50.- pro Dokument. Hier finden Sie meine
+Price-text: Ich verrechne nach Anzahl Dokumenten. In der Regel CHF&nbsp;50.- pro Dokument. Für reine Beratungen verrechne ich CHF&nbsp;40.- pro Stunde. Hier finden Sie meine
 
 ----
 
