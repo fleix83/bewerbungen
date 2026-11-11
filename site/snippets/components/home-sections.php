@@ -15,7 +15,7 @@ $askUrl = $site->whatsapp_url();
     <div class="offer__text">
       <h2 class="home-title"><?= $page->offer1_title() ?></h2>
       <p class="home-body"><?= $page->offer1_text() ?></p>
-      <a href="<?= $askUrl ?>" class="btn-ask" target="_blank" rel="noopener"><?= $page->offer_button_text() ?></a>
+      <a href="<?= $site->termin_button_url() ?>" class="btn-ask"><?= $page->offer1_button() ?></a>
     </div>
   </section>
 
@@ -24,7 +24,7 @@ $askUrl = $site->whatsapp_url();
     <div class="offer__text">
       <h2 class="home-title"><?= $page->offer2_title() ?></h2>
       <p class="home-body"><?= $page->offer2_text() ?></p>
-      <a href="<?= $askUrl ?>" class="btn-ask" target="_blank" rel="noopener"><?= $page->offer_button_text() ?></a>
+      <a href="<?= $askUrl ?>" class="btn-ask" target="_blank" rel="noopener"><?= $page->offer2_button() ?></a>
     </div>
     <figure class="offer__illustration">
       <img src="<?= url('assets/images/auffrischen.svg') ?>" alt="" width="456" height="1043" loading="lazy">
@@ -39,7 +39,7 @@ $askUrl = $site->whatsapp_url();
     <div class="offer__text">
       <h2 class="home-title"><?= $page->offer3_title() ?></h2>
       <p class="home-body"><?= $page->offer3_text() ?></p>
-      <a href="<?= $askUrl ?>" class="btn-ask" target="_blank" rel="noopener"><?= $page->offer_button_text() ?></a>
+      <a href="<?= $askUrl ?>" class="btn-ask" target="_blank" rel="noopener"><?= $page->offer3_button() ?></a>
     </div>
   </section>
 

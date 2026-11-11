@@ -70,7 +70,15 @@ Offer3-text: Zu zweit ist das Ausfüllen von Formularen viel leichter. Ich helfe
 
 ----
 
-Offer-button-text: Fragen Sie mich an
+Offer1-button: Termin machen
+
+----
+
+Offer2-button: Fragen Sie mich an
+
+----
+
+Offer3-button: Ich brauche Unterstützung
 
 ----
 

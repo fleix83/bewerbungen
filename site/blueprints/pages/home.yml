@@ -89,10 +89,18 @@ tabs:
         label: Angebot 3 - Text
         type: textarea
         buttons: false
-      offer_button_text:
-        label: Button-Text der Angebote
+      offer1_button:
+        label: Angebot 1 - Button (öffnet die Terminbuchung)
         type: text
-        default: "Fragen Sie mich an"
+        width: 1/3
+      offer2_button:
+        label: Angebot 2 - Button (WhatsApp)
+        type: text
+        width: 1/3
+      offer3_button:
+        label: Angebot 3 - Button (WhatsApp)
+        type: text
+        width: 1/3
       price_headline:
         label: Was kostet das?
         type: headline
